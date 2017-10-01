@@ -1,0 +1,2489 @@
+{
+  "exchanges": [
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "status_code": 200, 
+      "response": {
+        "parameters": {
+          "engine": 0, 
+          "best_match_only": false, 
+          "data_source_ids": [], 
+          "detect_language": true, 
+          "preferred_data_sources": [], 
+          "all_data_sources": false, 
+          "return_content": false
+        }, 
+        "execution_time": "6.81", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:16.958791", 
+        "input_url": "http://en.wikipedia.org/wiki/Ant", 
+        "scientificNames": [
+          "Animalia", 
+          "Insecta", 
+          "Hymenoptera", 
+          "Formicoidea", 
+          "Formicidae", 
+          "Formica rufa", 
+          "Linnaeus", 
+          "Agroecomyrmecinae", 
+          "Amblyoponinae", 
+          "Apomyrminae", 
+          "Aneuretinae", 
+          "Brownimeciinae", 
+          "Dolichoderinae", 
+          "Dorylinae", 
+          "Ectatomminae", 
+          "Formiciinae", 
+          "Formicinae", 
+          "Heteroponerinae", 
+          "Leptanillinae", 
+          "Martialinae", 
+          "Myrmeciinae", 
+          "Nothomyrmeciinae", 
+          "Myrmicinae", 
+          "Paraponerinae", 
+          "Ponerinae", 
+          "Proceratiinae", 
+          "Pseudomyrmecinae", 
+          "Sphecomyrminae", 
+          "Ecitoninae", 
+          "Aenictinae", 
+          "Dorylini", 
+          "Aenictogitoninae", 
+          "Cerapachyinae", 
+          "Leptanilloidinae", 
+          "Solenopsis invicta", 
+          "Aculeata", 
+          "Chrysidoidea", 
+          "Vespidae", 
+          "Rhopalosomatidae", 
+          "Pompilidae", 
+          "Tiphiidae", 
+          "Scolioidea", 
+          "Apoidea", 
+          "Sphecomyrma", 
+          "Haidomyrmex", 
+          "Sphecomyrmodes", 
+          "Isoptera", 
+          "Blattodea", 
+          "Titanomyrma giganteum", 
+          "Pachycondyla verenae", 
+          "Pheidologeton diversus", 
+          "Myrmecocystus mexicanus", 
+          "Acromyrmex", 
+          "Myrmecia pilosula", 
+          "Camponotus sericeus", 
+          "Plectroctena", 
+          "Paraponera", 
+          "Solenopsis spp", 
+          "Odontomachus", 
+          "Odontomachus bauri", 
+          "Anochetus", 
+          "Orectognathus", 
+          "Dacetini", 
+          "Camponotus cylindricus", 
+          "Forelius pusillus", 
+          "Atta mexicana", 
+          "Linepithema humile", 
+          "Cataulacus muticus", 
+          "Camponotus anderseni", 
+          "Temnothorax albipennis", 
+          "Cerapachys biroi", 
+          "Eciton burchellii", 
+          "Oecophylla spp", 
+          "Formica polyctena", 
+          "Myrmecocystus", 
+          "Ergates", 
+          "Cataglyphis", 
+          "Harpegnathos saltator", 
+          "Cephalotes atratus", 
+          "Polyrhachis sokolova", 
+          "Tetramorium caespitum", 
+          "Temnothorax", 
+          "Protomognathus americanus", 
+          "Strumigenys xenos", 
+          "Strumigenys perplexa", 
+          "Wasmannia auropunctata", 
+          "Myrmarachne plataleoides", 
+          "Myrmecophilous ant-loving", 
+          "Lycaenidae", 
+          "Attini", 
+          "Leucoagaricus", 
+          "Leucocoprinus", 
+          "Agaricaceae", 
+          "Allomerus decemarticulatus", 
+          "Hirtella physophora", 
+          "Chrysobalanaceae", 
+          "Duroia hirsuta", 
+          "Duroia", 
+          "Acacia cornigera", 
+          "Pseudomyrmex ferruginea", 
+          "Philidris nagasau", 
+          "Squamellaria", 
+          "Rubiaceae", 
+          "Macaranga", 
+          "Crematogaster", 
+          "Megaponera", 
+          "Termitopone", 
+          "Nasutitermes corniger", 
+          "Mischocyttarus drewseni", 
+          "A. multipicta", 
+          "Trigona", 
+          "Melipona", 
+          "Bengalia", 
+          "Calliphoridae", 
+          "Vestigipoda myrmolarvoidea", 
+          "Aenictus", 
+          "Cordyceps", 
+          "Ophiocordyceps", 
+          "Myrmeconema neotropicum", 
+          "Hyeronima alchorneoides", 
+          "Dendrobates", 
+          "Ursus arctos", 
+          "Atta cephalotes", 
+          "Paraponera clavata tocandira", 
+          "Dinoponera spp", 
+          "Myrmecia", 
+          "Aspalathus linearis", 
+          "Aneuretus simoni", 
+          "Adetomyrma venatrix", 
+          "Santander hormigas culonas", 
+          "Atta laevigata", 
+          "Oecophylla smaragdina", 
+          "Camponotus nearcticus", 
+          "Pseudomyrmex", 
+          "Wakamiya eds", 
+          "Barbara", 
+          "Mutillidae", 
+          "Myrmecia nigriceps", 
+          "Oecophylla", 
+          "Daceton armigerum", 
+          "Monomorium pharaonis", 
+          "Societatis", 
+          "Cardiocondyla wroughtonii", 
+          "Pheidole sitarches", 
+          "Linephithema humile", 
+          "Aphaenogaster cockerelli", 
+          "Strumigenys", 
+          "Camponotus spp", 
+          "Cylindricus", 
+          "Acromyrmex versicolor", 
+          "Atta mexicana hymenoptera", 
+          "Pogonomyrmex badius", 
+          "Polyrhachis", 
+          "Blochmannia", 
+          "Cataglyphis fortis", 
+          "Atta colombica", 
+          "Formica japonica", 
+          "Cataglyphis bicolor", 
+          "Antonio da", 
+          "Formica montana", 
+          "Araneae", 
+          "Clubionidae", 
+          "Salticidae", 
+          "Pheidole megacephala", 
+          "Dysmicoccus neobrevipes", 
+          "Homoptera", 
+          "Pseudococcidae", 
+          "Lepidoptera", 
+          "Myrmelachista schumanni", 
+          "Vicia faba", 
+          "Pheidole", 
+          "Crematogaster borneensis", 
+          "Oecologia", 
+          "Corydalis cava elaiosomes", 
+          "Myrmica rubra: elaiosomes", 
+          "Capitula", 
+          "Crematogaster brevispinosa rochai", 
+          "Nasutitermes", 
+          "Termitidae", 
+          "Agelaia", 
+          "Kleptoparasitism", 
+          "Diptera", 
+          "Sylvia", 
+          "Kalsum", 
+          "Dendrobatidae", 
+          "Ornitologia", 
+          "Dinoponera gigantea", 
+          "Dinoponera", 
+          "Medicina", 
+          "Hymenopteran", 
+          "Arthropoda", 
+          "Pterygota", 
+          "Neoptera", 
+          "Endopterygota", 
+          "Xyeloidea", 
+          "Xyelidae", 
+          "Pamphilioidea", 
+          "Megalodontesidae", 
+          "Pamphiliidae", 
+          "Tenthredinoidea", 
+          "Argidae", 
+          "Blasticotomidae", 
+          "Cimbicidae", 
+          "Diprionidae", 
+          "Pergidae", 
+          "Tenthredinidae", 
+          "Cephoidea", 
+          "Cephidae", 
+          "Siricoidea", 
+          "Anaxyelidae", 
+          "Siricidae", 
+          "Xiphydrioidea", 
+          "Xiphydriidae", 
+          "Orussoidea", 
+          "Orussidae", 
+          "Ichneumonoidea", 
+          "Braconidae", 
+          "Ichneumonidae ichneumon", 
+          "Ceraphronoidea", 
+          "Ceraphronidae", 
+          "Megaspilidae", 
+          "Proctotrupomorpha", 
+          "Platygastroidea", 
+          "Platygastridae", 
+          "Scelionidae", 
+          "Cynipoidea", 
+          "Austrocynipidae", 
+          "Cynipidae", 
+          "Figitidae", 
+          "Ibaliidae", 
+          "Liopteridae", 
+          "Proctotrupoidea", 
+          "Proctorenyxidae", 
+          "Roproniidae", 
+          "Heloridae", 
+          "Pelecinidae", 
+          "Peradeniidae", 
+          "Proctotrupidae", 
+          "Vanhorniidae", 
+          "Diaprioidea", 
+          "Austroniidae", 
+          "Diapriidae", 
+          "Maamingidae", 
+          "Monomachidae", 
+          "Mymarommatoidea", 
+          "Mymarommatidae", 
+          "Chalcidoidea chalcid", 
+          "Agaonidae", 
+          "Aphelinidae", 
+          "Chalcididae", 
+          "Encyrtidae", 
+          "Eucharitidae", 
+          "Eulophidae", 
+          "Eupelmidae", 
+          "Eurytomidae", 
+          "Leucospidae", 
+          "Mymaridae", 
+          "Ormyridae", 
+          "Perilampidae", 
+          "Pteromalidae", 
+          "Rotoitidae", 
+          "Signiphoridae", 
+          "Tanaostigmatidae", 
+          "Tetracampidae", 
+          "Torymidae", 
+          "Trichogrammatidae", 
+          "Evanioidea", 
+          "Aulacidae", 
+          "Evaniidae", 
+          "Gasteruptiidae", 
+          "Stephanoidea", 
+          "Stephanidae", 
+          "Megalyroidea", 
+          "Megalyridae", 
+          "Trigonaloidea", 
+          "Trigonalidae", 
+          "Bethylidae", 
+          "Chrysididae", 
+          "Dryinidae", 
+          "Embolemidae", 
+          "Plumariidae", 
+          "Sclerogibbidae", 
+          "Scolebythidae", 
+          "Vespoidea", 
+          "Rhopalosomatidae rhopalosomatid", 
+          "Tiphioidea", 
+          "Bradynobaenidae", 
+          "Thynnoidea", 
+          "Chyphotidae", 
+          "Thynnidae", 
+          "Sierolomorphidae sierolomorphid", 
+          "Pompiloidea", 
+          "Myrmosidae", 
+          "Sapygidae", 
+          "Scoliidae scoliid", 
+          "Spheciformes", 
+          "Ampulicidae", 
+          "Crabronidae", 
+          "Heterogynaidae", 
+          "Sphecidae", 
+          "Anthophila", 
+          "Andrenidae", 
+          "Apidae", 
+          "Colletidae", 
+          "Halictidae", 
+          "Megachilidae", 
+          "Melittidae", 
+          "Stenotritidae", 
+          "Armaniinae", 
+          "Mammalia", 
+          "Crustacea", 
+          "Synalpheus", 
+          "Thysanoptera", 
+          "Kladothrips", 
+          "Hemiptera", 
+          "Aphididae", 
+          "Coleoptera", 
+          "Austroplatypus incompertus", 
+          "Encarsia formosa", 
+          "Drosophila melanogaster", 
+          "Phylloxera", 
+          "Bahasa", 
+          "Basa", 
+          "Latina", 
+          "Livvinkarjala"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url?url=http://en.wikipedia.org/wiki/Ant", 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-1", 
+        "total_names": 325, 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.010101999999999986, 
+      "data": {
+        "url": "http://en.wikipedia.org/wiki/Ant"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "status_code": 200, 
+      "response": {
+        "parameters": {
+          "engine": 1, 
+          "best_match_only": false, 
+          "data_source_ids": [], 
+          "detect_language": true, 
+          "preferred_data_sources": [], 
+          "all_data_sources": false, 
+          "return_content": false
+        }, 
+        "execution_time": "1.09", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:19.265330", 
+        "input_url": "https://en.wikipedia.org/wiki/Plain_pigeon", 
+        "scientificNames": [
+          "Patagioenas inornata wetmorei", 
+          "Animalia", 
+          "Chordata", 
+          "Aves", 
+          "Columbiformes", 
+          "Columbidae", 
+          "Patagioenas", 
+          "Patagioenas inornata", 
+          "Columba inornata"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url?url=https://en.wikipedia.org/wiki/Plain_pigeon&engine=1", 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-1", 
+        "total_names": 9, 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005486999999999992, 
+      "data": {
+        "url": "https://en.wikipedia.org/wiki/Plain_pigeon", 
+        "engine": "1"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "status_code": 200, 
+      "response": {
+        "parameters": {
+          "engine": 0, 
+          "best_match_only": false, 
+          "data_source_ids": [], 
+          "detect_language": true, 
+          "preferred_data_sources": [], 
+          "all_data_sources": false, 
+          "return_content": false
+        }, 
+        "execution_time": "1.15", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:21.631227", 
+        "input_url": "http://www.fws.gov/westvirginiafieldoffice/PDF/beechridgehcp/Appendix_D_Table_D-1.pdf", 
+        "scientificNames": [
+          "Menziesia pilosa", 
+          "Fagus grandifolia", 
+          "Sorbus americana", 
+          "Lolium multiflorum", 
+          "Elaeagnus umbellata", 
+          "Prunus serotina", 
+          "Robinia pseudoacacia", 
+          "Rubus", 
+          "Lespedeza", 
+          "Prunus", 
+          "Trifolium", 
+          "Magnolia acuminata", 
+          "Tsuga canadensis", 
+          "Sambucus", 
+          "Schedonorus phoenix", 
+          "Alliaria petiolata", 
+          "Solidago", 
+          "Smilax", 
+          "Microstegium vimineum", 
+          "Impatiens capensis", 
+          "Pueraria montana var. lobata", 
+          "Multiflora", 
+          "Tulip poplar", 
+          "Trifolium pratense", 
+          "Lonicera morrowii", 
+          "Kalmia latifolia", 
+          "Acer spicatum", 
+          "Rosa multiflora", 
+          "Quercus", 
+          "Lolium perenne", 
+          "Pinus", 
+          "Festuca rubra", 
+          "Quercus rubra", 
+          "Picea rubens", 
+          "Betula alleghaniensis", 
+          "Arabis serotina", 
+          "Isotria medeoloides", 
+          "Urtica dioica", 
+          "Acer pensylvanicum", 
+          "Acer saccharum", 
+          "Ailanthus altissima", 
+          "Liriodendron tulipifera", 
+          "Micropterus", 
+          "Salvelinus fontinalis", 
+          "Etheostoma osburni", 
+          "Etheostoma", 
+          "Ambloplites rupestris", 
+          "Cottus", 
+          "Plethodon nettingi", 
+          "Empidonax alnorum", 
+          "Vermivora chrysoptera", 
+          "Corvus brachyrhynchos", 
+          "Dumetella carolinensis", 
+          "Falco sparverius", 
+          "Catharus minimus", 
+          "Setophaga ruticilla", 
+          "Setophaga citrina", 
+          "Turdus migratorius", 
+          "Passerina cyanea", 
+          "Scolopax minor", 
+          "Geothlypis formosa", 
+          "Haliaeetus leucocephalus", 
+          "Anas platyrhynchos", 
+          "Strix vari", 
+          "Oreothlypis ruficapilla", 
+          "Setophaga castanea", 
+          "Accipiter gentilis", 
+          "Coragyps atratus", 
+          "Circus cyaneus", 
+          "Mniotilta varia", 
+          "Pandion haliaetus", 
+          "Coccyzus erythropthalmus", 
+          "Seiurus aurocapilla", 
+          "Setophaga fusca", 
+          "Setophaga discolor", 
+          "Setophaga caerulescens", 
+          "Loxia curvirostra", 
+          "Setophaga virens", 
+          "Vireo olivaceus", 
+          "Cyanocitta cristata", 
+          "Vermivora cyanoptera", 
+          "Melanerpes erythrocephalus", 
+          "Buteo lineatus", 
+          "Buteo platypterus", 
+          "Buteo jamaicensis", 
+          "Toxostoma rufum", 
+          "Buteo lagopus", 
+          "Molothrus ater", 
+          "Bonasa umbellus", 
+          "Cardellina canadensis", 
+          "Accipiter striatus", 
+          "Bombycilla cedrorum", 
+          "Melospiza melodia", 
+          "Setophaga cerulea", 
+          "Cyanocitta stelleri", 
+          "Setophaga pensylvanica", 
+          "Catharus ustulatus", 
+          "Spizella passerina", 
+          "Limnothlypis swainsonii", 
+          "Quiscalus quiscula", 
+          "Cathartes aura", 
+          "Chordeiles minor", 
+          "Catharus fuscescens", 
+          "Accipiter cooperii", 
+          "Pooecetes gramineus", 
+          "Junco hyemalis", 
+          "Aphelocoma californica", 
+          "Tyrannus tyrannus", 
+          "Caprimulgus vociferus", 
+          "Megascops asio", 
+          "Aix sponsa", 
+          "Pipilo erythrophthalmus", 
+          "Hylocichla mustelina", 
+          "Sturnus vulgaris", 
+          "Empidonax flaviventris", 
+          "Spizella pusilla", 
+          "Icteria virens", 
+          "Aquila chrysaetos", 
+          "Setophaga coronata", 
+          "Eptesicus fuscus", 
+          "Myotis lucifugus", 
+          "Ursus americanus", 
+          "Zapus hudsonius", 
+          "Lynx rufus", 
+          "Eptesicus nilssonii", 
+          "Tadarida brasiliensis", 
+          "Myotis septentrionalis", 
+          "Otospermophilus beecheyi", 
+          "Sorex palustris albibarbis", 
+          "Canis latrans", 
+          "Procyon lotor", 
+          "Peromyscus maniculatus", 
+          "Corynorhinus rafinesquii", 
+          "Cervus canadensis canadiensis", 
+          "Lasiurus borealis", 
+          "Lasiurus seminolus", 
+          "Myotis leibii", 
+          "Lasionycteris noctivagans", 
+          "Nycticeius humeralis", 
+          "Lepus americanus", 
+          "Glaucomys", 
+          "Sciurus niger", 
+          "Myotis grisescens", 
+          "Sciurus carolinensis", 
+          "Lasiurus cinereus", 
+          "Pipistrellus subflavus", 
+          "Corynorhinus townsendii virginianus", 
+          "Mustela", 
+          "Glaucomys sabrinus fuscus", 
+          "Odocoileus virginianus", 
+          "Myotis sodalis", 
+          "Bison bison athabascae", 
+          "Sciurus vulgaris"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url?url=http://www.fws.gov/westvirginiafieldoffice/PDF/beechridgehcp/Appendix_D_Table_D-1.pdf", 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-1", 
+        "total_names": 153, 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.006932999999999995, 
+      "data": {
+        "url": "http://www.fws.gov/westvirginiafieldoffice/PDF/beechridgehcp/Appendix_D_Table_D-1.pdf"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text", 
+      "status_code": 200, 
+      "response": {
+        "parameters": {
+          "engine": 2, 
+          "best_match_only": false, 
+          "data_source_ids": [], 
+          "detect_language": true, 
+          "preferred_data_sources": [], 
+          "all_data_sources": false, 
+          "return_content": false
+        }, 
+        "execution_time": "0.28", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:23.141286", 
+        "scientificNames": [
+          "Columba larvata", 
+          "Columbidae"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text?text=The lemon dove (Columba larvata) is a species of bird in the pigeon family Columbidae found in montane forests of sub-Saharan Africa.&engine=2", 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-2", 
+        "total_names": 2, 
+        "message": "Success", 
+        "input_text": "The lemon dove (Columba larvata) is a species of bird in the pigeon family Columbidae found in montane forests of sub-Saharan Africa."
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005153000000000019, 
+      "data": {
+        "engine": "2", 
+        "text": "The lemon dove (Columba larvata) is a species of bird in the pigeon family Columbidae found in montane forests of sub-Saharan Africa."
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text", 
+      "status_code": 200, 
+      "response": {
+        "parameters": {
+          "engine": 0, 
+          "best_match_only": false, 
+          "data_source_ids": [], 
+          "detect_language": true, 
+          "preferred_data_sources": [], 
+          "all_data_sources": false, 
+          "return_content": false
+        }, 
+        "execution_time": "0.29", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:24.665598", 
+        "scientificNames": [
+          "Formica polyctena", 
+          "Tetramorium caespitum", 
+          "Pseudomyrmex", 
+          "Adetomyrma venatrix", 
+          "Carebara diversa", 
+          "Formicinae"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text?text=Formica polyctena is a species of European red wood ant in the genus Formica. The pavement ant, Tetramorium caespitum is an ant native to Europe. Pseudomyrmex is a genus of stinging, wasp-like ants. Adetomyrma venatrix is an endangered species of ants endemic to Madagascar. Carebara diversa is a species of ants in the subfamily Formicinae. It is found in many Asian countries.", 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-2", 
+        "total_names": 6, 
+        "message": "Success", 
+        "input_text": "Formica polyctena is a species of European red wood ant in the genus Formica. The pavement ant, Tetramorium caespitum is an ant native to Europe. Pseudomyrmex is a genus of stinging, wasp-like ants. Adetomyrma venatrix is an endangered species of ants endemic to Madagascar. Carebara diversa is a species of ants in the subfamily Formicinae. It is found in many Asian countries."
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005198000000000008, 
+      "data": {
+        "text": "Formica polyctena is a species of European red wood ant in the genus Formica. The pavement ant, Tetramorium caespitum is an ant native to Europe. Pseudomyrmex is a genus of stinging, wasp-like ants. Adetomyrma venatrix is an endangered species of ants endemic to Madagascar. Carebara diversa is a species of ants in the subfamily Formicinae. It is found in many Asian countries."
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Setophaga plumbea", 
+            "search_string": "setophaga plumbea", 
+            "synonyms": [
+              "Setophaga plumbea", 
+              "Dendroica plumbea"
+            ], 
+            "taxon_id": 45750
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Setophaga striata", 
+            "search_string": "setophaga striata", 
+            "synonyms": [
+              "Dendroica striata", 
+              "? striata", 
+              "Setophaga striata"
+            ], 
+            "taxon_id": 60236
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Setophaga virens", 
+            "search_string": "setophaga virens", 
+            "synonyms": [
+              "Dendroica virens subsp. virens", 
+              "? virens", 
+              "Dendroica virens", 
+              "Dendroica virens subsp. waynei", 
+              "Setophaga virens"
+            ], 
+            "taxon_id": 1014098
+          }
+        ], 
+        "execution_time": "0.30", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:26.182533", 
+        "total_names": 3, 
+        "input_query": [
+          "Setophaga striata", 
+          "Setophaga megnolia", 
+          "Setophaga angilae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-3", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005036999999999986, 
+      "data": {
+        "names": "Setophaga striata|Setophaga megnolia|Setophaga angilae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Formica polyctena", 
+            "search_string": "formica polyctena", 
+            "synonyms": [
+              "Formica polyctenum", 
+              "Formica polyctena"
+            ], 
+            "taxon_id": 815730
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Formica exsectoides", 
+            "search_string": "formica exsectoides", 
+            "synonyms": [
+              "Formica exsectoides"
+            ], 
+            "taxon_id": 3261265
+          }
+        ], 
+        "execution_time": "0.30", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:27.688912", 
+        "total_names": 2, 
+        "input_query": [
+          "Formica polyctena", 
+          "Formica exsectoides", 
+          "Formica pecefica"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-3", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.0049749999999999794, 
+      "data": {
+        "names": "Formica polyctena|Formica exsectoides|Formica pecefica"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/names", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Formica polyctena", 
+            "search_string": "formica polyctena", 
+            "synonyms": [
+              "Formica polyctenum", 
+              "Formica polyctena"
+            ], 
+            "taxon_id": 815730
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "OT", 
+            "matched_name": "Formica exsectoides", 
+            "search_string": "formica exsectoides", 
+            "synonyms": [
+              "Formica exsectoides"
+            ], 
+            "taxon_id": 3261265
+          }
+        ], 
+        "execution_time": "0.31", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:29.211817", 
+        "total_names": 2, 
+        "input_query": [
+          "Formica exsectoides", 
+          "Formica pecefica", 
+          "Formica polyctena"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-3", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005511000000000016, 
+      "data": "{\"scientificNames\": [\"Formica exsectoides\", \"Formica pecefica\", \"Formica polyctena\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Setophaga striata", 
+            "search_string": "Setophaga striata", 
+            "synonyms": [], 
+            "taxon_id": "1212470"
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "resolver_name": "GNR", 
+            "matched_name": "Setophaga magnolia", 
+            "search_string": "Setophaga megnolia", 
+            "synonyms": [], 
+            "taxon_id": "d2d8a110cd2ce60c9e6518b188b18b02"
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "resolver_name": "GNR", 
+            "matched_name": "Setophaga angelae", 
+            "search_string": "Setophaga angilae", 
+            "synonyms": [], 
+            "taxon_id": "70b0dd5edac3927169524396759bbbfa"
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Setophaga plumbea", 
+            "search_string": "Setophaga plumbea", 
+            "synonyms": [], 
+            "taxon_id": "65572"
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Setophaga virens", 
+            "search_string": "Setophaga virens", 
+            "synonyms": [], 
+            "taxon_id": "92124"
+          }
+        ], 
+        "parameters": {
+          "with_vernaculars": false, 
+          "best_match_only": true, 
+          "data_sources": [], 
+          "with_context": false, 
+          "header_only": false, 
+          "resolve_once": false, 
+          "preferred_data_sources": [], 
+          "with_canonical_ranks": false
+        }, 
+        "execution_time": "0.48", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:30.909417", 
+        "total_names": 5, 
+        "input_query": [
+          "Setophaga striata", 
+          "Setophaga megnolia", 
+          "Setophaga angilae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-4", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004941000000000001, 
+      "data": {
+        "names": "Setophaga striata|Setophaga megnolia|Setophaga angilae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica polyctena", 
+            "search_string": "Formica polyctena", 
+            "synonyms": [], 
+            "taxon_id": "145467"
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica exsectoides", 
+            "search_string": "Formica exsectoides", 
+            "synonyms": [], 
+            "taxon_id": "609781"
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica pacifica", 
+            "search_string": "Formica pecefica", 
+            "synonyms": [], 
+            "taxon_id": "2f41fe085d8ff5d5bb75e520d0a692de"
+          }
+        ], 
+        "parameters": {
+          "with_vernaculars": false, 
+          "best_match_only": true, 
+          "data_sources": [], 
+          "with_context": false, 
+          "header_only": false, 
+          "resolve_once": false, 
+          "preferred_data_sources": [], 
+          "with_canonical_ranks": false
+        }, 
+        "execution_time": "0.34", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:32.460998", 
+        "total_names": 3, 
+        "input_query": [
+          "Formica polyctena", 
+          "Formica exsectoides", 
+          "Formica pecefica"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-4", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005094999999999988, 
+      "data": {
+        "names": "Formica polyctena|Formica exsectoides|Formica pecefica"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/names", 
+      "status_code": 200, 
+      "response": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica exsectoides", 
+            "search_string": "Formica exsectoides", 
+            "synonyms": [], 
+            "taxon_id": "609781"
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica pacifica", 
+            "search_string": "Formica pecefica", 
+            "synonyms": [], 
+            "taxon_id": "2f41fe085d8ff5d5bb75e520d0a692de"
+          }, 
+          {
+            "match_type": "Exact", 
+            "resolver_name": "GNR", 
+            "matched_name": "Formica polyctena", 
+            "search_string": "Formica polyctena", 
+            "synonyms": [], 
+            "taxon_id": "145467"
+          }
+        ], 
+        "parameters": {
+          "with_vernaculars": false, 
+          "best_match_only": true, 
+          "data_sources": [], 
+          "with_context": false, 
+          "header_only": false, 
+          "resolve_once": false, 
+          "preferred_data_sources": [], 
+          "with_canonical_ranks": false
+        }, 
+        "execution_time": "0.37", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:34.051229", 
+        "total_names": 3, 
+        "input_query": [
+          "Formica exsectoides", 
+          "Formica pecefica", 
+          "Formica polyctena"
+        ], 
+        "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-4", 
+        "message": "Success"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005014999999999992, 
+      "data": "{\"scientificNames\": [\"Formica exsectoides\", \"Formica pecefica\", \"Formica polyctena\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/get_tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.93", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:36.496523", 
+        "newick": "((Crabronidae_ott372234,(((Formica_polyctena_ott815730)Formicinae_ott614614,(Tetramorium_caespitum_ott214421,Carebara_diversa_ott842045)),Pseudomyrmex_ott412943))Aculeata_ott206138,Megalyridae_ott840287);", 
+        "message": "Success", 
+        "tree_metadata": {
+          "alignment_method": "NA", 
+          "character_matrix": "NA", 
+          "rooted": true, 
+          "supporting_studies": [], 
+          "anastomosing": false, 
+          "branch_lengths_type": null, 
+          "consensus_type": "NA", 
+          "inference_method": "induced_subtree from synthetic tree with ID opentree9.1", 
+          "branch_support_type": null, 
+          "gene_or_species": "species", 
+          "num_tips": 6, 
+          "topology_id": "NA", 
+          "synthetic_tree_id": "opentree9.1"
+        }, 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-5"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005206000000000016, 
+      "data": {
+        "taxa": "Crabronidae|Ophiocordyceps|Megalyridae|Formica polyctena|Tetramorium caespitum|Pseudomyrmex|Carebara diversa|Formicinae"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/get_tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "1.52", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:39.537798", 
+        "newick": "(Setophaga_magnolia_ott532751,Setophaga_striata_ott60236,Setophaga_plumbea_ott45750,Setophaga_angelae_ott381849,Setophaga_virens_ott1014098)Setophaga_ott285198;", 
+        "message": "Success", 
+        "tree_metadata": {
+          "alignment_method": "NA", 
+          "character_matrix": "NA", 
+          "rooted": true, 
+          "supporting_studies": [
+            {
+              "PublicationYear": 2010, 
+              "FocalCladeTaxonName": "Parulidae", 
+              "Publication": "Lovette, Irby J., Jorge L. P\u00e9rez-Em\u00e1n, John P. Sullivan, Richard C. Banks, Isabella Fiorentino, Sergio C\u00f3rdoba-C\u00f3rdoba, Mar\u00eda Echeverry-Galvis, F. Keith Barker, Kevin J. Burns, John Klicka, Scott M. Lanyon, Eldredge Bermingham. 2010. A comprehensive multilocus phylogeny for the wood-warblers and a revised classification of the Parulidae (Aves). Molecular Phylogenetics and Evolution 57 (2): 753-770.", 
+              "CandidateTreeForSynthesis": "tree6024", 
+              "PublicationDOI": "http://dx.doi.org/10.1016/j.ympev.2010.07.018", 
+              "DataRepository": "", 
+              "Curator": "Joseph W. Brown", 
+              "PublicationIdentifier": "pg_2591"
+            }, 
+            {
+              "PublicationYear": 2015, 
+              "FocalCladeTaxonName": "Passeriformes", 
+              "Publication": "Barker, F. Keith, Kevin J. Burns, John Klicka, Scott M. Lanyon, Irby J. Lovette. 2015. New insights into New World biogeography: An integrated view from the phylogeny of blackbirds, cardinals, sparrows, tanagers, warblers, and allies. The Auk 132 (2): 333-348.", 
+              "CandidateTreeForSynthesis": "tree1", 
+              "PublicationDOI": "http://dx.doi.org/10.1642/auk-14-110.1", 
+              "DataRepository": "http://datadryad.org/resource/doi:10.5061/dryad.pb787", 
+              "Curator": "Joseph W. Brown", 
+              "PublicationIdentifier": "ot_770"
+            }
+          ], 
+          "anastomosing": false, 
+          "branch_lengths_type": null, 
+          "consensus_type": "NA", 
+          "inference_method": "induced_subtree from synthetic tree with ID opentree9.1", 
+          "branch_support_type": null, 
+          "gene_or_species": "species", 
+          "num_tips": 5, 
+          "topology_id": "NA", 
+          "synthetic_tree_id": "opentree9.1"
+        }, 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-5"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005327999999999999, 
+      "data": {
+        "taxa": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.31", 
+        "status_code": 204, 
+        "creation_time": "2017-09-29T21:03:41.064975", 
+        "newick": "", 
+        "message": "Not enough valid node ids provided to construct a subtree (there must be at least two).", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-5"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004963000000000023, 
+      "data": "{\"resolvedNames\": [{\"match_type\": \"Exact\", \"resolver_name\": \"OT\", \"matched_name\": \"Setophaga striata\", \"search_string\": \"setophaga strieta\", \"synonyms\": [\"Dendroica striata\", \"Setophaga striata\"], \"taxon_id\": 60236}, {\"match_type\": \"Fuzzy\", \"resolver_name\": \"OT\", \"matched_name\": \"Setophaga magnolia\", \"search_string\": \"setophaga magnolia\", \"synonyms\": [\"Dendroica magnolia\", \"Setophaga magnolia\"], \"taxon_id\": 3597209}, {\"match_type\": \"Exact\", \"resolver_name\": \"OT\", \"matched_name\": \"Setophaga angelae\", \"search_string\": \"setophaga angilae\", \"synonyms\": [\"Dendroica angelae\", \"Setophaga angelae\"], \"taxon_id\": 3597191}, {\"match_type\": \"Exact\", \"resolver_name\": \"OT\", \"matched_name\": \"Setophaga plumbea\", \"search_string\": \"setophaga plambea\", \"synonyms\": [\"Dendroica plumbea\", \"Setophaga plumbea\"], \"taxon_id\": 3597205}, {\"match_type\": \"Fuzzy\", \"resolver_name\": \"OT\", \"matched_name\": \"Setophaga virens\", \"search_string\": \"setophaga virens\", \"synonyms\": [\"Dendroica virens\", \"Setophaga virens\"], \"taxon_id\": 3597195}]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.32", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:42.600775", 
+        "taxon": "Vulpes", 
+        "total_names": 15, 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species?taxon=Vulpes", 
+        "message": "Success", 
+        "species": [
+          "Vulpes environmental sample", 
+          "Vulpes stenognathus", 
+          "Vulpes bengalensis", 
+          "Vulpes pallida", 
+          "Vulpes cana", 
+          "Vulpes chama", 
+          "Vulpes vulpes", 
+          "Vulpes lagopus", 
+          "Vulpes corsac", 
+          "Vulpes rueppellii", 
+          "Vulpes zerda", 
+          "Vulpes velox", 
+          "Vulpes macrotis", 
+          "Vulpes sp.", 
+          "Vulpes ferrilata"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-6"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005074000000000023, 
+      "data": {
+        "taxon": "Vulpes"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.31", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:44.127910", 
+        "taxon": "Canidae", 
+        "total_names": 166, 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species?taxon=Canidae", 
+        "message": "Success", 
+        "species": [
+          "Aelurodon taxoides", 
+          "Aelurodon asthenostylus", 
+          "Aelurodon ferox", 
+          "Aelurodon montanensis", 
+          "Aelurodon mcgrewi", 
+          "Aelurodon stirtoni", 
+          "Cynotherium sardous", 
+          "Rhizocyon oregonensis", 
+          "Paratomarctus temerarius", 
+          "Paratomarctus euthos", 
+          "Archaeocyon pavidus", 
+          "Archaeocyon leptodus", 
+          "Archaeocyon falkenbachi", 
+          "Metatomarctus canavus", 
+          "Psalidocyon marianae", 
+          "Protomarctus optatus", 
+          "Neocynodesmus delicatus", 
+          "Protepicyon raki", 
+          "Desmocyon matthewi", 
+          "Desmocyon thomsoni", 
+          "Paracynarctus kelloggi", 
+          "Paracynarctus sinclairi", 
+          "Microtomarctus conferta", 
+          "Otarocyon cooki", 
+          "Otarocyon macdonaldi", 
+          "Paraenhydrocyon robustus", 
+          "Paraenhydrocyon josephi", 
+          "Sunkahetanka geringensis", 
+          "Procynodictis vulpiceps", 
+          "Procynodictis progressus", 
+          "Hesperocyon gregorious", 
+          "Hesperocyon coloradensis", 
+          "Hesperocyon gregarius", 
+          "Euoplocyon spissidens", 
+          "Euoplocyon brachygnathus", 
+          "Philotrox condoni", 
+          "Leptocyon vulpinus", 
+          "Leptocyon gregorii", 
+          "Leptocyon vafer", 
+          "Carpocyon limosus", 
+          "Carpocyon robustus", 
+          "Carpocyon webbi", 
+          "Carpocyon compressus", 
+          "Ectopocynus intermedius", 
+          "Ectopocynus simplicidens", 
+          "Ectopocynus antiquus", 
+          "Osbornodon iamonensis", 
+          "Osbornodon brachypus", 
+          "Osbornodon scitulus", 
+          "Osbornodon renjiei", 
+          "Osbornodon wangi", 
+          "Osbornodon sesnoni", 
+          "Osbornodon fricki", 
+          "Epicyon haydeni", 
+          "Epicyon aelurodontoides", 
+          "Epicyon saevus", 
+          "Eucyon davisi", 
+          "Cormocyon copei", 
+          "Cormocyon haydeni", 
+          "Cerdocyon thous", 
+          "Borophagus pugnator", 
+          "Borophagus hilli", 
+          "Borophagus littoralis", 
+          "Borophagus diversidens", 
+          "Borophagus secundus", 
+          "Borophagus orc", 
+          "Borophagus dudleyi", 
+          "Borophagus parvus", 
+          "Cynarctoides harlowi", 
+          "Cynarctoides roii", 
+          "Cynarctoides acridens", 
+          "Cynarctoides gawnae", 
+          "Cynarctoides lemur", 
+          "Cynarctoides luskensis", 
+          "Cynarctoides emryi", 
+          "Prohesperocyon wilsoni", 
+          "Tomartus euthos", 
+          "Tomarctus brevirostris", 
+          "Tomarctus hippophaga", 
+          "Phlaocyon achoros", 
+          "Phlaocyon minor", 
+          "Phlaocyon leucosteus", 
+          "Phlaocyon latidens", 
+          "Phlaocyon marslandensis", 
+          "Phlaocyon yatkolai", 
+          "Phlaocyon multicuspus", 
+          "Phlaocyon mariae", 
+          "Phlaocyon annectens", 
+          "Phlaocyon taylori", 
+          "Mesocyon temnodon", 
+          "Mesocyon coryphaeus", 
+          "Mesocyon brachyops", 
+          "Cynodesmus thooides", 
+          "Cynodesmus martini", 
+          "Oxetocyon cuspidatus", 
+          "Enhydrocyon pahinsintewakpa", 
+          "Enhydrocyon basilatus", 
+          "Enhydrocyon crassidens", 
+          "Enhydrocyon stenocephalus", 
+          "Caedocyon tedfordi", 
+          "Cynarctus voorhiesi", 
+          "Cynarctus marylandica", 
+          "Cynarctus crucidens", 
+          "Cynarctus galushai", 
+          "Cynarctus saxatilis", 
+          "Lycalopex sp. Fuegian dog", 
+          "Lycalopex fulvipes", 
+          "Lycalopex gymnocercus", 
+          "Lycalopex griseus", 
+          "Lycalopex culpaeus", 
+          "Lycalopex vetulus", 
+          "Lycalopex sechurae", 
+          "Cuon texanus", 
+          "Cuon alpinus", 
+          "Vulpes environmental sample", 
+          "Vulpes stenognathus", 
+          "Vulpes bengalensis", 
+          "Vulpes pallida", 
+          "Vulpes cana", 
+          "Vulpes chama", 
+          "Vulpes vulpes", 
+          "Vulpes lagopus", 
+          "Vulpes corsac", 
+          "Vulpes rueppellii", 
+          "Vulpes zerda", 
+          "Vulpes velox", 
+          "Vulpes macrotis", 
+          "Vulpes sp.", 
+          "Vulpes ferrilata", 
+          "Otocyon megalotis", 
+          "Lycaon pictus", 
+          "Speothos venaticus", 
+          "Atelocynus microtis", 
+          "Chrysocyon brachyurus", 
+          "Nyctereutes abdeslami", 
+          "Nyctereutes procyonoides", 
+          "Canis anthus", 
+          "Canis sp. Russia/33,500", 
+          "Canis sp. Belgium/36,000", 
+          "Canis environmental sample", 
+          "Canis spelaeus", 
+          "Canis hyaena", 
+          "Canis primigenius", 
+          "Canis cedazoensis", 
+          "Canis apolloniensis", 
+          "Canis edwardii", 
+          "Canis alopex", 
+          "Canis dirus", 
+          "Canis ferox", 
+          "Canis armbrusteri", 
+          "Canis lepophagus", 
+          "Canis lycaon", 
+          "Canis simensis", 
+          "Canis mesomelas", 
+          "Canis aureus", 
+          "Canis adustus", 
+          "Canis sp. CANInt1", 
+          "Canis lupus", 
+          "Canis latrans", 
+          "Canis sp.", 
+          "Canis rufus", 
+          "Urocyon progressus", 
+          "Urocyon cinereoargenteus", 
+          "Urocyon littoralis", 
+          "Dusicyon avus", 
+          "Dusicyon australis"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-6"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005469000000000002, 
+      "data": {
+        "taxon": "Canidae"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.31", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:45.677080", 
+        "taxon": "Panthera", 
+        "total_names": 1, 
+        "country": "Bangladesh", 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species?taxon=Panthera&country=Bangladesh", 
+        "message": "Success", 
+        "species": [
+          "Panthera tigris"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-7"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005128999999999995, 
+      "data": {
+        "country": "Bangladesh", 
+        "taxon": "Panthera"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.31", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:47.204091", 
+        "taxon": "Felidae", 
+        "total_names": 11, 
+        "country": "Nepal", 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species?taxon=Felidae&country=Nepal", 
+        "message": "Success", 
+        "species": [
+          "Lynx lynx", 
+          "Catopuma temminckii", 
+          "Prionailurus viverrinus", 
+          "Prionailurus bengalensis", 
+          "Felis chaus", 
+          "Felis catus", 
+          "Neofelis nebulosa", 
+          "Panthera uncia", 
+          "Panthera pardus", 
+          "Panthera tigris", 
+          "Pardofelis marmorata"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-7"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004963999999999996, 
+      "data": {
+        "country": "Nepal", 
+        "taxon": "Felidae"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/get_images", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "2.07", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:50.492686", 
+        "input_query": [
+          "Panthera leo", 
+          "Panthera onca", 
+          "Panthera pardus"
+        ], 
+        "source_urls": [
+          "http://eol.org"
+        ], 
+        "message": "Success", 
+        "species": [
+          {
+            "images": [
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/e/ec/Lion_cub_with_mother.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/11/13/05/46343_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Lion_cub_with_mother.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/11/13/05/46343_98_68.jpg", 
+                "dataRating": 4.83333
+              }, 
+              {
+                "license": "http://creativecommons.org/publicdomain/mark/1.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/a/ae/Lion_Yawning.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2016/04/26/05/84896_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Lion_Yawning.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2016/04/26/05/84896_98_68.jpg", 
+                "dataRating": 4.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "https://farm5.staticflickr.com/4093/4888050484_fba7e481cd_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/04/30/12/90034_orig.jpg", 
+                "rightsHolder": "David d'O", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/david_o/4888050484/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/04/30/12/90034_98_68.jpg", 
+                "dataRating": 4.44444
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "http://farm5.staticflickr.com/4093/4888050484_fba7e481cd_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/03/03/00/50308_orig.jpg", 
+                "rightsHolder": "David d'O", 
+                "vettedStatus": "Trusted", 
+                "source": "http://www.flickr.com/photos/david_o/4888050484/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/03/03/00/50308_98_68.jpg", 
+                "dataRating": 4.44444
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "https://farm5.staticflickr.com/4093/4887455027_dae2d6ce69_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/04/30/12/35649_orig.jpg", 
+                "rightsHolder": "David d'O", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/david_o/4887455027/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/04/30/12/35649_98_68.jpg", 
+                "dataRating": 4.375
+              }
+            ], 
+            "searched_name": "Panthera leo", 
+            "total_images": 5, 
+            "eol_id": 328672, 
+            "matched_name": "Panthera leo (Linnaeus, 1758)"
+          }, 
+          {
+            "images": [
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "https://farm5.staticflickr.com/4085/5177235312_9f03063e0d_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/04/30/02/29576_orig.jpg", 
+                "rightsHolder": "Smithsonian Wild", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/smithsonianwild/5177235312/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/04/30/02/29576_98_68.jpg", 
+                "dataRating": 4.30769
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "http://farm5.staticflickr.com/4085/5177235312_9f03063e0d_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/07/05/09/54909_orig.jpg", 
+                "rightsHolder": "Smithsonian Wild", 
+                "vettedStatus": "Trusted", 
+                "source": "http://www.flickr.com/photos/smithsonianwild/5177235312/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/07/05/09/54909_98_68.jpg", 
+                "dataRating": 4.30769
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by/3.0/", 
+                "mediaURL": "http://calphotos.berkeley.edu/imgs/512x768/0000_0000/0115/1280.jpeg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/01/12/16/02016_orig.jpg", 
+                "rightsHolder": "2015 Carlos Henrique Luz Nunes de Almeida", 
+                "vettedStatus": "Trusted", 
+                "source": "http://calphotos.berkeley.edu/cgi/img_query?seq_num=628370&one=T", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/01/12/16/02016_98_68.jpg", 
+                "dataRating": 4.0
+              }, 
+              {
+                "license": "http://creativecommons.org/publicdomain/mark/1.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/2/2c/Obscured_jaguar.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2012/06/13/03/77074_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Obscured_jaguar.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2012/06/13/03/77074_98_68.jpg", 
+                "dataRating": 3.8
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc/3.0/", 
+                "mediaURL": "http://www.planetscott.com/img/6355/large/jaguar-(panthera-onca).jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2012/05/18/10/43723_orig.jpg", 
+                "rightsHolder": "Scott Bowers", 
+                "vettedStatus": "Trusted", 
+                "source": "http://www.planetscott.com/speciesdetail/10063/jaguar-(panthera-onca)-", 
+                "eolThumbnailURL": "http://media.eol.org/content/2012/05/18/10/43723_98_68.jpg", 
+                "dataRating": 3.0
+              }
+            ], 
+            "searched_name": "Panthera onca", 
+            "total_images": 5, 
+            "eol_id": 328606, 
+            "matched_name": "Panthera onca (Linnaeus, 1758)"
+          }, 
+          {
+            "images": [
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/", 
+                "mediaURL": "https://farm7.staticflickr.com/6011/6001436301_ff45749a74_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2017/03/03/16/37289_orig.jpg", 
+                "rightsHolder": "Bernard DUPONT", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/berniedup/6001436301/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2017/03/03/16/37289_98_68.jpg", 
+                "dataRating": 4.375
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "https://farm7.staticflickr.com/6011/6001436301_ff45749a74_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2014/10/11/05/59143_orig.jpg", 
+                "rightsHolder": "Bernard DUPONT", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/berniedup/6001436301/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2014/10/11/05/59143_98_68.jpg", 
+                "dataRating": 4.375
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/3.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/5/5f/Great_male_Leopard_in_South_Afrika.JPG", 
+                "eolMediaURL": "http://media.eol.org/content/2012/06/15/10/36939_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Great_male_Leopard_in_South_Afrika.JPG", 
+                "eolThumbnailURL": "http://media.eol.org/content/2012/06/15/10/36939_98_68.jpg", 
+                "dataRating": 4.16667
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/", 
+                "mediaURL": "https://farm8.staticflickr.com/7197/6861336273_4e231b57df_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/03/11/01/76782_orig.jpg", 
+                "rightsHolder": "Bernard DUPONT", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/berniedup/6861336273/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/03/11/01/76782_98_68.jpg", 
+                "dataRating": 4.0
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "https://farm8.staticflickr.com/7197/6861336273_4e231b57df_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2015/03/11/01/76782_orig.jpg", 
+                "rightsHolder": "Bernard DUPONT", 
+                "vettedStatus": "Trusted", 
+                "source": "https://www.flickr.com/photos/berniedup/6861336273/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2015/03/11/01/76782_98_68.jpg", 
+                "dataRating": 4.0
+              }
+            ], 
+            "searched_name": "Panthera pardus", 
+            "total_images": 5, 
+            "eol_id": 328673, 
+            "matched_name": "Panthera pardus (Linnaeus, 1758)"
+          }
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-8"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005828, 
+      "data": {
+        "species": "Panthera leo|Panthera onca|Panthera pardus"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/images", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "1.91", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:53.624175", 
+        "input_query": [
+          "Catopuma badia", 
+          "Catopuma temminckii"
+        ], 
+        "source_urls": [
+          "http://eol.org"
+        ], 
+        "message": "Success", 
+        "species": [
+          {
+            "images": [
+              {
+                "license": "http://creativecommons.org/publicdomain/mark/1.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/b/b7/Chat_Bai_1874.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2014/01/04/04/58116_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Chat_Bai_1874.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2014/01/04/04/58116_98_68.jpg", 
+                "dataRating": 2.0
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/3.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/1/1e/Bay_cat_1_Jim_Sanderson.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/11/25/12/14465_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Unreviewed", 
+                "source": "http://commons.wikimedia.org/wiki/File:Bay_cat_1_Jim_Sanderson.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/11/25/12/14465_98_68.jpg", 
+                "dataRating": 2.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/3.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/b/ba/Bay_cat_1_Jim_Sanderson-cropped.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/11/25/18/76434_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Unreviewed", 
+                "source": "http://commons.wikimedia.org/wiki/File:Bay_cat_1_Jim_Sanderson-cropped.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/11/25/18/76434_98_68.jpg", 
+                "dataRating": 2.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/3.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/a/aa/Catopuma_badia_John_Gray.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/11/15/02/44565_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Unreviewed", 
+                "source": "http://commons.wikimedia.org/wiki/File:Catopuma_badia_John_Gray.jpg", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/11/15/02/44565_98_68.jpg", 
+                "dataRating": 2.5
+              }
+            ], 
+            "searched_name": "Catopuma badia", 
+            "total_images": 4, 
+            "eol_id": 311552, 
+            "matched_name": "Catopuma badia (Gray, 1874)"
+          }, 
+          {
+            "images": [
+              {
+                "license": "http://creativecommons.org/licenses/by-sa/3.0/", 
+                "mediaURL": "http://upload.wikimedia.org/wikipedia/commons/0/0f/Asiatische-Goldkatze-Catopuma-temminckii-tier-katze-0001_2.JPG", 
+                "eolMediaURL": "http://media.eol.org/content/2012/06/15/04/63856_orig.jpg", 
+                "rightsHolder": "", 
+                "vettedStatus": "Trusted", 
+                "source": "http://commons.wikimedia.org/wiki/File:Asiatische-Goldkatze-Catopuma-temminckii-tier-katze-0001_2.JPG", 
+                "eolThumbnailURL": "http://media.eol.org/content/2012/06/15/04/63856_98_68.jpg", 
+                "dataRating": 2.71429
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/3.0/", 
+                "mediaURL": "http://csdb.ioz.ac.cn/images/Upload_images/Animalia/Chordata/Mammalia/CARNIVORA/Felidae/Catopuma/temminckii/7FCF470A-A4CF-4258-B673-8E0CD67DC607.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2012/06/27/23/19948_orig.jpg", 
+                "rightsHolder": "\u4e0a\u6d77\u79d1\u5b66\u6280\u672f\u51fa\u7248\u793e", 
+                "vettedStatus": "Trusted", 
+                "source": null, 
+                "eolThumbnailURL": "http://media.eol.org/content/2012/06/27/23/19948_98_68.jpg", 
+                "dataRating": 2.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by/3.0/", 
+                "mediaURL": "http://calphotos.berkeley.edu/imgs/512x768/0000_0000/0714/0105.jpeg", 
+                "eolMediaURL": "http://media.eol.org/content/2014/07/07/00/87109_orig.jpg", 
+                "rightsHolder": "2014 Simon J. Tonge", 
+                "vettedStatus": "Trusted", 
+                "source": "http://calphotos.berkeley.edu/cgi/img_query?seq_num=607590&one=T", 
+                "eolThumbnailURL": "http://media.eol.org/content/2014/07/07/00/87109_98_68.jpg", 
+                "dataRating": 2.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc/4.0/", 
+                "mediaURL": "http://static.inaturalist.org/photos/1723499/original.JPG?1429042450", 
+                "eolMediaURL": "http://media.eol.org/content/2016/07/24/13/02661_orig.jpg", 
+                "rightsHolder": "bangladeshpythonproject", 
+                "vettedStatus": "Trusted", 
+                "source": "http://www.inaturalist.org/photos/1723499", 
+                "eolThumbnailURL": "http://media.eol.org/content/2016/07/24/13/02661_98_68.jpg", 
+                "dataRating": 2.5
+              }, 
+              {
+                "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/", 
+                "mediaURL": "http://farm2.staticflickr.com/1314/5179859836_13027f2c30_o.jpg", 
+                "eolMediaURL": "http://media.eol.org/content/2013/06/04/06/52233_orig.jpg", 
+                "rightsHolder": "Smithsonian Wild", 
+                "vettedStatus": "Trusted", 
+                "source": "http://www.flickr.com/photos/smithsonianwild/5179859836/", 
+                "eolThumbnailURL": "http://media.eol.org/content/2013/06/04/06/52233_98_68.jpg", 
+                "dataRating": 2.0
+              }
+            ], 
+            "searched_name": "Catopuma temminckii", 
+            "total_images": 5, 
+            "eol_id": 311553, 
+            "matched_name": "Catopuma temminckii (Vigors and Horsfield, 1827)"
+          }
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-8"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005361000000000005, 
+      "data": "{\"species\": [\"Catopuma badia\",\"Catopuma temminckii\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "1.92", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:03:56.756114", 
+        "taxon": "Panthera", 
+        "total_names": 4, 
+        "source_urls": [
+          "https://www.ncbi.nlm.nih.gov/taxonomy", 
+          "https://www.ncbi.nlm.nih.gov/genome"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species?taxon=Panthera", 
+        "message": "Success", 
+        "species": [
+          "Panthera tigris amoyensis", 
+          "Panthera tigris altaica", 
+          "Panthera tigris", 
+          "Panthera pardus"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-9"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005388000000000004, 
+      "data": {
+        "taxon": "Panthera"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "4.27", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:02.245109", 
+        "taxon": "Rodentia", 
+        "total_names": 36, 
+        "source_urls": [
+          "https://www.ncbi.nlm.nih.gov/taxonomy", 
+          "https://www.ncbi.nlm.nih.gov/genome"
+        ], 
+        "service_url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species?taxon=Rodentia", 
+        "message": "Success", 
+        "species": [
+          "Nannospalax galili", 
+          "Fukomys damarensis", 
+          "Ellobius talpinus", 
+          "Peromyscus maniculatus bairdii", 
+          "Apodemus speciosus", 
+          "Microtus ochrogaster", 
+          "Mus musculus molossinus", 
+          "Neotoma lepida", 
+          "Castor canadensis", 
+          "Jaculus jaculus", 
+          "Psammomys obesus", 
+          "Ictidomys tridecemlineatus", 
+          "Mus musculus musculus", 
+          "Ellobius lutescens", 
+          "Cavia aperea", 
+          "Chinchilla lanigera", 
+          "Microtus agrestis", 
+          "Heterocephalus glaber", 
+          "Octodon degus", 
+          "Cavia porcellus", 
+          "Apodemus sylvaticus", 
+          "Rattus norvegicus", 
+          "Mus spretus", 
+          "Mus pahari", 
+          "Mus musculus domesticus", 
+          "Mus musculus castaneus", 
+          "Mus musculus", 
+          "Mus caroli", 
+          "Meriones unguiculatus", 
+          "Phodopus sungorus", 
+          "Peromyscus maniculatus", 
+          "Mesocricetus auratus", 
+          "Cricetulus griseus", 
+          "Dipodomys ordii", 
+          "Marmota marmota marmota", 
+          "Marmota marmota"
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-9"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005049999999999999, 
+      "data": {
+        "taxon": "Rodentia"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/get_links", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.51", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:03.996841", 
+        "input_query": [
+          "Panthera leo", 
+          "Panthera onca", 
+          "Panthera pardus"
+        ], 
+        "source_urls": [
+          "http://eol.org"
+        ], 
+        "message": "Success", 
+        "species": [
+          {
+            "species_info_link": "http://eol.org/328672?action=overview&controller=taxa", 
+            "searched_name": "Panthera leo", 
+            "eol_id": 328672, 
+            "matched_name": "Panthera leo (Linnaeus, 1758)"
+          }, 
+          {
+            "species_info_link": "http://eol.org/328606?action=overview&controller=taxa", 
+            "searched_name": "Panthera onca", 
+            "eol_id": 328606, 
+            "matched_name": "Panthera onca (Linnaeus, 1758)"
+          }, 
+          {
+            "species_info_link": "http://eol.org/328673?action=overview&controller=taxa", 
+            "searched_name": "Panthera pardus", 
+            "eol_id": 328673, 
+            "matched_name": "Panthera pardus (Linnaeus, 1758)"
+          }
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-10"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005039999999999989, 
+      "data": {
+        "species": "Panthera leo|Panthera onca|Panthera pardus"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/links", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.36", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:05.563060", 
+        "input_query": [
+          "Catopuma badia", 
+          "Catopuma temminckii"
+        ], 
+        "source_urls": [
+          "http://eol.org"
+        ], 
+        "message": "Success", 
+        "species": [
+          {
+            "species_info_link": "http://eol.org/311552?action=overview&controller=taxa", 
+            "searched_name": "Catopuma badia", 
+            "eol_id": 311552, 
+            "matched_name": "Catopuma badia (Gray, 1874)"
+          }, 
+          {
+            "species_info_link": "http://eol.org/311553?action=overview&controller=taxa", 
+            "searched_name": "Catopuma temminckii", 
+            "eol_id": 311553, 
+            "matched_name": "Catopuma temminckii (Vigors and Horsfield, 1827)"
+          }
+        ], 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-10"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005451999999999957, 
+      "data": "{\"species\": [\"Catopuma badia\",\"Catopuma temminckii\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 200, 
+        "message": "Success", 
+        "lists": [
+          {
+            "list_title": "Marine vs Terrestrial Mammals Lesson", 
+            "list_id": 21, 
+            "list_species": [
+              "Equus caballus", 
+              "Rangifer tarandus", 
+              "Odocoileus virginianus", 
+              "Balaenoptera acutorostrata", 
+              "Balaenoptera musculus", 
+              "Inia geoffrensis", 
+              "Platanista gangetica", 
+              "Hippopotamus amphibius", 
+              "Mirounga leonina", 
+              "Hydrurga leptonyx", 
+              "Phoca vitulina", 
+              "Otaria byronia", 
+              "Elephas maximus", 
+              "Dugong dugon", 
+              "Trichechus manatus", 
+              "Ursus maritimus", 
+              "Procyon lotor"
+            ]
+          }, 
+          {
+            "list_title": "Our inner fish", 
+            "list_id": 23, 
+            "list_species": [
+              "Canis lupus", 
+              "Felis catus", 
+              "Rhinoceros unicornis", 
+              "Equus caballus", 
+              "Typha latifolia", 
+              "Carex hirta", 
+              "Poa alpina", 
+              "Helianthus annuus", 
+              "Amanita muscaria", 
+              "Boletus edulis", 
+              "Saccharomyces cerevisiae", 
+              "Agaricus bisporus", 
+              "Cardinalis cardinalis", 
+              "Alligator mississippiensis"
+            ]
+          }, 
+          {
+            "list_title": "Our inner fish", 
+            "list_id": 59, 
+            "list_species": [
+              "Homo sapiens", 
+              "Squatina australis", 
+              "Carcharodon carcharias", 
+              "Neoceratodus forsteri", 
+              "Eptatretus hexatrema", 
+              "Salmo salar", 
+              "Latimeria chalumnae", 
+              "Alligator mississippiensis", 
+              "Bufo bufo", 
+              "Lethenteron appendix", 
+              "Scomber scombrus", 
+              "Salamandra atra"
+            ]
+          }, 
+          {
+            "list_title": "Official List of the Birds of MD", 
+            "list_id": 56, 
+            "list_species": [
+              "Aix sponsa", 
+              "Anas strepera"
+            ]
+          }, 
+          {
+            "list_title": "Bird list", 
+            "list_id": 60, 
+            "list_species": [
+              "Aix sponsa", 
+              "Anas strepera", 
+              "ddfafd"
+            ]
+          }, 
+          {
+            "list_title": "Finding Nemo", 
+            "list_id": 58, 
+            "list_species": [
+              "Chelonia mydas", 
+              "Amphiprion ocellaris", 
+              "Paracanthurus hepatus", 
+              "Zanclus cornutus", 
+              "Diodon holocanthus", 
+              "Gramma loreto", 
+              "Zebrasoma flavescens", 
+              "Pisaster brevispinus", 
+              "Opisthoteuthis californiana", 
+              "Aetobatus narinari", 
+              "Lysmata amboinensis", 
+              "Flo)", 
+              "Isurus paucus", 
+              "Carcharodon carcharias", 
+              "Sphyrna mokarran", 
+              "Pelecanus conspicillatus"
+            ]
+          }, 
+          {
+            "list_title": "Top 40 popular species", 
+            "list_id": 61, 
+            "list_species": [
+              "Canis lupus", 
+              "Panthera tigris", 
+              "Panthera leo", 
+              "Pan paniscus", 
+              "Gorilla beringei", 
+              "Ursus arctos", 
+              "Gorilla gorilla", 
+              "Homo sapiens", 
+              "Panthera pardus", 
+              "Ursus maritimus", 
+              "Ailuropoda melanoleuca", 
+              "Bubo virginianus", 
+              "Aquila chrysaetos", 
+              "Corvus corax", 
+              "Haliaeetus leucocephalus", 
+              "Puma concolor couguar", 
+              "Orcinus orca", 
+              "Aptenodytes forsteri", 
+              "Panthera onca", 
+              "Tyto alba", 
+              "Bubo bubo", 
+              "Canis latrans", 
+              "Falco peregrinus", 
+              "Balaenoptera musculus", 
+              "Struthio camelus", 
+              "Pongo pygmaeus", 
+              "Pongo abelii", 
+              "Vulpes vulpes", 
+              "Acinonyx jubatus", 
+              "Corvus coronoides", 
+              "Sturnus vulgaris", 
+              "Corvus hawaiiensis", 
+              "Corvus brachyrhynchos", 
+              "Corvus frugilegus", 
+              "Eudyptula minor", 
+              "Corvus corone", 
+              "Corvus tasmanicus", 
+              "Passer domesticus", 
+              "Corvus splendens", 
+              "Corvus moneduloides"
+            ]
+          }
+        ]
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005154000000000047, 
+      "data": null, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 204, 
+        "message": "No list found with ID 22"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004801, 
+      "data": {
+        "list_id": "22"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error: Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004914999999999947, 
+      "data": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error: Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005013999999999963, 
+      "data": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "user_id": "hdail.laughinghouse@gmail.com", 
+        "list_id": "20"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error: Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005122999999999989, 
+      "data": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "user_id": "hdail.laughinghouse@gmail.com", 
+        "verbose": "true", 
+        "list_id": "20"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/insert_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 200, 
+        "message": "Success", 
+        "list_id": 64
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005315000000000014, 
+      "data": "{\"user_id\": \"hdail.laughinghouse@gmail.com\", \"list\": {\"list_extra_info\": \"\", \"list_description\": \"A list on the bird species add their endangered, threatened or invasive status\", \"list_keywords\": [\"bird\", \"endangered species\", \"Everglades\"], \"list_curator\": \"HD Laughinghouse\", \"list_origin\": \"webapp\", \"list_curation_date\": \"02-24-2016\", \"list_source\": \"Des\", \"list_focal_clade\": \"Aves\", \"list_title\": \"Bird Species List for Everglades National Park\", \"list_author\": [\"Bass\", \"O. & Cunningham\", \"R.\"], \"list_date_published\": \"01-01-2006\", \"is_list_public\": true, \"list_species\": [{\"family\": \"\", \"scientific_name\": \"Aix sponsa\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Wood Duck\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Anseriformes\", \"class\":\"\"}, {\"family\": \"\", \"scientific_name\": \"Anas strepera\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Gadwall\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Anseriformes\", \"class\":\"\"}, {\"family\": \"\", \"scientific_name\": \"Caprimulgus vociferus\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Whip-poor-will\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Caprimulgiformes\", \"class\":\"\"}, {\"family\": \"\", \"scientific_name\": \"Columba livia\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Rock Dove\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Columbiformes\", \"class\":\"\"}, {\"family\": \"\", \"scientific_name\": \"Ceryle alcyon\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Belted Kingfisher\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Coraciiformes\", \"class\": \"\"}, {\"family\": \"\", \"scientific_name\": \"Aramus guarauna\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Limpkin\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Gruiformes\", \"class\": \"\"}]}}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/replace_species", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error:Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005099999999999993, 
+      "data": "{\"user_id\": \"hdail.laughinghouse@gmail.com\", \"access_token\": \"ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA\", \"list_id\": 2, \"species\":[{\"family\": \"\", \"scientific_name\": \"Aix sponsa\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Wood Duck\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Anseriformes\"}, {\"family\": \"\", \"scientific_name\": \"Anas strepera\", \"scientific_name_authorship\": \"\", \"vernacular_name\": \"Gadwall\", \"phylum\": \"\", \"nomenclature_code\": \"ICZN\", \"order\": \"Anseriformes\"}]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error:Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.0038970000000000393, 
+      "data": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "user_id": "hdail.laughinghouse@gmail.com", 
+        "list_id": "2"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/update_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error:Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005193999999999976, 
+      "data": "{\"user_id\": \"hdail.laughinghouse@gmail.com\", \"access_token\": \"ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA\", \"list_id\": 5, \"list\": {\"list_description\": \"The list contains information on the invasive plants of Virginia, with data on the Invasiveness Rank and region in which they occur\", \"list_title\": \"Virginia Invasive Plant Species List\"}}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/update_list", 
+      "status_code": 200, 
+      "response": {
+        "status_code": 400, 
+        "message": "Error:Invalid Access Token. Access Token expired"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004908999999999997, 
+      "data": "{\"user_id\": \"hdail.laughinghouse@gmail.com\", \"access_token\": \"ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA\", \"list_id\": 5, \"list\": {\"is_list_public\": true}}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/compare_trees", 
+      "status_code": 200, 
+      "response": {
+        "status": 200, 
+        "message": "Success", 
+        "are_same_tree": true
+      }, 
+      "content_type": "application/json", 
+      "time": 0.00534399999999996, 
+      "data": "{\"tree1_nwk\": \"(((((((EU368025_Uncult_marine_euk_FS14JA72_30Mar05_5m:0.00329,EU368020_Uncult_marine_euk_FS04GA95_01Aug05_5m:-0.00002):0.00002,EU368013_Uncult_marine_euk_FS01D014_01Aug05_65m:-0.00002):0.00010,(EU368034_Uncult_marine_euk_OC413NSS_Q007_15m:-0.00000,(EU368007_Uncult_marine_euk_FS01B026_30Mar05_5m:-0.00001,EU368004_Uncult_marine_euk_FS01AA94_01Aug05_5m:0.00328):0.00000):0.00317):0.00725,(EU368005_Uncult_marine_euk_FS01B033_30Mar05_5m:-0.00002,(EF172850_Uncult_euk_SSRPB47:-0.00003,EU368022_Uncult_marine_euk_FS04H169_01Aug05_89m:0.00166):0.00002):0.00597):0.00202,((DQ060523_Uncult_marine_euk_NOR46.29:0.01559,(HQ868826_Uncult_euk_SHAX1073:0.00155,EU368038_Uncult_marine_euk_EN351CTD040_4mN11:0.00172):0.00429):0.00017,(EU368023_Uncult_marine_euk_FS04H153_01Aug05_89m:0.00504,(DQ222879_Uncult_photo_euk_RA000907.18:0.00166,HM858468_Uncult_marine_euk_MO.011.5m.00036:-0.00003):0.00152):0.00566):0.00662):0.00941,(HQ868882_Uncult_euk_SHAX1135:0.00170,HQ868810_Uncult_euk_SHAX1056:-0.00007):0.02449):0.00648,(EU368021_Uncult_marine_euk_FS04GA46_01Aug05_5m:0.02285,(HQ869075_Uncult_euk_SHAX587:0.00000,HQ869035_Uncult_euk_SHAX540:0.00000):0.04720):0.01029,HQ156863_Uncult_marine_ciliate_170609_08:0.17059);\", \"tree2_nwk\": \"((HQ869075_Uncult_euk_SHAX587:0.00000,HQ869035_Uncult_euk_SHAX540:0.00000):0.04484,(EU368021_Uncult_marine_euk_FS04GA46_01Aug05_5m:0.02285,(((((EU368005_Uncult_marine_euk_FS01B033_30Mar05_5m:-0.00002,(EF172850_Uncult_euk_SSRPB47:-0.00003,EU368022_Uncult_marine_euk_FS04H169_01Aug05_89m:0.00166):0.00002):0.00597,(((EU368025_Uncult_marine_euk_FS14JA72_30Mar05_5m:0.00329,EU368020_Uncult_marine_euk_FS04GA95_01Aug05_5m:-0.00002):0.00002,EU368013_Uncult_marine_euk_FS01D014_01Aug05_65m:-0.00002):0.00010,(EU368034_Uncult_marine_euk_OC413NSS_Q007_15m:-0.00000,(EU368007_Uncult_marine_euk_FS01B026_30Mar05_5m:-0.00001,EU368004_Uncult_marine_euk_FS01AA94_01Aug05_5m:0.00328):0.00000):0.00317):0.00725):0.00202,((DQ060523_Uncult_marine_euk_NOR46.29:0.01559,(HQ868826_Uncult_euk_SHAX1073:0.00155,EU368038_Uncult_marine_euk_EN351CTD040_4mN11:0.00172):0.00429):0.00017,(EU368023_Uncult_marine_euk_FS04H153_01Aug05_89m:0.00504,(DQ222879_Uncult_photo_euk_RA000907.18:0.00166,HM858468_Uncult_marine_euk_MO.011.5m.00036:-0.00003):0.00152):0.00566):0.00662):0.00941,(HQ868882_Uncult_euk_SHAX1135:0.00170,HQ868810_Uncult_euk_SHAX1056:-0.00007):0.02449):0.00648,HQ156863_Uncult_marine_ciliate_170609_08:0.17059):0.01029):0.00236);\"}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": 0.3, 
+        "status_code": 500, 
+        "message": "Error: getting study ids from OpenTree", 
+        "studies": []
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005461999999999967, 
+      "data": {
+        "list": "3597191|3597209|3597205|60236|3597195", 
+        "list_type": "ottids"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": 1.2, 
+        "status_code": 200, 
+        "message": "Success", 
+        "studies": [
+          {
+            "PublicationYear": 2010, 
+            "FocalCladeTaxonName": "Parulidae", 
+            "Publication": "Lovette, Irby J., Jorge L. P\u00e9rez-Em\u00e1n, John P. Sullivan, Richard C. Banks, Isabella Fiorentino, Sergio C\u00f3rdoba-C\u00f3rdoba, Mar\u00eda Echeverry-Galvis, F. Keith Barker, Kevin J. Burns, John Klicka, Scott M. Lanyon, Eldredge Bermingham. 2010. A comprehensive multilocus phylogeny for the wood-warblers and a revised classification of the Parulidae (Aves). Molecular Phylogenetics and Evolution 57 (2): 753-770.", 
+            "CandidateTreeForSynthesis": "tree6024", 
+            "PublicationDOI": "http://dx.doi.org/10.1016/j.ympev.2010.07.018", 
+            "DataRepository": "", 
+            "Curator": "Joseph W. Brown", 
+            "PublicationIdentifier": "pg_2591"
+          }, 
+          {
+            "PublicationYear": 2015, 
+            "FocalCladeTaxonName": "Passeriformes", 
+            "Publication": "Barker, F. Keith, Kevin J. Burns, John Klicka, Scott M. Lanyon, Irby J. Lovette. 2015. New insights into New World biogeography: An integrated view from the phylogeny of blackbirds, cardinals, sparrows, tanagers, warblers, and allies. The Auk 132 (2): 333-348.", 
+            "CandidateTreeForSynthesis": "tree1", 
+            "PublicationDOI": "http://dx.doi.org/10.1642/auk-14-110.1", 
+            "DataRepository": "http://datadryad.org/resource/doi:10.5061/dryad.pb787", 
+            "Curator": "Joseph W. Brown", 
+            "PublicationIdentifier": "ot_770"
+          }
+        ]
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005112000000000005, 
+      "data": {
+        "list": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens", 
+        "list_type": "taxa"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/studies", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": 0.91, 
+        "status_code": 200, 
+        "message": "Success", 
+        "studies": [
+          {
+            "PublicationYear": 2009, 
+            "FocalCladeTaxonName": "Cetacea", 
+            "Publication": "McGowen, M., Spaulding M., and Gatesy J. 2009. Divergence date estimation and a comprehensive molecular tree of extant cetaceans. Molecular Phylogenetics and Evolution 53 (3): 891-906.", 
+            "CandidateTreeForSynthesis": "tree5998", 
+            "PublicationDOI": "http://dx.doi.org/10.1016/j.ympev.2009.08.018", 
+            "DataRepository": "http://purl.org/phylo/treebase/phylows/study/TB2:S10190", 
+            "Curator": "Chris Owen", 
+            "PublicationIdentifier": "pg_2587"
+          }, 
+          {
+            "PublicationYear": 2009, 
+            "FocalCladeTaxonName": "Cetacea", 
+            "Publication": "Steeman, M., Hebsgaard M., Fordyce R., Ho S., Rabosky D., Nielsen R., Rahbek C., Glenner H., S\u00f8rensen M., & Willerslev E. 2009. Radiation of Extant Cetaceans Driven by Restructuring of the Oceans. Systematic Biology 58 (6): 573-585.", 
+            "CandidateTreeForSynthesis": "tree6215", 
+            "PublicationDOI": "http://dx.doi.org/10.1093/sysbio/syp060", 
+            "DataRepository": "http://purl.org/phylo/treebase/phylows/study/TB2:S10124", 
+            "Curator": "Chris Owen", 
+            "PublicationIdentifier": "pg_1927"
+          }
+        ]
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005655999999999994, 
+      "data": "{\"list\":[1094064,860906,257323,698438,698406,187220,336231,124230], \"list_type\": \"ottids\"}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/studies", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": 1.21, 
+        "status_code": 200, 
+        "message": "Success", 
+        "studies": [
+          {
+            "PublicationYear": 2009, 
+            "FocalCladeTaxonName": "Cetacea", 
+            "Publication": "McGowen, M., Spaulding M., and Gatesy J. 2009. Divergence date estimation and a comprehensive molecular tree of extant cetaceans. Molecular Phylogenetics and Evolution 53 (3): 891-906.", 
+            "CandidateTreeForSynthesis": "tree5998", 
+            "PublicationDOI": "http://dx.doi.org/10.1016/j.ympev.2009.08.018", 
+            "DataRepository": "http://purl.org/phylo/treebase/phylows/study/TB2:S10190", 
+            "Curator": "Chris Owen", 
+            "PublicationIdentifier": "pg_2587"
+          }, 
+          {
+            "PublicationYear": 2009, 
+            "FocalCladeTaxonName": "Cetacea", 
+            "Publication": "Steeman, M., Hebsgaard M., Fordyce R., Ho S., Rabosky D., Nielsen R., Rahbek C., Glenner H., S\u00f8rensen M., & Willerslev E. 2009. Radiation of Extant Cetaceans Driven by Restructuring of the Oceans. Systematic Biology 58 (6): 573-585.", 
+            "CandidateTreeForSynthesis": "tree6215", 
+            "PublicationDOI": "http://dx.doi.org/10.1093/sysbio/syp060", 
+            "DataRepository": "http://purl.org/phylo/treebase/phylows/study/TB2:S10124", 
+            "Curator": "Chris Owen", 
+            "PublicationIdentifier": "pg_1927"
+          }
+        ]
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005485000000000018, 
+      "data": "{\"list\":[\"Delphinidae\",\"Delphinus capensis\",\"Delphinus delphis\",\"Tursiops truncatus\",\"Tursiops aduncus\",\"Sotalia fluviatilis\",\"Sousa chinensis\"], \"list_type\": \"taxa\"}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/get_tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.95", 
+        "status_code": 200, 
+        "message": "Success", 
+        "creation_time": "2017-09-29T21:04:30.880574", 
+        "newick": "((Panthera_leo:6.3,Panthera_onca:6.3):0.1,Panthera_tigris:6.4):159.8;"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005041000000000018, 
+      "data": {
+        "taxa": "Panthera leo|Panthera onca|Panthera tigris|Panthera uncia"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/get_tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "2.47", 
+        "status_code": 200, 
+        "message": "Success", 
+        "creation_time": "2017-09-29T21:04:34.560448", 
+        "newick": "(Helianthus_annuus,(Rosa_arkansana,Passiflora_edulis));"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.004975000000000007, 
+      "data": {
+        "taxa": "Helianthus annuus|Passiflora edulis|Rosa arkansana|Saccharomyces cerevisiae"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "0.96", 
+        "status_code": 204, 
+        "message": "No tree found in phylomatic", 
+        "creation_time": "2017-09-29T21:04:36.739194", 
+        "newick": ""
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005215999999999998, 
+      "data": "{\"resolvedNames\": [\"Setophaga striata\", \"Setophaga magnolia\", \"Setophaga angelae\", \"Setophaga plumbea\", \"Setophaga virens\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "2.43", 
+        "status_code": 200, 
+        "message": "Success", 
+        "creation_time": "2017-09-29T21:04:40.386232", 
+        "newick": "(Helianthus_annuus,(Rosa_arkansana,Passiflora_edulis));"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005656999999999968, 
+      "data": "{\"resolvedNames\": [\"Helianthus annuus\",\"Passiflora edulis\", \"Rosa arkansana\", \"Saccharomyces cerevisiae\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pt/get_tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "4.56", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:46.164992", 
+        "query_taxa": [
+          "Setophaga striata", 
+          "Setophaga magnolia", 
+          "Setophaga angelae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ], 
+        "tree_newick": "(Setophaga_virens,Setophaga_angelae,Setophaga_plumbea,Setophaga_striata,Setophaga_magnolia);", 
+        "message": "Success", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-19"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005093000000000014, 
+      "data": {
+        "taxa": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pt/tree", 
+      "status_code": 200, 
+      "response": {
+        "execution_time": "3.41", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:50.784498", 
+        "query_taxa": [
+          "Setophaga striata", 
+          "Setophaga magnolia", 
+          "Setophaga angelae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ], 
+        "tree_newick": "(Setophaga_virens,Setophaga_angelae,Setophaga_plumbea,Setophaga_striata,Setophaga_magnolia);", 
+        "message": "Success", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-19"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005654999999999966, 
+      "data": "{\"resolvedNames\": [\"Setophaga striata\", \"Setophaga magnolia\", \"Setophaga angelae\", \"Setophaga plumbea\", \"Setophaga virens\"]}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/scale", 
+      "status_code": 200, 
+      "response": {
+        "method_used": "sdm", 
+        "execution_time": "1.55", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:04:53.552935", 
+        "scaled_tree": "(Solanum lycopersicum:141.8861801,((Zea mays:106.2589771,Oryza sativa:106.2589771):35.62720301,(Arabidopsis thaliana:117.1887019,(Glycine max:97.3424611,Medicago sativa:97.3424611):19.84624085):24.69747818):0);", 
+        "input_tree": "((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);", 
+        "message": "Success", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-20"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005334000000000005, 
+      "data": "{\"newick\": \"((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);\", \"method\": \"sdm\"}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/scale", 
+      "status_code": 200, 
+      "response": {
+        "method_used": "median", 
+        "execution_time": "5.33", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:05:00.100609", 
+        "scaled_tree": "((((Homo sapiens:29.126382,Macaca mulatta:29.126382):69.773618,(((Panthera pardus:6.4,Panthera tigris:6.4):34.300001,Herpestes fuscus:40.700001):24.199999,(Canis lupus pallipes:16.775,Melursus ursinus:16.775):48.125):34):10.65,Elephas maximus:109.55):17.078571,Haliastur indus:126.628571);", 
+        "input_tree": "(((((Canis lupus pallipes,Melursus ursinus)Caniformia,((Panthera tigris,Panthera pardus)Panthera,Herpestes fuscus))Carnivora,(Macaca mulatta,Homo sapiens)Catarrhini)Boreoeutheria,Elephas maximus)Eutheria,Haliastur indus)Amniota;", 
+        "message": "Success", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-20"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005570000000000019, 
+      "data": "{\"newick\": \"(((((Canis lupus pallipes,Melursus ursinus)Caniformia,((Panthera tigris,Panthera pardus)Panthera,Herpestes fuscus))Carnivora,(Macaca mulatta,Homo sapiens)Catarrhini)Boreoeutheria,Elephas maximus)Eutheria,Haliastur indus)Amniota;\"}", 
+      "method": "POST"
+    }, 
+    {
+      "url": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/metadata_scale", 
+      "status_code": 200, 
+      "response": {
+        "metadata_tree_scaling": [
+          "Hedges, S. Blair, Julie Marin, Michael Suleski, Madeline Paymer, Sudhir Kumar. 2015. Tree of life reveals clock-like speciation and diversification. Molecular Biology and Evolution 32 (4): 835-845", 
+          "Magall\u00f3n, Susana, Sandra G\u00f3mez-Acevedo, Luna L. S\u00e1nchez-Reyes, Tania Hern\u00e1ndez-Hern\u00e1ndez. 2015. A metacalibrated time-tree documents the early rise of flowering plant phylogenetic diversity. New Phytologist 207 (2): 437-453", 
+          "Magall\u00f3n, Susana, Sandra G\u00f3mez-Acevedo, Luna L. S\u00e1nchez-Reyes, Tania Hern\u00e1ndez-Hern\u00e1ndez. 2015. A metacalibrated time-tree documents the early rise of flowering plant phylogenetic diversity. New Phytologist 207 (2): 437-453"
+        ], 
+        "execution_time": "1.32", 
+        "status_code": 200, 
+        "creation_time": "2017-09-29T21:05:02.635629", 
+        "input_tree": "((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);", 
+        "message": "Success", 
+        "service_documentation": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-21"
+      }, 
+      "content_type": "application/json", 
+      "time": 0.005356000000000027, 
+      "data": "{\"newick\": \"((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);\"}", 
+      "method": "POST"
+    }
+  ]
+}
