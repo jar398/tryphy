@@ -1,3 +1,8 @@
+# Parse the example web service calls from the documentation file (stdin),
+# run them for regression testing, and write all requests and responses
+# to standard output
+
+
 import sys, requests, subprocess, json, time, re, webapp
 
 # Assumption: \ is not used in any of the examples

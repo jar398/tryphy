@@ -24,14 +24,15 @@ import unittest, webapp, json, sys
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
 service = webapp.get_service(url)
 
-class TestTnrsOtResolve(unittest.TestCase):
+class TestTnrsOtResolve(webapp.WebappTestCase):
 
     # Ensure that we get failure if names parameter is unsupplied.
     # The documentation says that the names parameter is 'mandatory'.
     def test_1(self):
         if True: return
-        r = service.get()
-        self.assert_response_status(r, 400)
+        request = service.get_request('GET', None)
+        x = request.exchange()
+        self.assert_response_status(x, 400)
 
         # The documentation says we should get an 'informative message'
         # In this case we have: "Error: Missing parameter 'names'"
@@ -39,7 +40,7 @@ class TestTnrsOtResolve(unittest.TestCase):
         # How to test for informativeness?  How about just check to see
         # if the name of the missing parameter is present in the error
         # message.
-        self.assertTrue(u'names' in r.text)
+        self.assertTrue(u'names' in x.text)
 
     # Edge case: names= is supplied, but there are no names.
     # In this case, the deployed web service says that there is no names
@@ -47,10 +48,11 @@ class TestTnrsOtResolve(unittest.TestCase):
     # but null is academic?  Depends on taste.)
     def test_2(self):
         if True: return
-        r = service.get(params={'names': ''})
+        request = service.get_request('GET', {'names': ''})
+        x = request.exchange()
         # 204 = no content (from open tree)
         # message = "Could not resolve any name"
-        self.assert_response_status(r, 204)
+        self.assert_response_status(x, 204)
 
     # Ensure that the result we get is 'correct' per documentation.
     # The Phylotastic documentation doesn't say anything about what is
@@ -59,10 +61,11 @@ class TestTnrsOtResolve(unittest.TestCase):
     # does?
     def test_3(self):
         name = u'Pseudacris crucifer'
-        r = service.get(params={'names': name})
-        self.assert_success(r)
+        request = service.get_request('GET', {'names': name})
+        x = request.exchange()
+        self.assert_success(x)
         # Check that Pseudacris crucifer is among the matched names
-        matched_names = all_matched_names(r)
+        matched_names = all_matched_names(x)
         self.assertTrue(name in matched_names)
 
     """
@@ -96,15 +99,16 @@ class TestTnrsOtResolve(unittest.TestCase):
         self.try_names(names)
 
     def try_names(self, names):
-        r = service.get(params={'names': u'|'.join([name for (name, tf) in names])})
-        self.assert_success(r)
-        matched_names = all_matched_names(r)
+        request = service.get_request('GET', {'names': u'|'.join([name for (name, tf) in names])})
+        x = request.exchange()
+        self.assert_success(x)
+        matched_names = all_matched_names(x)
         for (name, tf) in names:
             outcome = ((name in matched_names) == tf)
             if not outcome:
                 print name, 'not in matched_names'
                 print 'json:'
-                json.dump(r.json(), sys.stdout, indent=2)
+                json.dump(x.json(), sys.stdout, indent=2)
             self.assertTrue(outcome)
 
     def test_5(self):
@@ -113,8 +117,8 @@ class TestTnrsOtResolve(unittest.TestCase):
                  (u'Formica pecefica', False)]
         self.try_names(names)
 
- def all_matched_names(r):
-    j = r.json()
+def all_matched_names(x):
+    j = x.json()
     matches = j[u'resolvedNames']
     return ([m[u'matched_name'] for m in matches] +
             [synonym for synonym in m[u'synonyms'] for m in matches])
