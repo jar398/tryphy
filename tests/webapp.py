@@ -23,48 +23,85 @@ def get_service(url):
 class Service():
     def __init__(self, url):
         self.url = url
-        self.requests = {}  # maps (method, data) to Request
+        self.requests = {}  # maps (method, parameters) to Request
+        self.requests_by_label = {}
+        self.examplep = False
 
-    def get_request(self, method, data):
-        key = (method, json.dumps(data))
+    def get_request(self, method='GET', parameters={}, examplep=False, label=None):
+        key = (method, json.dumps(parameters, sort_keys=True))
         r = self.requests.get(key)
-        if r != None:
-            return r
-        else:
-            r = Request(self, method, data)
+        if r == None:
+            r = Request(self, method, parameters, label)
             self.requests[key] = r
-            return r
+            self.requests_by_label[label] = r
+        elif label != None:
+            r.label = label
+        r.examplep = examplep
+        return r
+
+    def get_request_from_blob(self, blob):
+        return self.get_request(blob[u'method'],
+                                blob[u'parameters'],
+                                blob[u'label'])
+
+    def get_examples(self):
+        return [r for r in self.requests if r.examplep]
+
+    def get_times():
+        times = []
+        for r in requests:
+            for x in request.exchanges:
+                times.append(x.time)
+        return times
 
 # Every Service has a set of requests that can be (or have been) made.
-# Typically these are tests or examples.
+# Typically a Request is a test or example.
 
 class Request():
-    def __init__(self, service, method, data):
+    def __init__(self, service, method, parameters, label):
         self.service = service
         self.method = method
-        self.data = data
+        self.parameters = parameters
+        self.label = label
         self.exchanges = []   # ?
         
     # Perform a single exchange for this request (method, url, query)
     def exchange(self):
         time1 = time.clock()      # in seconds, floating point
         if self.method == 'GET':
-            resp = requests.get(self.service.url, params=self.data)
-        else:                   # 'POST'
+            # should we set an accept: header here?
+            # in theory, yes.
+            # but no, because the documentation never sets one.
+            resp = requests.get(self.service.url, params=self.parameters)
+        elif self.method == 'POST':
             resp = requests.post(self.service.url,
-                                     headers={'Content-type': 'application/json'},
-                                     data=self.data)
+                                 headers={'Content-type': 'application/json'},
+                                 data=self.parameters)
+        else:
+            print >>sys.stderr, '** unrecognized method:', self.method
         time2 = time.clock()
-        return Exchange(response=resp, time=(time2 - time1))
+        x = Exchange(self, response=resp, time=(time2 - time1))
+        self.exchanges.append(x) # for timing analysis
+        return x
 
+    def to_dict(self):
+        return {'label': self.label,
+                'service': self.service.url,
+                'method': self.method,
+                'parameters': self.parameters}
+
+def to_request(blob):
+    service = get_service(blob[u'service'])
+    return service.get_request_from_blob(blob)
 
 # An Exchange is an activation of a Request yielding either an error
 # or a response (in the 'requests' library sense) and taking up time.
 
 class Exchange():
-    def __init__(self, time=None, response=None,
+    def __init__(self, request, time=None, response=None,
                  content_type='application/json',     # type *requested*
-                 status_code=200, headers={}, text=None, json=None):
+                 status_code=200, text=None, json=None):
+        self.request = request
         self.time = time
         self.the_json = False
         if response != None:
@@ -85,6 +122,13 @@ class Exchange():
 
     def json(self):
         return self.the_json
+
+    def to_dict(self):
+        return {'request': self.request.to_dict(),
+                'time': self.time,
+                'status_code': self.status_code,
+                'content_type': self.content_type,
+                'response': self.json()}
 
 # Subclass of unittest.TestCase with some additional methods that are
 # useful for testing web services.
@@ -125,5 +169,7 @@ def read_exchanges(inpath):
     with open(inpath, 'r') as infile:
         j = json.load(infile)
         for blob in j[u'exchanges']:
-            service = get_service(blob[u'url'])
-            request = service.get_request(blob[u'method'], blob[u'data'])
+            service = get_service(blob[u'service'])
+            request = service.get_request(method=blob[u'method'],
+                                          parameters=blob[u'parameters'],
+                                          label=blob[u'label'])

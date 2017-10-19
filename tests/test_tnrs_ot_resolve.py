@@ -30,8 +30,7 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
     # The documentation says that the names parameter is 'mandatory'.
     def test_1(self):
         if True: return
-        request = service.get_request('GET', None)
-        x = request.exchange()
+        x = service.get_request('GET', None).exchange()
         self.assert_response_status(x, 400)
 
         # The documentation says we should get an 'informative message'
