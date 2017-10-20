@@ -11,7 +11,8 @@ anticipated_content_type = 'application/json'
 
 # Ensure unique instantiation of each service object
 
-services_registry = {}
+services_registry = {}    # url -> Service
+requests_registry = {}    # label -> Request
 
 def get_service(url):
     if url in services_registry:
@@ -20,20 +21,23 @@ def get_service(url):
     services_registry[url] = service
     return service
 
+def get_request(label):
+    return services_registry.get(label)
+
 class Service():
     def __init__(self, url):
         self.url = url
         self.requests = {}  # maps (method, parameters) to Request
-        self.requests_by_label = {}
         self.examplep = False
 
-    def get_request(self, method='GET', parameters={}, examplep=False, label=None):
+    def get_request(self, method='GET', parameters={}, examplep=False,
+                    label=None, source=None):
         key = (method, json.dumps(parameters, sort_keys=True))
         r = self.requests.get(key)
         if r == None:
-            r = Request(self, method, parameters, label)
+            r = Request(self, method, parameters, label, source)
             self.requests[key] = r
-            self.requests_by_label[label] = r
+            requests_registry[label] = r
         elif label != None:
             r.label = label
         r.examplep = examplep
@@ -42,7 +46,11 @@ class Service():
     def get_request_from_blob(self, blob):
         return self.get_request(blob[u'method'],
                                 blob[u'parameters'],
-                                blob[u'label'])
+                                label=blob[u'label'],
+                                source=blob[u'source'])
+
+    def name(self):
+        return self.url.split('phylotastic_ws/')[-1]
 
     def get_examples(self):
         return [r for r in self.requests if r.examplep]
@@ -58,11 +66,12 @@ class Service():
 # Typically a Request is a test or example.
 
 class Request():
-    def __init__(self, service, method, parameters, label):
+    def __init__(self, service, method, parameters, label, source):
         self.service = service
         self.method = method
         self.parameters = parameters
         self.label = label
+        self.source = source
         self.exchanges = []   # ?
         
     # Perform a single exchange for this request (method, url, query)
@@ -86,13 +95,17 @@ class Request():
 
     def to_dict(self):
         return {'label': self.label,
+                'source': self.source,
                 'service': self.service.url,
                 'method': self.method,
                 'parameters': self.parameters}
 
 def to_request(blob):
-    service = get_service(blob[u'service'])
-    return service.get_request_from_blob(blob)
+    if isinstance(blob, unicode):
+        return get_request(blob)
+    else:
+        service = get_service(blob[u'service'])
+        return service.get_request_from_blob(blob)
 
 # An Exchange is an activation of a Request yielding either an error
 # or a response (in the 'requests' library sense) and taking up time.
@@ -100,9 +113,10 @@ def to_request(blob):
 class Exchange():
     def __init__(self, request, time=None, response=None,
                  content_type='application/json',     # type *requested*
-                 status_code=200, text=None, json=None):
+                 status_code=200, text=None, json=None, earlier=False):
         self.request = request
         self.time = time
+        self.earlier = earlier
         self.the_json = False
         if response != None:
             self.content_type = response.headers['content-type']
@@ -124,17 +138,46 @@ class Exchange():
         return self.the_json
 
     def to_dict(self):
-        return {'request': self.request.to_dict(),
-                'time': self.time,
-                'status_code': self.status_code,
-                'content_type': self.content_type,
-                'response': self.json()}
+        if False:
+            return {'request': self.request.to_dict(),
+                    'time': self.time,
+                    'status_code': self.status_code,
+                    'content_type': self.content_type,
+                    'response': self.json()}
+        else:
+            return {'request': self.request.label,
+                    'time': self.time,
+                    'status_code': self.status_code,
+                    'content_type': self.content_type,
+                    'response': self.json()}
+
+def to_exchange(blob):
+    rd = blob.get(u'request')
+    if rd == None:
+        # backward compatibility.  delete this code in a bit.
+        service = get_service(blob[u'url'])
+        request = service.get_request(method=blob[u'method'],
+                                      parameters=blob[u'data'],
+                                      source=blob.get(u'source'))
+    else:
+        request = webapp.to_request(rd[u'request'])
+    return Exchange(request,
+                    content_type=blob[u'content_type'],
+                    status_code=blob[u'status_code'],
+                    earlier=True,
+                    json=blob[u'response'])
+
 
 # Subclass of unittest.TestCase with some additional methods that are
 # useful for testing web services.
 
+# There should be one of these for each service.
+
 class WebappTestCase(unittest.TestCase):
     # Ensure that the JSON has the form of a successful response.
+
+    def __init__(self, service):
+        self.service = service
 
     # x is an Exchange
     def assert_success(self, x):
@@ -162,14 +205,68 @@ class WebappTestCase(unittest.TestCase):
         self.assertTrue(u'status_code' in j)    # what Open Tree returns?
         self.assertEqual(j[u'status_code'], code)    # what Open Tree returns?
 
-# Read a set of exchanges that were originally written after
-# performing them (see run_examples.py).
+    # ? method for doing regression tests ?
+    # ? instance variable 'service' is provided by the subclass ?
+
+    def test_regression(self):
+        for request in self.service.requests.values():
+            for exchange in request.exchanges:
+                if exchange.earlier:
+                    if False:
+                        present = request.exchange()
+                    else:
+                        present = None
+                    self.check_consistency(present, exchange)
+            return True
+
+    def check_consistency(self, now, then):
+        self.assertTrue(now == then)
+
+
+# Write list of requests (read from documentation) to a file
+
+def write_requests(requests):
+    json.dump({'requests': [r.to_dict() for r in requests]},
+              sys.stdout, indent=2, sort_keys=True)
+
+# Read them back in
+
+def read_requests(inpath):
+    with open(inpath, 'r') as infile:
+        j = json.load(infile)
+        return [to_request(blob) for blob in j[u'requests']]
+
+# Having read (or parsed) some examples, execute them
+
+def run_examples(requests):
+    exchanges = []
+    i = 0
+    for request in requests:
+        if True:
+            print >>sys.stderr, request.method, request.service.url, \
+                  request.parameterss
+            exchange = request.exchange()
+            exchanges.append(exchange.to_dict())
+            time.sleep(1)
+        i += 1
+    print >>sys.stderr, i
+    return exchanges
+
+# Load exchanges that were previously executed and dumped to a file
+# N.b. creating Exchange also stashes the request,
+# for regression testing or whatever
 
 def read_exchanges(inpath):
+    exchanges = []
     with open(inpath, 'r') as infile:
         j = json.load(infile)
         for blob in j[u'exchanges']:
-            service = get_service(blob[u'service'])
-            request = service.get_request(method=blob[u'method'],
-                                          parameters=blob[u'parameters'],
-                                          label=blob[u'label'])
+            exchanges.append(to_exchange(blob))
+    return exchanges
+
+# Write exchanges to file (or stdout)
+
+def write_exchanges(exchanges, outfile):
+    json.dump({'exchanges': [x.to_dict() for x in exchanges]},
+              sys.stdout, indent=2, sort_keys=True)
+

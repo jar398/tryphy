@@ -21,10 +21,10 @@ curl -D - "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve?names=Ps
 
 import unittest, webapp, json, sys
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
-service = webapp.get_service(url)
-
 class TestTnrsOtResolve(webapp.WebappTestCase):
+
+    url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
+    service = webapp.get_service(url)
 
     # Ensure that we get failure if names parameter is unsupplied.
     # The documentation says that the names parameter is 'mandatory'.

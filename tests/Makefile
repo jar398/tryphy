@@ -9,7 +9,7 @@ in/PhyloServicesDescription.md:
 	@mkdir -p in
 	wget -O $@ $(DESCRIPTION)
 
-work/requests.json: in/PhyloServicesDescription.md
+work/requests.json: in/PhyloServicesDescription.md doc_examples.py
 	@mkdir -p work
-	python doc_examples.py $< >$@.new
+	python doc_examples.py in/PhyloServicesDescription.md >$@.new
 	mv $@.new $@
