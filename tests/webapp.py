@@ -124,8 +124,8 @@ class Exchange():
             self.text = response.text
             if self.content_type == anticipated_content_type:
                 self.the_json = response.json()
-            else:
-                print >>sys.stderr, '** Content of response is not json:', ct
+            elif response.status_code == 200:
+                print >>sys.stderr, '** Content-type of response is not json:', self.content_type
                 print >>sys.stderr, response.text
                 self.the_json = None
         else:
@@ -160,7 +160,7 @@ def to_exchange(blob):
                                       parameters=blob[u'data'],
                                       source=blob.get(u'source'))
     else:
-        request = webapp.to_request(rd[u'request'])
+        request = to_request(rd[u'request'])
     return Exchange(request,
                     content_type=blob[u'content_type'],
                     status_code=blob[u'status_code'],
@@ -175,9 +175,6 @@ def to_exchange(blob):
 
 class WebappTestCase(unittest.TestCase):
     # Ensure that the JSON has the form of a successful response.
-
-    def __init__(self, service):
-        self.service = service
 
     # x is an Exchange
     def assert_success(self, x):
@@ -209,13 +206,16 @@ class WebappTestCase(unittest.TestCase):
     # ? instance variable 'service' is provided by the subclass ?
 
     def test_regression(self):
-        for request in self.service.requests.values():
+        service = self.get_service()
+        print '\nregression testing:', service.url
+        for request in service.requests.values():
             for exchange in request.exchanges:
                 if exchange.earlier:
                     if False:
                         present = request.exchange()
                     else:
                         present = None
+                    print 'checking consistency', request.label
                     self.check_consistency(present, exchange)
             return True
 
@@ -242,11 +242,11 @@ def run_examples(requests):
     exchanges = []
     i = 0
     for request in requests:
-        if True:
+        if i % 17 == 3:
             print >>sys.stderr, request.method, request.service.url, \
-                  request.parameterss
+                  request.parameters
             exchange = request.exchange()
-            exchanges.append(exchange.to_dict())
+            exchanges.append(exchange)
             time.sleep(1)
         i += 1
     print >>sys.stderr, i
@@ -260,13 +260,23 @@ def read_exchanges(inpath):
     exchanges = []
     with open(inpath, 'r') as infile:
         j = json.load(infile)
+        print 'reading exchanges from', inpath
         for blob in j[u'exchanges']:
-            exchanges.append(to_exchange(blob))
+            x = to_exchange(blob)
+            print 'exchange:', x.request.label, x.status_code
+            exchanges.append(x)
     return exchanges
 
 # Write exchanges to file (or stdout)
 
 def write_exchanges(exchanges, outfile):
     json.dump({'exchanges': [x.to_dict() for x in exchanges]},
-              sys.stdout, indent=2, sort_keys=True)
+              outfile, indent=2, sort_keys=True)
 
+if __name__ == '__main__':
+    inpath = sys.argv[1]  #'work/requests.json'
+    outpath = sys.argv[2] #'work/exchanges.json'
+    the_requests = read_requests(inpath)
+    the_exchanges = run_examples(the_requests)
+    with open(outpath, 'w') as outfile:
+        write_exchanges(the_exchanges, outfile)

@@ -21,16 +21,21 @@ curl -D - "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve?names=Ps
 
 import unittest, webapp, json, sys
 
+smoke = True
+
 class TestTnrsOtResolve(webapp.WebappTestCase):
 
     url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
     service = webapp.get_service(url)
 
+    def get_service(self):
+        return TestTnrsOtResolve.service
+
     # Ensure that we get failure if names parameter is unsupplied.
     # The documentation says that the names parameter is 'mandatory'.
     def test_1(self):
-        if True: return
-        x = service.get_request('GET', None).exchange()
+        if smoke: return
+        x = self.get_service().get_request('GET', None).exchange()
         self.assert_response_status(x, 400)
 
         # The documentation says we should get an 'informative message'
@@ -46,8 +51,8 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
     # parameter.  (The difference between missing and supplied 
     # but null is academic?  Depends on taste.)
     def test_2(self):
-        if True: return
-        request = service.get_request('GET', {'names': ''})
+        if smoke: return
+        request = self.get_service().get_request('GET', {'names': ''})
         x = request.exchange()
         # 204 = no content (from open tree)
         # message = "Could not resolve any name"
@@ -59,8 +64,9 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
     # Maybe you're supposed to reverse engineer based on what the service
     # does?
     def test_3(self):
+        if smoke: return
         name = u'Pseudacris crucifer'
-        request = service.get_request('GET', {'names': name})
+        request = self.get_service().get_request('GET', {'names': name})
         x = request.exchange()
         self.assert_success(x)
         # Check that Pseudacris crucifer is among the matched names
@@ -90,6 +96,7 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
     # There's no such thing as 'Setophaga megnolia'
 
     def test_4(self):
+        if smoke: return
         names = [(u'Setophaga striata', True),
                  (u'Setophaga megnolia', False),
                  (u'Setophaga angilae', False),
@@ -98,7 +105,7 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
         self.try_names(names)
 
     def try_names(self, names):
-        request = service.get_request('GET', {'names': u'|'.join([name for (name, tf) in names])})
+        request = self.get_service().get_request('GET', {'names': u'|'.join([name for (name, tf) in names])})
         x = request.exchange()
         self.assert_success(x)
         matched_names = all_matched_names(x)
@@ -124,4 +131,5 @@ def all_matched_names(x):
 
 
 if __name__ == '__main__':
+    webapp.read_exchanges('work/exchanges.json')
     unittest.main()

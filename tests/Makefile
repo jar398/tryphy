@@ -13,3 +13,7 @@ work/requests.json: in/PhyloServicesDescription.md doc_examples.py
 	@mkdir -p work
 	python doc_examples.py in/PhyloServicesDescription.md >$@.new
 	mv $@.new $@
+
+# Run all the examples and store outcome
+work/exchanges.json: work/requests.json webapp.py
+	python webapp.py work/requests.json work/exchanges.json
