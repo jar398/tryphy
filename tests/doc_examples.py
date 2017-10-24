@@ -18,6 +18,7 @@ def parse_requests(inpath):
             elif line.startswith('http'):
                 z = parse_get_example(line, 'example_' + str(i), source)
             if z != None:
+                z.expect_status = 200
                 requests.append(z)
                 i += 1
     print >>sys.stderr, '%s services' % len(webapp.services_registry)

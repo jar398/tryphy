@@ -22,15 +22,17 @@ def get_service(url):
     return service
 
 def get_request(label):
-    return services_registry.get(label)
+    r = services_registry.get(label)
+    if r == None:
+        print >>sys.stderr, '** No such request: ', label
+    return r
 
 class Service():
     def __init__(self, url):
         self.url = url
         self.requests = {}  # maps (method, parameters) to Request
-        self.examplep = False
 
-    def get_request(self, method='GET', parameters={}, examplep=False,
+    def get_request(self, method='GET', parameters={},
                     label=None, source=None):
         key = (method, json.dumps(parameters, sort_keys=True))
         r = self.requests.get(key)
@@ -40,12 +42,14 @@ class Service():
             requests_registry[label] = r
         elif label != None:
             r.label = label
-        r.examplep = examplep
         return r
 
+    # exchange blob
     def get_request_from_blob(self, blob):
         return self.get_request(blob[u'method'],
-                                blob[u'parameters'],
+                                (blob[u'parameters']
+                                 if u'parameters' in blob
+                                 else blob[u'data']),
                                 label=blob[u'label'],
                                 source=blob[u'source'])
 
@@ -66,17 +70,18 @@ class Service():
 # Typically a Request is a test or example.
 
 class Request():
-    def __init__(self, service, method, parameters, label, source):
+    def __init__(self, service, method, parameters, label, source, expect_status=None):
         self.service = service
         self.method = method
         self.parameters = parameters
         self.label = label
         self.source = source
+        self.expect_status = expect_status
         self.exchanges = []   # ?
         
     # Perform a single exchange for this request (method, url, query)
     def exchange(self):
-        time1 = time.clock()      # in seconds, floating point
+        time1 = time.time()      # in seconds, floating point
         if self.method == 'GET':
             # should we set an accept: header here?
             # in theory, yes.
@@ -84,28 +89,42 @@ class Request():
             resp = requests.get(self.service.url, params=self.parameters)
         elif self.method == 'POST':
             resp = requests.post(self.service.url,
-                                 headers={'Content-type': 'application/json'},
-                                 data=self.parameters)
+                                 headers={'Content-type': 'application/json',
+                                          'Accept': 'application/json,*/*;q=0.1'},
+                                 data=json.dumps(self.parameters))
         else:
             print >>sys.stderr, '** unrecognized method:', self.method
-        time2 = time.clock()
+        time2 = time.time()
         x = Exchange(self, response=resp, time=(time2 - time1))
         self.exchanges.append(x) # for timing analysis
         return x
+
+    def stringify(self):
+        return('%s %s?%s' %
+               (self.method,
+                self.service.url,
+                json.dumps(self.parameters)[0:60]))
 
     def to_dict(self):
         return {'label': self.label,
                 'source': self.source,
                 'service': self.service.url,
                 'method': self.method,
-                'parameters': self.parameters}
+                'parameters': self.parameters,
+                'expect_status': self.expect_status}
 
 def to_request(blob):
     if isinstance(blob, unicode):
+        # blob is a label and is globally unique
         return get_request(blob)
     else:
         service = get_service(blob[u'service'])
-        return service.get_request_from_blob(blob)
+        return Request(service,
+                       blob[u'method'],
+                       blob[u'parameters'],
+                       blob[u'label'],
+                       blob[u'source'],
+                       blob.get(u'expect_status'))
 
 # An Exchange is an activation of a Request yielding either an error
 # or a response (in the 'requests' library sense) and taking up time.
@@ -113,21 +132,24 @@ def to_request(blob):
 class Exchange():
     def __init__(self, request, time=None, response=None,
                  content_type='application/json',     # type *requested*
-                 status_code=200, text=None, json=None, earlier=False):
+                 status_code=200, text=None, json=None):
         self.request = request
         self.time = time
-        self.earlier = earlier
         self.the_json = False
         if response != None:
-            self.content_type = response.headers['content-type']
             self.status_code = response.status_code
             self.text = response.text
-            if self.content_type == anticipated_content_type:
+            self.the_json = None
+            ct = response.headers['content-type'].split(';')[0]
+            self.content_type = ct
+            if ct == 'application/json':
                 self.the_json = response.json()
-            elif response.status_code == 200:
-                print >>sys.stderr, '** Content-type of response is not json:', self.content_type
-                print >>sys.stderr, response.text
-                self.the_json = None
+                # I expected the status code to be 4xx.
+                # Instead, there's a 200 response, with a status_code
+                # key in the JSON dict whose value is 400.
+                if self.status_code == 200 and u'status_code' in self.the_json:
+                    self.status_code = self.the_json[u'status_code']
+
         else:
             self.content_type = content_type
             self.status_code = status_code
@@ -160,11 +182,12 @@ def to_exchange(blob):
                                       parameters=blob[u'data'],
                                       source=blob.get(u'source'))
     else:
-        request = to_request(rd[u'request'])
+        request = to_request(rd)
+        if request == None:
+            return None
     return Exchange(request,
                     content_type=blob[u'content_type'],
                     status_code=blob[u'status_code'],
-                    earlier=True,
                     json=blob[u'response'])
 
 
@@ -192,35 +215,57 @@ class WebappTestCase(unittest.TestCase):
     #  Expected response time: 3s~10s
 
     def assert_response_status(self, x, code):
-        # I expected the status code to be 4xx.
-        # Instead, you get a 200 response, and there is a status_code
-        # key in the JSON dict whose value is 400.
-        self.assertEqual(x.status_code, 200)
-        self.assertEqual(x.content_type.split(';')[0],
-                         anticipated_content_type)
-        j = x.json()
-        self.assertTrue(u'status_code' in j)    # what Open Tree returns?
-        self.assertEqual(j[u'status_code'], code)    # what Open Tree returns?
+        if x.status_code < 300:
+            self.assertEqual(x.content_type, u'application/json')
+
+        self.assertEqual(x.status_code, code)
 
     # ? method for doing regression tests ?
     # ? instance variable 'service' is provided by the subclass ?
 
     def test_regression(self):
         service = self.get_service()
-        print '\nregression testing:', service.url
+        print '\n# Regression testing:', service.url
         for request in service.requests.values():
-            for exchange in request.exchanges:
-                if exchange.earlier:
-                    if False:
-                        present = request.exchange()
-                    else:
-                        present = None
-                    print 'checking consistency', request.label
-                    self.check_consistency(present, exchange)
+            print '# checking adequacy', request.stringify()
+            exchanges = [exchange for exchange in request.exchanges]
+            for exchange in exchanges:
+                print '# checking exchange adequacy'
+                present = request.exchange()
+                self.check_adequacy(present, exchange)
             return True
 
-    def check_consistency(self, now, then):
-        self.assertTrue(now == then)
+    # Is the 'now' result no worse than the 'then' result?
+    def check_adequacy(self, now, then):
+        self.assertEqual(now.status_code, then.status_code)
+        self.check_result(now.json(), then.json())
+
+    def check_result(self, now, then):
+        if isinstance(then, dict):
+            self.assertTrue(isinstance(now, dict))
+            for key in then:
+                self.assertTrue(key in now)
+                if key == u'creation_time': continue
+                if key == u'execution_time': continue
+                self.check_result(now[key], then[key])
+        elif isinstance(tuple, list):
+            self.assertEqual(len(now), len(list))
+            for (n, t) in zip(now, list):
+                self.check_result(n, t)
+        else:
+            self.assertFalse(isinstance(now, dict))
+            self.assertEqual(now, then)
+
+
+
+    @classmethod
+    def tearDownClass(self):
+        maxtime = 0
+        for r in self.get_service().requests.values():
+            for x in r.exchanges:
+                if x.time > maxtime:
+                    maxtime = x.time
+        print >>sys.stderr, '\nSlowest call:', maxtime
 
 
 # Write list of requests (read from documentation) to a file
@@ -243,9 +288,13 @@ def run_examples(requests):
     i = 0
     for request in requests:
         if i % 17 == 3:
-            print >>sys.stderr, request.method, request.service.url, \
-                  request.parameters
+            print >>sys.stderr, request.stringify()
             exchange = request.exchange()
+            if request.expect_status != None:
+                if exchange.status_code != request.expect_status:
+                    print >>sys.stderr, ('** Status code %s not what was expected (%s)' %
+                                         (exchange.status_code, request.expect_status))
+                    print >>sys.stderr, '   for', request.stringify()
             exchanges.append(exchange)
             time.sleep(1)
         i += 1
@@ -263,8 +312,9 @@ def read_exchanges(inpath):
         print 'reading exchanges from', inpath
         for blob in j[u'exchanges']:
             x = to_exchange(blob)
-            print 'exchange:', x.request.label, x.status_code
-            exchanges.append(x)
+            if x != None:
+                print 'exchange:', x.request.label, x.status_code
+                exchanges.append(x)
     return exchanges
 
 # Write exchanges to file (or stdout)
@@ -277,6 +327,7 @@ if __name__ == '__main__':
     inpath = sys.argv[1]  #'work/requests.json'
     outpath = sys.argv[2] #'work/exchanges.json'
     the_requests = read_requests(inpath)
+    # Get a baseline for future regression tests
     the_exchanges = run_examples(the_requests)
     with open(outpath, 'w') as outfile:
         write_exchanges(the_exchanges, outfile)

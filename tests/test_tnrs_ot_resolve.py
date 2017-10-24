@@ -28,6 +28,7 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
     url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
     service = webapp.get_service(url)
 
+    @classmethod
     def get_service(self):
         return TestTnrsOtResolve.service
 
