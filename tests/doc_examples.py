@@ -44,8 +44,7 @@ def parse_get_example(line, label, source):
         params = {param[0] : param[1] for param in [x.split('=') for x in query.split('&')]}
     else:
         params = None
-    return service.get_request('GET', params, examplep=True, label=label,
-                               source=source)
+    return service.get_request('GET', params, label=label, source=source)
 
 def parse_post_example(line, label, source):
     m = post_example_pattern.match(line)
@@ -54,8 +53,7 @@ def parse_post_example(line, label, source):
         return None
     service = webapp.get_service(m.group(1))
     params = json.loads(m.group(2))
-    return service.get_request('POST', params, examplep=True, label=label,
-                               source=source)
+    return service.get_request('POST', params, label=label, source=source)
 
 # Parse the example web service calls from the documentation file (stdin),
 # run them for regression testing, and write all exchanges(request + response)

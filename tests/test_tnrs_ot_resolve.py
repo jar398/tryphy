@@ -19,7 +19,7 @@ e.g.
 curl -D - "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve?names=Psuedacris%20crucifer"
 """
 
-import unittest, webapp, json, sys
+import sys, unittest, webapp, json
 
 smoke = True
 
