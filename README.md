@@ -1,9 +1,5 @@
 # Phylotastic web service tests
 
-[Phylotastic web API documentation](https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md)
-
-[Choice of Python test framework](doc/test-framework-choice.md)
-
 ## TL;DR How to Run
 
 To run all tests:
@@ -17,6 +13,11 @@ To run tests for an individual web service:
 
 substituting in the desired service name (slash becomes underscore).
 
+## Background documents
+
+* [Phylotastic web API documentation](https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md)
+* [Choice of Python test framework](doc/test-framework-choice.md)
+
 ## How it works
 
 There is a tests/ directory containing one test_ python file for each
@@ -28,7 +29,7 @@ documentation.
 
 Sitting beneath this is a bit of infrastructure with classes for
 services, requests (i.e. service + parameters), and exchanges (request
-+ response).  There are a few additional scripts to scrape the
+plus response).  There are a few additional scripts to scrape the
 examples, obtain the baseline responses for regression testing, and
 create stub test_ files for the services.
 
@@ -69,7 +70,7 @@ create stub test_ files for the services.
     FAILED (failures=1)
     bash-3.2$ 
 
-## Test suite project specification
+## Project requirements
 
 "Tests will probe (1) whether the API is correctly described in the
 docs, (2) what happens with edge cases, input range limits, and
