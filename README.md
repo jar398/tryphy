@@ -20,12 +20,14 @@ substituting in the desired service name (slash becomes underscore).
 
 ## How it works
 
-There is a tests/ directory containing one test_ python file for each
-service.  There is one test for each example in the documentation,
-plus others for edge cases, range limits, capacity tests, and error
-conditions.  For the examples there is a regression test and a test
-(usual partial) for whether the returned value is correct per the
-documentation.
+There is a `tests/` directory containing one `test_...py` python file
+for each service.  There is one test for each example in the
+documentation, plus others for edge cases, range limits, capacity
+tests, and error conditions.  For the examples, there is a regression
+test, comparing the latest result from a previously saved result.
+When a result is checked for correctness, the test is usually partial,
+just looking at particular aspects of the result, not checking every
+part of it.
 
 Sitting beneath this is a bit of infrastructure with classes for
 services, requests (i.e. service + parameters), and exchanges (request
