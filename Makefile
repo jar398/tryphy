@@ -1,6 +1,6 @@
 
 all:
-	for t in tests/test_*.py; do python $t; done
+	for t in tests/test_*.py; do PYTHONPATH=. python $$t; done
 
 # markdown is here:
 DESCRIPTION_URL="https://raw.githubusercontent.com/phylotastic/phylo_services_docs/master/ServiceDescription/PhyloServicesDescription.md"

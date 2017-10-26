@@ -4,9 +4,37 @@
 
 [Choice of Python test framework](doc/test-framework-choice.md)
 
-## What these tests are supposed to do
+## TL;DR How to Run
 
-Tests will probe (1) whether the API is correctly described in the
+To run all tests:
+
+    make
+
+To run all tests for an individual service:
+
+    export PYTHONPATH=.
+    python tests/test_tnrs_ot_resolve.py
+
+substituting in the desired service name (slash becomes underscore).
+
+## How it works
+
+There is a tests/ directory containing one test_ python file for each
+service.  There is one test for each example in the documentation,
+plus others for edge cases, range limits, capacity tests, and error
+conditions.  For the examples there is a regression test and a test
+(usual partial) for whether the returned value is correct per the
+documentation.
+
+Sitting beneath this is a bit of infrastructure with classes for
+services, requests (i.e. service + parameters), and exchanges (request
++ response).  There are a few additional scripts to scrape the
+examples, obtain the baseline responses for regression testing, and
+create stub test_ files for the services.
+
+## Test suite project specification
+
+"Tests will probe (1) whether the API is correctly described in the
 docs, (2) what happens with edge cases, input range limits, and
 error-generating conditions such as syntax errors that may be expected
 to arise deliberately or accidentally in normal use. Examples of edge
@@ -15,10 +43,9 @@ species, or querying with a taxon name that has unusual characters or
 extra complexity. Testing for range limits is typically going to
 involve finding (within a factor of 2) the minimum query complexity
 (e.g., number of taxa) that results in an error or an unacceptable
-delay (> 15 sec with no feedback or warning of delays).
+delay (> 15 sec with no feedback or warning of delays)."
 
-
-## List of all services as of 17 Deptember 2017
+## List of all services as of 17 September 2017
 
 | URL                   |Description
 | ----------------------|--------

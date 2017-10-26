@@ -16,32 +16,43 @@ class %s(webapp.WebappTestCase):
     @classmethod
     def get_service(self):
         return service
+
+    # Insert here: edge case tests
+    # Insert here: inputs out of range, leading to error or long delay
+    # Insert here: error-generating conditions
+    # (See ../README.md)
 """
 
 template2 = """
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
+    webapp.read_requests('../work/requests.json')
+    webapp.read_exchanges('../work/exchanges.json')
     unittest.main()
 """
 
 # TBD: should be configurable whether we do strict regression tests or not
 # or whether strict regression tests cause test failure, or just warnings
 
+# As of start of project, the docs say nothing about the result, so
+# technically there is nothing to check...
+
 template3="""
     def test_%s(self):
         x = self.start_request_tests(%s)
-        # Insert here: additional checks on x.response
+        # Insert: whether result is what it should be according to docs
 """
 
 # Generate the python file based on the templates.
+
+if not os.path.isdir('templates'):
+    os.mkdir('templates')
 
 for service in sorted(webapp.services_registry.values(), key=(lambda s: s.url)):
     service_url = service.url
     path = service_url.split('/phylotastic_ws/')[1]
     outpath = 'test_' + path.replace('/', '_')
     class_name = ''.join(map(lambda s:s.capitalize(), outpath.split('_')))
-    outpathy = 'templates/' + outpath + '.py'
+    outpathy = os.path.join('templates', outpath + '.py')
     requests = service.requests.values()
     with open(outpathy, 'w') as outfile:
         print 'Writing', outpathy

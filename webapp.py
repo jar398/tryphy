@@ -15,6 +15,7 @@ services_registry = {}    # url -> Service
 requests_registry = {}    # label -> Request
 
 def get_service(url):
+    url = str(url)
     if url in services_registry:
         return services_registry[url]
     service = Service(url)
@@ -22,10 +23,7 @@ def get_service(url):
     return service
 
 def get_request(label):
-    r = services_registry.get(label)
-    if r == None:
-        print >>sys.stderr, '** No such request: ', label
-    return r
+    return requests_registry.get(str(label))
 
 class Service():
     def __init__(self, url):
@@ -42,7 +40,7 @@ class Service():
         elif label != None:
             # Add label to existing Request that has none
             r.label = label
-            requests_registry[label] = r
+            requests_registry[str(label)] = r
         return r
 
     # exchange blob
@@ -77,7 +75,7 @@ class Request():
         self.parameters = parameters
         self.label = label
         if label != None:
-            requests_registry[label] = self
+            requests_registry[str(label)] = self
         self.source = source
         self.expect_status = expect_status
         self.exchanges = []   # ?
@@ -119,7 +117,10 @@ class Request():
 def to_request(blob):
     if isinstance(blob, unicode):
         # blob is a label and is globally unique
-        return get_request(blob)
+        r = get_request(blob)
+        if r == None:
+            print >>sys.stderr, '** No such request:', label
+        return r
     else:
         service = get_service(blob[u'service'])
         return service.get_request(method=blob[u'method'],
@@ -199,8 +200,11 @@ def to_exchange(blob):
 # There should be one of these for each service.
 
 class WebappTestCase(unittest.TestCase):
-    # Ensure that the JSON has the form of a successful response.
+    # Shortcut
+    def get_request(self, method, parameters):
+        return this.get_service().get_request(method, parameters)
 
+    # Ensure that the JSON has the form of a successful response.
     # x is an Exchange
     def assert_success(self, x):
         self.assert_response_status(x, 200)
