@@ -226,41 +226,49 @@ class WebappTestCase(unittest.TestCase):
     # General method for doing regression tests, inherited by all
     # the service-specific 'Test...' classes.
 
-    def test_regression(self):
+    def regression_test_service(self): # unused
         service = self.get_service()
         #print '\n# Regression testing:', service.url
         for request in service.requests.values():
-            #print '# checking adequacy', request.stringify()
-            exchanges = [exchange for exchange in request.exchanges]
-            if len(exchanges) > 0:
-                for exchange in exchanges:
-                    #print '# checking exchange adequacy'
-                    present = request.exchange()
-                    self.check_adequacy(present, exchange)
-            return True
+            start_request_tests(request)
+
+    def start_request_tests(self, request):
+        present = request.exchange()
+        if len(request.exchanges) > 0:
+            self.check_adequacy(present, request.exchanges[0])
+        return present
+
+    # Is the 'now' exchange no worse than the 'then' exchange?
+    def check_adequacy(self, now, then):
+        now_cat = now.status_code / 100
+        then_cat = then.status_code / 100
+        self.assertTrue(now_cat <= then_cat)
+        if now_cat == then_cat:
+            self.assertTrue(now.status_code <= then.status_code)
+            self.check_result(now.json(), then.json())
+        else:
+            print >>sys.err, ('Better status code now (%s) than before (%s)' %
+                              (now.status_code, then.status_code))
 
     # Is the 'now' result no worse than the 'then' result?
-    def check_adequacy(self, now, then):
-        self.assertEqual(now.status_code, then.status_code)
-        self.check_result(now.json(), then.json())
-
     def check_result(self, now, then):
         if isinstance(then, dict):
             self.assertTrue(isinstance(now, dict))
             for key in then:
+                # Do we still have everything we had before?
                 self.assertTrue(key in now)
                 if key == u'creation_time': continue
                 if key == u'execution_time': continue
                 self.check_result(now[key], then[key])
-        elif isinstance(tuple, list):
-            self.assertEqual(len(now), len(list))
-            for (n, t) in zip(now, list):
+        elif isinstance(then, list):
+            self.assertTrue(isinstance(now, list))
+            self.assertEqual(len(now), len(then))
+            for (n, t) in zip(now, then):
                 self.check_result(n, t)
         else:
             self.assertFalse(isinstance(now, dict))
+            self.assertFalse(isinstance(now, list))
             self.assertEqual(now, then)
-
-
 
     @classmethod
     def tearDownClass(self):

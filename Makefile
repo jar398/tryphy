@@ -1,20 +1,22 @@
 
 all:
-	for t in test_*.py; do python $t; done
+	for t in tests/test_*.py; do python $t; done
 
 # markdown is here:
-DESCRIPTION="https://raw.githubusercontent.com/phylotastic/phylo_services_docs/master/ServiceDescription/PhyloServicesDescription.md"
+DESCRIPTION_URL="https://raw.githubusercontent.com/phylotastic/phylo_services_docs/master/ServiceDescription/PhyloServicesDescription.md"
 
 in/PhyloServicesDescription.md:
 	@mkdir -p in
-	wget -O $@ $(DESCRIPTION)
+	wget -O $@ $(DESCRIPTION_URL)
 
 work/requests.json: in/PhyloServicesDescription.md doc_examples.py webapp.py
 	@mkdir -p work
 	python doc_examples.py in/PhyloServicesDescription.md >$@.new
 	mv $@.new $@
 
-# Run all the examples and store outcome
+baseline: work/exchanges.json
+
+# Run all the examples and store outcomes, for regression testing
 work/exchanges.json: work/requests.json webapp.py
 	python webapp.py work/requests.json $@.new
 	mv $@.new $@
