@@ -125,9 +125,11 @@ class TestTnrsOtResolve(webapp.WebappTestCase):
 
     def all_matched_names(self, x):
         j = x.json()
-        assertTrue(u'resolvedNames' in j)
+        self.assertTrue(u'resolvedNames' in j)
         matches = j[u'resolvedNames']
-        assertTrue(u'resolvedNames' in j)
+        for m in matches:
+            self.assertTrue(u'matched_name' in m)
+            self.assertTrue(u'synonyms' in m)
         return ([m[u'matched_name'] for m in matches] +
                 [synonym for synonym in m[u'synonyms'] for m in matches])
 

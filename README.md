@@ -10,7 +10,7 @@ To run all tests:
 
     make
 
-To run all tests for an individual service:
+To run tests for an individual web service:
 
     export PYTHONPATH=.
     python tests/test_tnrs_ot_resolve.py
@@ -31,6 +31,43 @@ services, requests (i.e. service + parameters), and exchanges (request
 + response).  There are a few additional scripts to scrape the
 examples, obtain the baseline responses for regression testing, and
 create stub test_ files for the services.
+
+## Example
+
+    bash-3.2$ PYTHONPATH=. python tests/test_tnrs_ot_resolve.py 
+    Read 48 requests from work/requests.json
+    Read 48 exchanges from work/exchanges.json
+    ....FTesting big request 1
+    Testing big request 2
+    Testing big request 4
+    Testing big request 8
+    Testing big request 16
+    Testing big request 32
+    Testing big request 64
+    Testing big request 128
+    Testing big request 256
+    Big request status 500 at 256 names
+    {"message": "Error: 'results'"}
+    ...
+    Slowest exchange for http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve: 0.610131978989
+
+    ======================================================================
+    FAIL: test_5 (__main__.TestTnrsOtResolve)
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "tests/test_tnrs_ot_resolve.py", line 141, in test_5
+        self.try_names(names)
+      File "tests/test_tnrs_ot_resolve.py", line 115, in try_names
+        matched_names = self.all_matched_names(x)
+      File "tests/test_tnrs_ot_resolve.py", line 131, in all_matched_names
+        self.assertTrue(u'matched_name' in m)
+    AssertionError: False is not true
+
+    ----------------------------------------------------------------------
+    Ran 8 tests in 6.238s
+
+    FAILED (failures=1)
+    bash-3.2$ 
 
 ## Test suite project specification
 

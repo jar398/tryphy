@@ -277,11 +277,12 @@ class WebappTestCase(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         maxtime = 0
-        for r in self.get_service().requests.values():
+        service = self.get_service()
+        for r in service.requests.values():
             for x in r.exchanges:
                 if x.time > maxtime:
                     maxtime = x.time
-        print >>sys.stderr, '\nSlowest call:', maxtime
+        print >>sys.stderr, '\nSlowest exchange for %s: %s' % (service.url, maxtime)
 
 
 # Write list of requests (read from documentation) to a file
@@ -296,7 +297,7 @@ def read_requests(inpath):
     with open(inpath, 'r') as infile:
         j = json.load(infile)
         answer = [to_request(blob) for blob in j[u'requests']]
-        print >>sys.stderr, 'Read %s requests' % len(requests_registry)
+        print >>sys.stderr, 'Read %s requests from %s' % (len(requests_registry), inpath)
         return answer
 
 # Having read (or parsed) some examples, execute them
@@ -327,13 +328,11 @@ def read_exchanges(inpath):
     exchanges = []
     with open(inpath, 'r') as infile:
         j = json.load(infile)
-        print 'reading exchanges from', inpath
         for blob in j[u'exchanges']:
             x = to_exchange(blob)
             if x != None:
-                print 'exchange:', x.request.label, x.status_code
                 exchanges.append(x)
-    print >>sys.stderr, '%s exchanges' % len(exchanges)
+    print >>sys.stderr, 'Read %s exchanges from %s' % (len(exchanges), inpath)
     return exchanges
 
 # Write exchanges to file (or stdout)
