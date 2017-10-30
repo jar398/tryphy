@@ -280,9 +280,10 @@ class WebappTestCase(unittest.TestCase):
         service = self.get_service()
         for r in service.requests.values():
             for x in r.exchanges:
-                if x.time > maxtime:
+                if x.status_code == 200 and x.time > maxtime:
                     maxtime = x.time
-        print >>sys.stderr, '\nSlowest exchange for %s: %s' % (service.url, maxtime)
+        if maxtime > 0:
+            print >>sys.stderr, '\nSlowest exchange for %s: %s' % (service.url, maxtime)
 
 
 # Write list of requests (read from documentation) to a file
