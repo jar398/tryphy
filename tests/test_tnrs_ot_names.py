@@ -17,14 +17,18 @@ import sys, unittest, json
 sys.path.append('./')
 sys.path.append('../')
 import webapp
+from test_tnrs_ot_resolve import TnrsOtTester
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/names'
 service = webapp.get_service(url)
 
-class TestTnrsOtNames(webapp.WebappTestCase):
+class TestTnrsOtNames(TnrsOtTester):
     @classmethod
-    def get_service(self):
+    def get_service(cls):
         return service
+    @classmethod
+    def http_method(cls):
+        return 'POST'
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
