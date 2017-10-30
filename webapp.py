@@ -1,7 +1,7 @@
 # This utility is specific to the phylotastic web API, not a
 # completely general tool.
 
-import sys, requests, time, unittest, json
+import sys, os, requests, time, unittest, json
 
 # The content-type that we anticipate getting from the web services
 # when the content is json.
@@ -200,9 +200,17 @@ def to_exchange(blob):
 # There should be one of these for each service.
 
 class WebappTestCase(unittest.TestCase):
+    # These methods get overridden in the subclasses!
+    @classmethod
+    def http_method(cls):
+        raise unittest.SkipTest("can't test superclass")
+    @classmethod
+    def get_service(cls):
+        raise unittest.SkipTest("can't test superclass")
+
     # Shortcut
     def get_request(self, method, parameters):
-        return this.get_service().get_request(method, parameters)
+        return this.__class__.get_service().get_request(method, parameters)
 
     # Ensure that the JSON has the form of a successful response.
     # x is an Exchange
@@ -231,7 +239,7 @@ class WebappTestCase(unittest.TestCase):
     # the service-specific 'Test...' classes.
 
     def regression_test_service(self): # unused
-        service = self.get_service()
+        service = self.__class__.get_service()
         #print '\n# Regression testing:', service.url
         for request in service.requests.values():
             start_request_tests(request)
@@ -275,9 +283,10 @@ class WebappTestCase(unittest.TestCase):
             self.assertEqual(now, then)
 
     @classmethod
-    def tearDownClass(self):
+    def tearDownClass(cls):
         maxtime = 0
-        service = self.get_service()
+        service = cls.get_service()
+        if service == None: return
         for r in service.requests.values():
             for x in r.exchanges:
                 if x.status_code == 200 and x.time > maxtime:
@@ -341,6 +350,15 @@ def read_exchanges(inpath):
 def write_exchanges(exchanges, outfile):
     json.dump({'exchanges': [x.to_dict() for x in exchanges]},
               outfile, indent=2, sort_keys=True)
+
+# Find resource file on path
+
+def find_resource(path):
+    for option in sys.path:
+        full = os.path.join(option, path)
+        if os.path.exists(full):
+            return full
+    return None
 
 # Default action from command line is to generate baseline
 # for later regression checks.

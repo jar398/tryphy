@@ -1,7 +1,21 @@
-# STUB
+# 3 (continued). tnrs/ot/names
+
+# This service seems to be the same as tnrs/ot/resolve, but with POST 
+# instead of GET.
+# Maybe we should just run the same tests?
+
+"""
+__Parameters:__  			
+* *Name:* 	 	scientificNames 
+* *Category:*  	mandatory
+* *Data Type:*  list of string
+* *Description:*  list of scientific names to be resolved
+__Citation:__  	 		https://github.com/OpenTreeOfLife/opentree/wiki/Open-Tree-of-Life-APIs#tnrs
+"""
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/names'
