@@ -214,8 +214,8 @@ class WebappTestCase(unittest.TestCase):
 
     # Ensure that the JSON has the form of a successful response.
     # x is an Exchange
-    def assert_success(self, x):
-        self.assert_response_status(x, 200)
+    def assert_success(self, x, message=None):
+        self.assert_response_status(x, 200, message)
         j = x.json()
         self.assertTrue(u'message' in j)
         self.assertEqual(j[u'message'], u'Success')
@@ -229,11 +229,11 @@ class WebappTestCase(unittest.TestCase):
     #   when malformed input is provided --
     #  Expected response time: 3s~10s
 
-    def assert_response_status(self, x, code):
+    def assert_response_status(self, x, code, message=None):
         if x.status_code < 300:
-            self.assertEqual(x.content_type, u'application/json')
+            self.assertEqual(x.content_type, u'application/json', message)
 
-        self.assertEqual(x.status_code, code)
+        self.assertEqual(x.status_code, code, message)
 
     # General method for doing regression tests, inherited by all
     # the service-specific 'Test...' classes.
@@ -336,6 +336,9 @@ def run_examples(requests):
 
 def read_exchanges(inpath):
     exchanges = []
+    if not os.path.exists(inpath):
+        print >>sys.stderr, 'No exhanges file:', inpath
+        return []
     with open(inpath, 'r') as infile:
         j = json.load(infile)
         for blob in j[u'exchanges']:
@@ -358,6 +361,7 @@ def find_resource(path):
         full = os.path.join(option, path)
         if os.path.exists(full):
             return full
+    print >>sys.stderr, 'No such resource:', path
     return None
 
 # Default action from command line is to generate baseline

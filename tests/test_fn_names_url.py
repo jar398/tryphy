@@ -20,7 +20,8 @@ class TestFnNamesUrl(webapp.WebappTestCase):
         request = service.get_request('GET', {})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
-        self.assertTrue(u'url' in x.json()[u'message'])    #informative?
+        self.assertTrue(u'url' in x.json()[u'message'],    #informative?
+                        'no "url" in "%s"' % x.json()[u'message'])
 
     # Non-HTTP URI.
     # This returns a 500 (as of 2017-10-30).  More http-like would be for it 
