@@ -120,3 +120,24 @@ delay (> 15 sec with no feedback or warning of delays)."
 | sc/metadata_scale     | Get metadata for a output chronogram
 
 The port is variously 5004, 5005, 5006, 5009
+
+## Hints
+
+To run tests for just a single service:
+
+    python test_gt_ot_tree.py
+
+or
+
+    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree
+
+(that's bash syntax)
+
+To run a single test:
+
+    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree.test_some_bad
+
+Note that tests are not necessarily run in order, i.e. sometimes a
+test occurring earlier in the python file will be run after one that
+occurs later.
+

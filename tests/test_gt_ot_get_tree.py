@@ -41,23 +41,19 @@ def get_names():
             print len(the_names), 'names'
     return the_names
 
-class TestGtOtGetTree(webapp.WebappTestCase):
-    @classmethod
-    def get_service(self):
-        return service
-
+class GtOtGetTreeTester(webapp.WebappTestCase):
     # No parameters.
     # This returns a 500 (as of 2017-10-30).  More http-like would be for it to give a 400.
     # But the error message is not informative.  TBD: issue.
     def test_no_parameter(self):
-        request = service.get_request('GET', {})
+        request = service.get_request(self.__class__.http_method(), {})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
         self.assertTrue(u'taxa' in x.json()[u'message'],    #informative?
                         'no "taxa" in "%s"' % x.json()[u'message'])
 
     def test_no_names(self):
-        request = service.get_request('GET', {'taxa': ' '})
+        request = service.get_request(self.__class__.http_method(), {'taxa': ' '})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
         # Error: 'taxa' parameter must have a valid value
@@ -65,7 +61,7 @@ class TestGtOtGetTree(webapp.WebappTestCase):
                         'no "taxa" in "%s"' % x.json()[u'message'])
 
     def test_bad_names(self):
-        request = service.get_request('GET', {'taxa': '|'.join(['Unicornx', 'Dragonx', 'Pegasusx'])})
+        request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Unicornx', 'Dragonx', 'Pegasusx'])})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
         # Not enough valid nodes provided to construct a subtree (there must be at least two)
@@ -74,9 +70,9 @@ class TestGtOtGetTree(webapp.WebappTestCase):
 
     # Call should succeed even if some names are unrecognized
     def test_some_bad(self):
-        request = service.get_request('GET', {'taxa': '|'.join(['Pseudacris crucifer', 'Plethodon cinerea', 'Nosuch taxon'])})
+        request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Pseudacris crucifer', 'Plethodon cinereus', 'Nosuch taxon'])})
         x = self.start_request_tests(request)
-        self.assert_success(x)
+        self.assert_success(x, x.json().get(u'message'))
 
     # These all file with:
     # "message": "Error: 'ascii' codec can't encode character u'\\xe1' in position 5529: ordinal not in range(128)"
@@ -89,6 +85,7 @@ class TestGtOtGetTree(webapp.WebappTestCase):
 
     # 256 names works.
 
+    @unittest.skip("temporarily")
     def test_bigger_and_bigger(self):
         names = get_names()
         for i in range(6, 19):
@@ -96,7 +93,7 @@ class TestGtOtGetTree(webapp.WebappTestCase):
             n = 2**i
             param = '|'.join(names[0:n])
             print 'Trying %s names' % n
-            request = service.get_request('GET', {'taxa': param})
+            request = service.get_request(self.__class__.http_method(), {'taxa': param})
             x = self.start_request_tests(request)
             print x.time
             if x.status_code != 200:
@@ -131,6 +128,15 @@ class TestGtOtGetTree(webapp.WebappTestCase):
         m = x.json()[u'tree_metadata']
         self.assertTrue(u'supporting_studies' in m)
         self.assertTrue(len(m[u'supporting_studies']) > 1)
+
+class TestGtOtGetTree(GtOtGetTreeTester):
+    @classmethod
+    def http_method(cls):
+        return 'GET'
+
+    @classmethod
+    def get_service(cls):
+        return service
 
 null=None; false=False; true=True
 

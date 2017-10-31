@@ -40,7 +40,7 @@ class TnrsOtTester(webapp.WebappTestCase):
     # Edge case:
     # Ensure that we get failure if names parameter is unsupplied.
     # The documentation says that the names parameter is 'mandatory'.
-    def test_1(self):
+    def test_no_parameter(self):
         m = self.__class__.http_method()
         service = self.__class__.get_service()
         print 'service =', service.url
