@@ -56,12 +56,12 @@ class Service():
         return self.url.split('phylotastic_ws/')[-1]
 
     def get_examples(self):
-        return [r for r in self.requests if r.examplep]
+        return [r for r in self.requests.values() if r.examplep]
 
     def get_times():
         times = []
-        for r in requests:
-            for x in request.exchanges:
+        for r in requests.values():
+            for x in r.exchanges:
                 times.append(x.time)
         return times
 
@@ -87,7 +87,9 @@ class Request():
             # should we set an accept: header here?
             # in theory, yes.
             # but no, because the documentation never sets one.
-            resp = requests.get(self.service.url, params=self.parameters)
+            resp = requests.get(self.service.url,
+                                params=self.parameters,
+                                headers={'Accept': 'application/json,*/*;q=0.1'})
         elif self.method == 'POST':
             resp = requests.post(self.service.url,
                                  headers={'Content-type': 'application/json',

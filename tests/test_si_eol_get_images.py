@@ -1,7 +1,8 @@
-# STUB
+# 8. si/eol/get_images
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/get_images'
@@ -19,6 +20,7 @@ class TestSiEolGetImages(webapp.WebappTestCase):
 
     def test_example_19(self):
         x = self.start_request_tests(example_19)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True
