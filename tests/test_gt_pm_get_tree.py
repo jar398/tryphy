@@ -31,6 +31,4 @@ example_41 = service.get_request('GET', {u'taxa': u'Helianthus annuus|Passiflora
 example_40 = service.get_request('GET', {u'taxa': u'Panthera leo|Panthera onca|Panthera tigris|Panthera uncia'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

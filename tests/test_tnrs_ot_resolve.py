@@ -1,4 +1,5 @@
 # 3. tnrs/ot/resolve
+# GET
 
 # To skip a test, do this: @unittest.skip("skipping")
 
@@ -31,7 +32,7 @@ import webapp
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
 service = webapp.get_service(url)
 
-class TnrsOtTester(webapp.WebappTestCase):
+class TnrsTester(webapp.WebappTestCase):
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
     # Insert here: error-generating conditions
@@ -43,7 +44,6 @@ class TnrsOtTester(webapp.WebappTestCase):
     def test_no_parameter(self):
         m = self.__class__.http_method()
         service = self.__class__.get_service()
-        print 'service =', service.url
         x = service.get_request(m, None).exchange()
         self.assert_response_status(x, 400)
 
@@ -53,20 +53,7 @@ class TnrsOtTester(webapp.WebappTestCase):
         # How to test for informativeness?  How about just check to see
         # if the name of the missing parameter is present in the error
         # message.
-        self.assertTrue(u'names' in x.text)
-
-    # Edge case: names= is supplied, but there are no names.
-    # In this case, the deployed web service says that there is no names
-    # parameter.  (The difference between missing and supplied 
-    # but null is academic?  Depends on taste.)
-    def test_2(self):
-        m = self.http_method()
-        request = self.__class__.get_service().get_request(m, {'names': ''})
-        x = request.exchange()
-        # 204 = no content (from open tree)
-        # message = "Could not resolve any name"
-        # Changed: now returns 400, not 204.  Better.
-        self.assert_response_status(x, 400)
+        self.assertTrue('ame' in x.json()[u'message'])
 
     # Ensure that the result we get is 'correct' per documentation.
     # The Phylotastic documentation doesn't say anything about what is
@@ -76,56 +63,30 @@ class TnrsOtTester(webapp.WebappTestCase):
     def test_3(self):
         name = u'Pseudacris crucifer'
         m = self.http_method()
-        request = self.__class__.get_service().get_request(m, {'names': name})
+        request = self.__class__.tnrs_request(['Pseudacris crucifer'])
         x = request.exchange()
         self.assert_success(x)
         # Check that Pseudacris crucifer is among the matched names
         matched_names = self.all_matched_names(x)
         self.assertTrue(name in matched_names)
 
-    """
-    {"total_names": 1, 
-     "resolvedNames": [{"match_type": "Exact",
-                        "resolver_name": "OT",
-                        "matched_name": "Pseudacris",
-                        "search_string": "pseudacris",
-                        "synonyms": ["Limnaoedus", "Pseudachris", "Pseudacris"], 
-                        "taxon_id": 173133}],
-     "input_query": ["Pseudacris"],
-     "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-3",
-     "execution_time": "0.38",
-     "status_code": 200, 
-     "message": "Success", 
-     "creation_time": "2017-09-15T14:22:42.613526"}
-    """
-
-
-class TestTnrsOtResolve(TnrsOtTester):
-    @classmethod
-    def get_service(cls):
-        return service
-
-    @classmethod
-    def http_method(cls):
-        return 'GET'
-
     # There's no such thing as 'Setophaga megnolia'
 
     def test_4(self):
-        names = [(u'Setophaga striata', True),
-                 (u'Setophaga megnolia', False),
-                 (u'Setophaga angilae', False),
-                 (u'Setophaga plumbea', True),
-                 (u'Setophaga virens', True)]
-        self.try_names(names)
+        namesx = [(u'Setophaga striata', True),
+                  (u'Setophaga megnolia', False),
+                  (u'Setophaga angilae', False),
+                  (u'Setophaga plumbea', True),
+                  (u'Setophaga virens', True)]
+        self.try_names(namesx)
 
-    def try_names(self, names):
+    def try_names(self, namesx):
         m = self.http_method()
-        request = TestTnrsOtResolve.get_service().get_request(m, {'names': u'|'.join([name for (name, tf) in names])})
+        request = self.__class__.tnrs_request([name for (name, tf) in namesx])
         x = request.exchange()
         self.assert_success(x)
         matched_names = self.all_matched_names(x)
-        for (name, tf) in names:
+        for (name, tf) in namesx:
             outcome = ((name in matched_names) == tf)
             if not outcome:
                 print name, 'not in matched_names'
@@ -155,19 +116,20 @@ class TestTnrsOtResolve(TnrsOtTester):
         return names
 
     def test_5(self):
-        names = [(u'Formica polyctena', True),
-                 (u'Formica exsectoides', True),
-                 (u'Formica pecefica', False)]
-        self.try_names(names)
+        namesx = [(u'Formica polyctena', True),
+                  (u'Formica exsectoides', True),
+                  (u'Formica pecefica', False)]
+        self.try_names(namesx)
 
-    @unittest.skip("temporarily")
+    # 128 succeeds, 256 fails (for GET)
+    @unittest.skip("temporarily to save time")
     def test_big_request(self):
         n = 1
-        names = u'Formica polyctena'
+        names = [u'Formica polyctena']
         m = self.http_method()
         while True:
             print >>sys.stderr, 'Testing big request %s' % n
-            request = TestTnrsOtResolve.get_service().get_request(m, {'names': names})
+            request = self.__class__.tnrs_request(names)
             x = request.exchange()
             if x.status_code != 200:
                 print >>sys.stderr, 'Big request status %s at %s names' % (x.status_code, n)
@@ -175,26 +137,54 @@ class TestTnrsOtResolve(TnrsOtTester):
                 break
             n = n * 2
             if n > 10000000: break
-            names = names + u'|' + names
+            names = names + names
 
-    def try_big_requests(self):
-        n = 1
-        names = u'Formica polyctena'
+    """
+    {"total_names": 1, 
+     "resolvedNames": [{"match_type": "Exact",
+                        "resolver_name": "OT",
+                        "matched_name": "Pseudacris",
+                        "search_string": "pseudacris",
+                        "synonyms": ["Limnaoedus", "Pseudachris", "Pseudacris"], 
+                        "taxon_id": 173133}],
+     "input_query": ["Pseudacris"],
+     "service_url_doc": "https://github.com/phylotastic/phylo_services_docs/blob/master/ServiceDescription/PhyloServicesDescription.md#web-service-3",
+     "execution_time": "0.38",
+     "status_code": 200, 
+     "message": "Success", 
+     "creation_time": "2017-09-15T14:22:42.613526"}
+    """
+
+
+class TestTnrsOtResolve(TnrsTester):
+    @classmethod
+    def get_service(cls):
+        return service
+
+    @classmethod
+    def http_method(cls):
+        return 'GET'
+
+    @classmethod
+    def namelist(cls, x):
+        return x.json()[u'names'].split('|')
+
+    @classmethod
+    def tnrs_request(cls, names):
+        return service.get_request('GET', {'names': u'|'.join(names)})
+
+    # Edge case: names= is supplied, but there are no names.
+    # In this case, the deployed web service says that there is no names
+    # parameter.  (The difference between missing and supplied 
+    # but null is academic?  Depends on taste.)
+    def test_2(self):
         m = self.http_method()
-        request = TestTnrsOtResolve.get_service().get_request(m, {'names': names})
-        while True:
-            print >>sys.stderr, 'Testing big request %s' % n
-            x = request.exchange()
-            if x.status_code != 200:
-                print >>sys.stderr, 'Big request failed at %s names, status %s' % (n, x.status_code)
-                print >>sys.stderr, x.text
-                break
-            n = n * 2
-            # Ten million is plenty, and more might lead to overload
-            if n > 10000000: break
-            names = names + u'|' + names
-
-    # End custom tests
+        request = self.__class__.tnrs_request([])
+        x = request.exchange()
+        # 204 = no content (from open tree)
+        # message = "Could not resolve any name"
+        # Changed: now returns 400, not 204.  Better.
+        self.assert_response_status(x, 400)
 
     def test_example_6(self):
         x = self.start_request_tests(example_6)
@@ -212,6 +202,4 @@ example_6 = service.get_request('GET', {u'names': u'Setophaga striata|Setophaga 
 example_7 = service.get_request('GET', {u'names': u'Formica polyctena|Formica exsectoides|Formica pecefica'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

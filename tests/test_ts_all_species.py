@@ -101,6 +101,4 @@ example_15 = service.get_request('GET', {u'taxon': u'Vulpes'})
 example_16 = service.get_request('GET', {u'taxon': u'Canidae'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

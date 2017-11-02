@@ -31,6 +31,4 @@ example_36 = service.get_request('GET', {u'list': u'3597191|3597209|3597205|6023
 example_37 = service.get_request('GET', {u'list': u'Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens', u'list_type': u'taxa'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

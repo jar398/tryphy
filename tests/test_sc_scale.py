@@ -31,6 +31,4 @@ example_47 = service.get_request('POST', {u'newick': u'(((((Canis lupus pallipes
 example_46 = service.get_request('POST', {u'method': u'sdm', u'newick': u'((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

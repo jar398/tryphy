@@ -31,6 +31,4 @@ example_38 = service.get_request('POST', {u'list': [1094064, 860906, 257323, 698
 example_39 = service.get_request('POST', {u'list': [u'Delphinidae', u'Delphinus capensis', u'Delphinus delphis', u'Tursiops truncatus', u'Tursiops aduncus', u'Sotalia fluviatilis', u'Sousa chinensis'], u'list_type': u'taxa'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

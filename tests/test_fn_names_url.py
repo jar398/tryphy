@@ -99,6 +99,4 @@ example_2 = service.get_request('GET', {u'engine': u'1', u'url': u'https://en.wi
 example_3 = service.get_request('GET', {u'url': u'http://www.fws.gov/westvirginiafieldoffice/PDF/beechridgehcp/Appendix_D_Table_D-1.pdf'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

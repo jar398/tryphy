@@ -73,6 +73,4 @@ example_17 = service.get_request('GET', {u'country': u'Bangladesh', u'taxon': u'
 example_17p = service.get_request('POST', {u'country': u'Bangladesh', u'taxon': u'Panthera'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

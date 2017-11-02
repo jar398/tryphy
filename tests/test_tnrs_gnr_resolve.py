@@ -1,16 +1,30 @@
-# STUB
+# 4. tnrs/gnr/resolve
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
+from test_tnrs_ot_resolve import TnrsTester
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve'
 service = webapp.get_service(url)
 
-class TestTnrsGnrResolve(webapp.WebappTestCase):
+class TestTnrsGnrResolve(TnrsTester):
     @classmethod
     def get_service(self):
         return service
+
+    @classmethod
+    def http_method(cls):
+        return 'GET'
+
+    @classmethod
+    def namelist(cls, x):
+        return x.json()[u'names'].split('|')
+
+    @classmethod
+    def tnrs_request(cls, names):
+        return service.get_request('GET', {'names': u'|'.join(names)})
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
@@ -31,6 +45,4 @@ example_9 = service.get_request('GET', {u'names': u'Setophaga striata|Setophaga 
 example_10 = service.get_request('GET', {u'names': u'Formica polyctena|Formica exsectoides|Formica pecefica'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

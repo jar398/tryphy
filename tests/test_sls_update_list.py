@@ -31,6 +31,4 @@ example_33 = service.get_request('POST', {u'access_token': u'ya29..zQLmLjbyujJjw
 example_34 = service.get_request('POST', {u'access_token': u'ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA', u'user_id': u'hdail.laughinghouse@gmail.com', u'list': {u'is_list_public': True}, u'list_id': 5})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

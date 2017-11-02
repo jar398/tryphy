@@ -26,6 +26,7 @@ class TestSiEolImages(webapp.WebappTestCase):
         # GET method not allowed
         self.assertEqual(x.status_code, 405)
         # TBD: check for informativeness
+        json.dump(x.to_dict(), sys.stdout, indent=2)
 
     def test_no_parameter(self):
         request = service.get_request('POST', {})
@@ -92,6 +93,4 @@ null=None; false=False; true=True
 example_20 = service.get_request('POST', {u'species': [u'Catopuma badia', u'Catopuma temminckii']})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

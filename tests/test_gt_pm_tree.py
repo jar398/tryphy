@@ -31,6 +31,4 @@ example_42 = service.get_request('POST', {u'resolvedNames': [u'Setophaga striata
 example_43 = service.get_request('POST', {u'resolvedNames': [u'Helianthus annuus', u'Passiflora edulis', u'Rosa arkansana', u'Saccharomyces cerevisiae']})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

@@ -366,6 +366,12 @@ def find_resource(path):
     print >>sys.stderr, 'No such resource:', path
     return None
 
+def main():
+    webapp.read_requests('work/requests.json')
+    webapp.read_exchanges('work/exchanges.json')
+    unittest.main()
+
+
 # Default action from command line is to generate baseline
 # for later regression checks.
 

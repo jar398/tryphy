@@ -1,4 +1,4 @@
-# gt/ot/get_tree
+# 5. gt/ot/get_tree
 
 """
 Here's how I made the some-names.txt file (list of sample names):
@@ -149,6 +149,4 @@ example_12 = service.get_request('GET', {u'taxa': u'Crabronidae|Ophiocordyceps|M
 example_13 = service.get_request('GET', {u'taxa': u'Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

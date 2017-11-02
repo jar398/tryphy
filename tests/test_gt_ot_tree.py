@@ -1,4 +1,4 @@
-# gt/ot/tree
+# 5 (continued). gt/ot/tree
 # Like gt/ot/get_tree, but using POST instead of GET
 
 # The (old) example doesn't match the description.  At all.
@@ -45,6 +45,4 @@ example_14a = service.get_request('POST', {"taxa": ["Setophaga striata","Setopha
 example_14 = service.get_request('POST', {u'resolvedNames': [{u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga striata', u'search_string': u'setophaga strieta', u'synonyms': [u'Dendroica striata', u'Setophaga striata'], u'taxon_id': 60236}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga magnolia', u'search_string': u'setophaga magnolia', u'synonyms': [u'Dendroica magnolia', u'Setophaga magnolia'], u'taxon_id': 3597209}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga angelae', u'search_string': u'setophaga angilae', u'synonyms': [u'Dendroica angelae', u'Setophaga angelae'], u'taxon_id': 3597191}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga plumbea', u'search_string': u'setophaga plambea', u'synonyms': [u'Dendroica plumbea', u'Setophaga plumbea'], u'taxon_id': 3597205}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga virens', u'search_string': u'setophaga virens', u'synonyms': [u'Dendroica virens', u'Setophaga virens'], u'taxon_id': 3597195}]})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()

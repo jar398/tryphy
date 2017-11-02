@@ -1,5 +1,6 @@
-# ts/ncbi/genome_species
-# GET or POST (but why would you do POST?)
+# 9. ts/ncbi/genome_species
+# GET (POST also allowed in more recent version??)
+# Get species (in a taxon) that have a genome sequence in NCBI
 
 import sys, unittest, json
 sys.path.append('./')
@@ -13,6 +14,14 @@ class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
     @classmethod
     def get_service(self):
         return service
+
+    def test_no_parameter(self):
+        request = service.get_request('GET', {})
+        x = self.start_request_tests(request)
+        self.assertTrue(x.status_code == 400)
+        m = x.json().get(u'message')
+        # Informative message?
+        self.assertTrue(u'taxon' in m, 'no "taxon" in "%s"' % m)
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
@@ -49,6 +58,4 @@ example_22 = service.get_request('GET', {u'taxon': u'Rodentia'})
 example_22p = service.get_request('GET', {u'taxon': u'Rodentia'})
 
 if __name__ == '__main__':
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
-    unittest.main()
+    webapp.main()
