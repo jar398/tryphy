@@ -1,4 +1,4 @@
-# STUB
+# 16. compare_trees
 
 import sys, unittest, json
 sys.path.append('./')
@@ -13,6 +13,50 @@ class TestCompareTrees(webapp.WebappTestCase):
     def get_service(self):
         return service
 
+    # What if no parameters are supplied?
+    # Fails, because 500 response 'no parameters' instead of 400.
+
+    def test_no_parameters(self):
+        x = self.start_request_tests(service.get_request('POST', None))
+        self.assert_response_status(x, 400)
+        self.assertTrue('tree' in x.json()[u'message'])
+
+    def test_no_parameters_2(self):
+        x = self.start_request_tests(service.get_request('POST', {}))
+        self.assert_response_status(x, 400)
+        self.assertTrue('tree' in x.json()[u'message'])
+
+    # What if only one parameter is supplied?
+    def test_missing_parameter(self):
+        x = self.start_request_tests(service.get_request('POST', {u'tree2_nwk': '((a,b)c)'}))
+        self.assert_response_status(x, 400)
+        self.assertTrue('tree1' in x.json()[u'message'])
+
+    # What if the Newick is bad?
+    # Issue: uninformative 500 error message "global name 'Error' is not defined"
+
+    def test_missing_parameter(self):
+        x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '(a,b)c);',
+                                                                  u'tree2_nwk': '((a,b)c'}))
+        self.assert_response_status(x, 400)
+        # json.dump(x.json(), sys.stdout, indent=2)
+        mess = x.json()[u'message']
+        # Not clear what the message ought to say; be prepared to change the 
+        # following check to match the message that eventually gets chosen.
+        self.assertTrue('yntax' in mess, mess)
+
+    # Does it always say the trees are the same?
+    # Issue: Fails with "global name 'Error' is not defined"
+
+    def test_different(self):
+        x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '((a,b)c);',
+                                                                  u'tree2_nwk': '(a,(b,c);'}))
+        # Insert: whether result is what it should be according to docs
+        self.assert_success(x)
+        json.dump(x.json(), sys.stdout, indent=2)
+        self.assertTrue(x.json()[u'are_same_tree'])
+
+
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
     # Insert here: error-generating conditions
@@ -22,6 +66,8 @@ class TestCompareTrees(webapp.WebappTestCase):
         x = self.start_request_tests(example_35)
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)
+        # json.dump(x.json(), sys.stdout, indent=2)
+        self.assertTrue(x.json()[u'are_same_tree'])
 
 null=None; false=False; true=True
 
