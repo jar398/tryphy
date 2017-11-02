@@ -232,9 +232,10 @@ class WebappTestCase(unittest.TestCase):
     #  Expected response time: 3s~10s
 
     def assert_response_status(self, x, code, message=None):
+        if message == None:
+            message = '%s %s' % (x.status_code, x.json().get(u'message'))
         if x.status_code < 300:
             self.assertEqual(x.content_type, u'application/json', message)
-
         self.assertEqual(x.status_code, code, message)
 
     # General method for doing regression tests, inherited by all
@@ -366,9 +367,26 @@ def find_resource(path):
     print >>sys.stderr, 'No such resource:', path
     return None
 
+# Get value from configuration file
+
+the_configuration = None
+
+def config(param):
+    global the_configuration
+    if the_configuration == None:
+        path = find_resource('config.json')
+        if path == None: return None
+        with open(find_resource('config.json')) as infile:
+            the_configuration = json.load(infile)
+    if not param in the_configuration:
+        print >>sys.stderr, 'No such configuration parameter:', param
+    return the_configuration.get(param)
+
+# Main function for use by test_ files
+
 def main():
-    webapp.read_requests('work/requests.json')
-    webapp.read_exchanges('work/exchanges.json')
+    read_requests('work/requests.json')
+    read_exchanges('work/exchanges.json')
     unittest.main()
 
 

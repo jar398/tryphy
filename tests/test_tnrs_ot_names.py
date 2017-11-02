@@ -60,6 +60,7 @@ class TestTnrsOtNames(TnrsTester):
     def test_example_8(self):
         x = self.start_request_tests(example_8)
         # Insert: whether result is what it should be according to docs
+        self.assert_success(x)
 
 null=None; false=False; true=True
 

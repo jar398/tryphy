@@ -2,7 +2,8 @@
 # STUB
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
 from test_sl_eol_get_links import SlEolGetLinksTester
 
@@ -25,7 +26,7 @@ class TestSlEolLinks(SlEolGetLinksTester):
 
     def test_example_24(self):
         x = self.start_request_tests(example_24)
-        self.assert_success(x, name)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True

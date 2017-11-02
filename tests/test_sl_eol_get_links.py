@@ -1,5 +1,15 @@
 # 10. sl/eol/get_links
 
+# Parameter: list of species
+# Result:
+#   input_species - repeats input (issue: flush this)
+#   message, status_code  as usual
+#   meta_data - not very useful
+#   species - list of blobs about species
+#      eol_id
+#      matched_name  - contains authority
+#      searched_name  - presumably what was provided
+
 import sys, unittest, json
 sys.path.append('./')
 sys.path.append('../')
@@ -9,7 +19,40 @@ url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/get_links'
 service = webapp.get_service(url)
 
 class SlEolGetLinksTester(webapp.WebappTestCase):
-    def foo(self): return None
+    def test_no_parameter(self):
+        m = self.__class__.http_method()
+        service = self.__class__.get_service()
+        x = service.get_request(m, None).exchange()
+        self.assert_response_status(x, 400)
+        # tbd: check for informativeness?
+
+    # What if the supplied parameter has the wrong name?
+
+    def test_bad_parameter(self):
+        m = self.__class__.http_method()
+        service = self.__class__.get_service()
+        x = service.get_request(m, {u'bad_parameter': u'Nosuchtaxonia notatall'}).exchange()
+        self.assert_response_status(x, 400)
+        # tbd: check for informativeness?
+        mess = x.json()[u'message']
+        self.assertTrue(u'species' in mess, mess)
+
+    # What if the species name is unknown?
+
+    def test_bad_species(self):
+        m = self.__class__.http_method()
+        service = self.__class__.get_service()
+        x = service.get_request(m, {u'species': u'Nosuchtaxonia notatall'}).exchange()
+        # json.dump(x.to_dict(), sys.stdout, indent=2)
+        # TBD: Issue: Not documented what happens in this case
+        self.assert_success(x)
+        self.assertEqual(x.json()[u'species'][0][u'matched_name'], '')
+
+    # Insert here: edge case tests
+    # Insert here: inputs out of range, leading to error or long delay
+    # Insert here: error-generating conditions
+    # (See ../README.md)
+
 
 class TestSlEolGetLinks(SlEolGetLinksTester):
     @classmethod
@@ -20,14 +63,9 @@ class TestSlEolGetLinks(SlEolGetLinksTester):
     def http_method(self):
         return 'GET'
 
-    # Insert here: edge case tests
-    # Insert here: inputs out of range, leading to error or long delay
-    # Insert here: error-generating conditions
-    # (See ../README.md)
-
     def test_example_23(self):
         x = self.start_request_tests(example_23)
-        self.assert_success(x, name)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True

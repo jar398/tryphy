@@ -20,3 +20,6 @@ baseline: work/exchanges.json
 work/exchanges.json: work/requests.json webapp.py
 	python webapp.py work/requests.json $@.new
 	mv $@.new $@
+
+tags:
+	etags *.py tests/*.py
