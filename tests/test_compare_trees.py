@@ -14,7 +14,7 @@ class TestCompareTrees(webapp.WebappTestCase):
         return service
 
     # What if no parameters are supplied?
-    # Fails, because 500 response 'no parameters' instead of 400.
+    # Issue: Fails, because 500 response 'no parameters' instead of 400.
 
     def test_no_parameters(self):
         x = self.start_request_tests(service.get_request('POST', None))
@@ -35,7 +35,7 @@ class TestCompareTrees(webapp.WebappTestCase):
     # What if the Newick is bad?
     # Issue: uninformative 500 error message "global name 'Error' is not defined"
 
-    def test_missing_parameter(self):
+    def test_bogus_newick(self):
         x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '(a,b)c);',
                                                                   u'tree2_nwk': '((a,b)c'}))
         self.assert_response_status(x, 400)
@@ -46,16 +46,15 @@ class TestCompareTrees(webapp.WebappTestCase):
         self.assertTrue('yntax' in mess, mess)
 
     # Does it always say the trees are the same?
-    # Issue: Fails with "global name 'Error' is not defined"
 
     def test_different(self):
         x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '((a,b)c);',
-                                                                  u'tree2_nwk': '(a,(b,c);'}))
+                                                                  u'tree2_nwk': '(a,(b,c));'}))
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)
         json.dump(x.json(), sys.stdout, indent=2)
-        self.assertTrue(x.json()[u'are_same_tree'])
-
+        mess = x.json().get(u'message')
+        self.assertFalse(x.json()[u'are_same_tree'], mess)
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay

@@ -66,9 +66,9 @@ class GtTreeTester(webapp.WebappTestCase):
         self.assertTrue(x.status_code >= 400)
         # Expecting "Not enough valid nodes provided to construct a subtree 
         #   (there must be at least two)"
-        # For tests/test_gt_pm_tree, we get
+        # For tests/test_gt_pm_tree, we get tests/test_gt_pt_tree
         # "message": "Error: Missing parameter 'taxa'"
-        # which doesn't make sense.  TBD: issue
+        # which doesn't make sense since we did supply 'taxa'.  TBD: issue
         mess = x.json().get(u'message')
         self.assertTrue(u'least' in mess,    #informative?
                         'no "least" in message: "%s"' % mess)
@@ -80,6 +80,7 @@ class GtTreeTester(webapp.WebappTestCase):
         mess = x.json().get(u'message')
         # json.dump(x.to_dict(), sys.stdout, indent=2)
         # Oddly we get a 400 saying Error: Missing parameter 'taxa'
+        # for same two services (see above)
         # TBD: issue.
         self.assert_success(x, mess)
 

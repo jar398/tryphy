@@ -1,4 +1,4 @@
-# 19. gt/pm/get_tree
+# 18. gt/pm/get_tree
 
 import sys, unittest, json
 sys.path.append('./')
@@ -25,10 +25,12 @@ class TestGtPmGetTree(GtTreeTester):
 
     def test_example_41(self):
         x = self.start_request_tests(example_41)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
     def test_example_40(self):
         x = self.start_request_tests(example_40)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True

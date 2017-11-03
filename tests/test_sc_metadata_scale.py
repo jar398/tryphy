@@ -1,7 +1,8 @@
-# STUB
+# 21. sc/metadata_scale
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
 
 url = 'http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/metadata_scale'
@@ -19,6 +20,8 @@ class TestScMetadataScale(webapp.WebappTestCase):
 
     def test_example_48(self):
         x = self.start_request_tests(example_48)
+        mess = x.json().get(u'message')
+        self.assert_success(x, mess)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True

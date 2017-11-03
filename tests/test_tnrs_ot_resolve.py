@@ -25,8 +25,8 @@ curl -D - "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve?names=Ps
 """
 
 import sys, os, unittest, json
-sys.path.append("./")
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
