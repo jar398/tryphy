@@ -1,16 +1,22 @@
-# STUB
+# 19. gt/pm/get_tree
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp
+from test_gt_ot_get_tree import GtTreeTester
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/get_tree'
 service = webapp.get_service(url)
 
-class TestGtPmGetTree(webapp.WebappTestCase):
+class TestGtPmGetTree(GtTreeTester):
     @classmethod
     def get_service(self):
         return service
+
+    @classmethod
+    def http_method(cls):
+        return 'GET'
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay

@@ -41,7 +41,7 @@ def get_names():
             print len(the_names), 'names'
     return the_names
 
-class GtOtGetTreeTester(webapp.WebappTestCase):
+class GtTreeTester(webapp.WebappTestCase):
     # No parameters.
     # This returns a 500 (as of 2017-10-30).  More http-like would be for it to give a 400.
     # But the error message is not informative.  TBD: issue.
@@ -64,15 +64,24 @@ class GtOtGetTreeTester(webapp.WebappTestCase):
         request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Unicornx', 'Dragonx', 'Pegasusx'])})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
-        # Not enough valid nodes provided to construct a subtree (there must be at least two)
-        self.assertTrue(u'least' in x.json()[u'message'],    #informative?
-                        'no "least" in "%s"' % x.json()[u'message'])
+        # Expecting "Not enough valid nodes provided to construct a subtree 
+        #   (there must be at least two)"
+        # For tests/test_gt_pm_tree, we get
+        # "message": "Error: Missing parameter 'taxa'"
+        # which doesn't make sense.  TBD: issue
+        mess = x.json().get(u'message')
+        self.assertTrue(u'least' in mess,    #informative?
+                        'no "least" in message: "%s"' % mess)
 
     # Call should succeed even if some names are unrecognized
     def test_some_bad(self):
         request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Pseudacris crucifer', 'Plethodon cinereus', 'Nosuch taxon'])})
         x = self.start_request_tests(request)
-        self.assert_success(x, x.json().get(u'message'))
+        mess = x.json().get(u'message')
+        # json.dump(x.to_dict(), sys.stdout, indent=2)
+        # Oddly we get a 400 saying Error: Missing parameter 'taxa'
+        # TBD: issue.
+        self.assert_success(x, mess)
 
     # These all file with:
     # "message": "Error: 'ascii' codec can't encode character u'\\xe1' in position 5529: ordinal not in range(128)"
@@ -129,7 +138,7 @@ class GtOtGetTreeTester(webapp.WebappTestCase):
         self.assertTrue(u'supporting_studies' in m)
         self.assertTrue(len(m[u'supporting_studies']) > 1)
 
-class TestGtOtGetTree(GtOtGetTreeTester):
+class TestGtOtGetTree(GtTreeTester):
     @classmethod
     def http_method(cls):
         return 'GET'

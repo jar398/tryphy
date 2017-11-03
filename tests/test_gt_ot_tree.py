@@ -8,12 +8,12 @@ import sys, unittest, json
 sys.path.append('./')
 sys.path.append('../')
 import webapp
-from test_gt_ot_get_tree import GtOtGetTreeTester
+from test_gt_ot_get_tree import GtTreeTester
 
 url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/tree'
 service = webapp.get_service(url)
 
-class TestGtOtTree(GtOtGetTreeTester):
+class TestGtOtTree(GtTreeTester):
     @classmethod
     def http_method(cls):
         return 'POST'

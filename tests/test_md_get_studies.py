@@ -7,7 +7,11 @@ import webapp
 url = 'http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies'
 service = webapp.get_service(url)
 
-class TestMdGetStudies(webapp.WebappTestCase):
+class MdStudiesTester(webapp.WebappTestCase):
+    def foo(self):
+        return 3
+
+class TestMdGetStudies(MdStudiesTester):
     @classmethod
     def get_service(self):
         return service
