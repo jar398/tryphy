@@ -1,4 +1,6 @@
 # 12. sls/insert_list
+# Add a new list to the phylotastic list repository.
+
 # Oddly, no access_token is required.  Issue?
 
 import sys, unittest, json
@@ -14,10 +16,10 @@ class TestSlsInsertList(webapp.WebappTestCase):
     def get_service(self):
         return service
 
-    # Insert here: edge case tests
-    # Insert here: inputs out of range, leading to error or long delay
-    # Insert here: error-generating conditions
-    # (See ../README.md)
+    @classmethod
+    def setUpClass(cls):
+        print 'setting up insert_list'
+        webapp.WebappTestCase.setUpClass()
 
     # Very strange - this test appears to succeed, even if the access
     # token is expired.  I don't know what behavior is intended.  The
@@ -36,10 +38,23 @@ class TestSlsInsertList(webapp.WebappTestCase):
         if x.status_code == 200:
             id = x.json()[u'list_id']
             lists.temporary_lists.append(id)
-            print 'list id:', id
+            print 'unwanted list id:', id
         # What's the right status code?  Is a list a 'resource'?
-        self.assert_response_status(x, 404, mess)
-        json.dump(x.to_dict(), sys.stderr, indent=2)
+        if x.status_code != 404:
+            self.assert_response_status(x, 400, mess)
+        # Informative message?  'Access token expired' or similar
+        self.assertTrue(u'oken' in mess, mess)
+
+    # Insert here: edge case tests
+    # Insert here: inputs out of range, leading to error or long delay
+    # Insert here: error-generating conditions
+    # (See ../README.md)
+
+    # What if we try to store a public list?  Should work, if our
+    # credentials are OK.
+
+    # Credentials are ignored, id is issued, successful return, but no
+    # list appears in repository.  TBD: issue
 
     def test_example_30(self):
         (user_id, access_token) = self.user_credentials()    # Expires in 1 hour.
@@ -52,10 +67,29 @@ class TestSlsInsertList(webapp.WebappTestCase):
         lists.temporary_lists.append(id)
         print 'list id:', id
 
-    def tearDown(self):
-        print 'cleaning up'
+        # TBD: check to see whether the tree is in the store.
+        getlist = webapp.get_service('http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list')
+        y = getlist.get_request('GET', {u'list_id', id}).exchange
+        self.assert_success(y, y.json().get(u'message'))
+        self.assertTrue(search(u'Anas strepera', y.json()))
+
+    @classmethod
+    def tearDownClass(cls):
+        print 'tearing down insert_list'
         lists.cleanup()
-        webapp.WebappTestCase.tearDown(self)
+        webapp.WebappTestCase.tearDownClass()
+
+def search(x, thing):
+    if isinstance(x, dict):
+        for y in x.values():
+            if search(y, thing):
+                return True
+    elif isinstance(x, list):
+        for y in x:
+            if search(y, thing):
+                return True
+    else:
+        return x == thing
 
 def make_example_30(user_id, access_token):
     j = {u'user_id': user_id,

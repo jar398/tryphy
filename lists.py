@@ -17,9 +17,6 @@ sample_list is not just another temporary_list !
 
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
-service = webapp.get_service(url)
-
 # These variables, which keep track of which lists have been created
 # by tests (insert_list service), are global.  Ideally they should be
 # specific to each test class, but it doesn't matter so long as tests
@@ -39,6 +36,9 @@ def cleanup():
             losers.append(lst)
     temporary_lists = losers
 
+url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
+service = webapp.get_service(url)
+
 def remove_list(lst):
     user_id = webapp.config('user_id')
     access_token = webapp.config('access_token')
@@ -50,5 +50,5 @@ def remove_list(lst):
         print 'removed', lst
         return True
     else:
-        print 'did not remove', lst, x.json()[u'message']
+        print 'Did not remove %s; message = %s' % (lst, x.json()[u'message'])
         return False
