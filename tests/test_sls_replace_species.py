@@ -1,7 +1,8 @@
 # 13. sls/replace_species  - edit a list.
 
 import sys, unittest, json
-sys.path.append("../")
+sys.path.append('./')
+sys.path.append('../')
 import webapp, lists
 
 url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/replace_species'
@@ -16,9 +17,10 @@ class TestSlsReplaceSpecies(webapp.WebappTestCase):
 
     @classmethod
     def setUpClass(cls):
+        webapp.WebappTestCase.setUpClass()
         # TBD: Create a list to operate on.
         list_id = u'2'
-        # lists.temporary_lists.append(...) ?
+        lists.temporary_lists.append(list_id)
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
@@ -27,19 +29,21 @@ class TestSlsReplaceSpecies(webapp.WebappTestCase):
 
     def test_example_31(self):
         (user_id, access_token) = self.user_credentials()
+        list_id = self.__class__.list_id
         example_31 = service.get_request('POST',
                                          {u'access_token': access_token,
-                                          u'user_id': u'user_id',
+                                          u'user_id': user_id,
                                           u'species': [{u'family': u'', u'scientific_name': u'Aix sponsa', u'scientific_name_authorship': u'', u'vernacular_name': u'Wood Duck', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}, {u'family': u'', u'scientific_name': u'Anas strepera', u'scientific_name_authorship': u'', u'vernacular_name': u'Gadwall', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}],
                                           u'list_id': list_id})
         x = self.start_request_tests(example_31)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
     @classmethod
     def tearDownClass(cls):
         print 'cleaning up'
         lists.cleanup()
-        webapp.WebappTestCase.tearDownClass(TestSlsReplaceSpecies)    # ??
+        webapp.WebappTestCase.tearDownClass()    # ??
 
 if __name__ == '__main__':
     webapp.main()

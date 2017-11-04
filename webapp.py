@@ -299,7 +299,7 @@ class WebappTestCase(unittest.TestCase):
 
     def user_credentials(self):
         expires = config('access_token_expires')
-        if expires != None and time.time() < expires:
+        if expires == None or time.time() < expires:
             return (config('user_id'), config('access_token'))
         else:
             raise unittest.SkipTest("access token expired")

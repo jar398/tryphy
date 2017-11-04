@@ -102,8 +102,8 @@ class TestSlsGetList(webapp.WebappTestCase):
         example_29 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id,
                                                  u'verbose': u'true', u'list_id': private_list_id})
         x = self.start_request_tests(example_29)
-        # Insert: whether result is what it should be according to docs
         self.assert_success(x)
+        # Insert: whether result is what it should be according to docs
 
     @classmethod
     def tearDownClass(cls):

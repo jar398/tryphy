@@ -18,8 +18,8 @@ class TestSlsInsertList(webapp.WebappTestCase):
 
     @classmethod
     def setUpClass(cls):
-        print 'setting up insert_list'
         webapp.WebappTestCase.setUpClass()
+        print 'setting up insert_list'
 
     # Very strange - this test appears to succeed, even if the access
     # token is expired.  I don't know what behavior is intended.  The
