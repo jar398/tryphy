@@ -8,7 +8,11 @@ import webapp, lists
 
 url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
 service = webapp.get_service(url)
-http_method = 'GET'
+http_method = 'POST'
+
+# Old doc says method is GET; that's wrong. Issue?
+
+# Works with GET; that's also wrong.  TBD: Issue, definitely.
 
 class TestSlsRemoveList(webapp.WebappTestCase):
     @classmethod
@@ -23,6 +27,26 @@ class TestSlsRemoveList(webapp.WebappTestCase):
         # TBD: Create a list to operate on.
         list_id = u'2'
         lists.temporary_lists.append(list_id)
+
+    # It says 400 "Error: Missing parameter 'user_id'" which is 2x incorrect
+
+    def test_get_should_fail(self):
+        user_id = webapp.config('user_id')
+        list_id = self.__class__.list_id
+        params = {u'user_id': user_id, u'list_id': list_id}
+        x = service.get_request('GET', params).exchange()    #fails, but how?
+        mess = x.json().get(u'message')
+        # This is not a 'safe' HTTP exchange, so cannot use GET to do it
+        # (according to HTTP spec)
+        self.assert_response_status(x, 405, mess)
+
+    # What if we fail to give it any parameters?
+
+    def test_no_parameter(self):
+        x = service.get_request(http_method, None).exchange()
+        self.assert_response_status(x, 400)
+        mess = x.json().get(u'message')
+        self.assertTrue(u'list_id' in mess or u'user_id' in mess, mess)
 
     # What is we give it a bad access token?
     # It says "400 Error: Missing parameter 'list_id'" - which is
