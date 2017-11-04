@@ -1,8 +1,8 @@
-# STUB
+# 13. sls/replace_species  - edit a list.
 
 import sys, unittest, json
 sys.path.append("../")
-import webapp
+import webapp, lists
 
 url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/replace_species'
 service = webapp.get_service(url)
@@ -18,12 +18,18 @@ class TestSlsReplaceSpecies(webapp.WebappTestCase):
     # (See ../README.md)
 
     def test_example_31(self):
+        (user_id, access_token) = self.user_credentials()
+        example_31 = service.get_request('POST',
+                                         {u'access_token': access_token,
+                                          u'user_id': u'user_id',
+                                          u'species': [{u'family': u'', u'scientific_name': u'Aix sponsa', u'scientific_name_authorship': u'', u'vernacular_name': u'Wood Duck', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}, {u'family': u'', u'scientific_name': u'Anas strepera', u'scientific_name_authorship': u'', u'vernacular_name': u'Gadwall', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}], u'list_id': 2})
         x = self.start_request_tests(example_31)
         # Insert: whether result is what it should be according to docs
 
-null=None; false=False; true=True
-
-example_31 = service.get_request('POST', {u'access_token': u'ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA', u'user_id': u'hdail.laughinghouse@gmail.com', u'species': [{u'family': u'', u'scientific_name': u'Aix sponsa', u'scientific_name_authorship': u'', u'vernacular_name': u'Wood Duck', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}, {u'family': u'', u'scientific_name': u'Anas strepera', u'scientific_name_authorship': u'', u'vernacular_name': u'Gadwall', u'phylum': u'', u'nomenclature_code': u'ICZN', u'order': u'Anseriformes'}], u'list_id': 2})
+    def tearDown(self):
+        print 'cleaning up'
+        lists.cleanup()
+        webapp.WebappTestCase.tearDown(self)
 
 if __name__ == '__main__':
     webapp.main()

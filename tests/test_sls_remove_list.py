@@ -1,8 +1,10 @@
-# STUB
+# 14. sls/remove_list
+# Method is GET (but ought to be POST or DELETE)
 
 import sys, unittest, json
-sys.path.append("../")
-import webapp
+sys.path.append('./')
+sys.path.append('../')
+import webapp, lists
 
 url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
 service = webapp.get_service(url)
@@ -18,12 +20,15 @@ class TestSlsRemoveList(webapp.WebappTestCase):
     # (See ../README.md)
 
     def test_example_32(self):
+        (user_id, access_token) = self.user_credentials()
+        example_32 = service.get_request('GET', {u'user_id': user_id, u'access_token': access_token, u'list_id': u'2'})
         x = self.start_request_tests(example_32)
         # Insert: whether result is what it should be according to docs
 
-null=None; false=False; true=True
-
-example_32 = service.get_request('GET', {u'access_token': u'ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA', u'user_id': u'hdail.laughinghouse@gmail.com', u'list_id': u'2'})
+    def tearDown(self):
+        print 'cleaning up'
+        lists.cleanup()
+        webapp.WebappTestCase.tearDown(self)
 
 if __name__ == '__main__':
     webapp.main()

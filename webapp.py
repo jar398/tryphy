@@ -1,7 +1,7 @@
 # This utility is specific to the phylotastic web API, not a
 # completely general tool.
 
-import sys, os, requests, time, unittest, json
+import sys, os, requests, time, unittest, json, time
 
 # The content-type that we anticipate getting from the web services
 # when the content is json.
@@ -296,6 +296,13 @@ class WebappTestCase(unittest.TestCase):
                     maxtime = x.time
         if maxtime > 0:
             print >>sys.stderr, '\nSlowest exchange for %s: %s' % (service.url, maxtime)
+
+    def user_credentials(self):
+        expires = config('access_token_expires')
+        if expires != None and expires < time.time():
+            return (config('user_id'), config('access_token'))
+        else:
+            raise unittest.SkipTest("access token expired")
 
 
 # Write list of requests (read from documentation) to a file

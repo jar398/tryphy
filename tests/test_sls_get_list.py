@@ -19,43 +19,44 @@ class TestSlsGetList(webapp.WebappTestCase):
     # Insert here: error-generating conditions
     # (See ../README.md)
 
-    def test_example_29(self):
-        x = self.start_request_tests(example_29)
-        # Insert: whether result is what it should be according to docs
-        self.assert_success(x)
-
     def test_example_25(self):
+        example_25 = service.get_request('GET', None)
         x = self.start_request_tests(example_25)
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)
 
     def test_example_26(self):
+        example_26 = service.get_request('GET', {u'list_id': u'22'})
         x = self.start_request_tests(example_26)
         # Insert: whether result is what it should be according to docs
-        # Fails; I'm not sure what it's supposed to do.
-        # List ids are 'unique' and 'public'.
-        # Assume that list 22 does not exist (it doesn't exist now, 2017-11-02).
+
+        # Fails with 409 Conflict 'No list found with ID 22'.
+        # That seems an odd status code for this situation. (tbd: issue)
+        # Probably list 22 doesn't exist (it doesn't exist now, 2017-11-02).
         self.assert_response_status(x, 400)
 
-    def test_example_28(self):
-        x = self.start_request_tests(example_28)
-        # Insert: whether result is what it should be according to docs
-        self.assert_success(x)
-
     def test_example_27(self):
+        (user_id, access_token) = self.user_credentials()
+        example_27 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id})
         x = self.start_request_tests(example_27)
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)
 
-user_id = webapp.config(u'user_id')
-access_token = webapp.config(u'access_token')    # Expires in 1 hour.
+    def test_example_28(self):
+        (user_id, access_token) = self.user_credentials()
+        example_28 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id,
+                                                 u'list_id': u'20'})
+        x = self.start_request_tests(example_28)
+        # Insert: whether result is what it should be according to docs
+        self.assert_success(x)
 
-null=None; false=False; true=True
-example_29 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id, u'verbose': u'true', u'list_id': u'20'})
-example_25 = service.get_request('GET', None)
-example_26 = service.get_request('GET', {u'list_id': u'22'})
-example_28 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id, u'list_id': u'20'})
-example_27 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id})
+    def test_example_29(self):
+        (user_id, access_token) = self.user_credentials()
+        example_29 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id,
+                                                 u'verbose': u'true', u'list_id': u'20'})
+        x = self.start_request_tests(example_29)
+        # Insert: whether result is what it should be according to docs
+        self.assert_success(x)
 
 if __name__ == '__main__':
     webapp.main()

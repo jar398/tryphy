@@ -1,10 +1,18 @@
-"""
-Common infrastructure for the list management services:
+"""Common infrastructure for the list management services:
    sls/insert_list
    sls/get_list
    sls/remove_list
 and
    sls/replace_species  (which modifies an existing list)
+
+Use with:
+    lists.sample_list = 23
+    lists.temporary_lists.append(24)
+    lists.cleanup()
+
+but now I don't remember what the difference is, i.e. why the
+sample_list is not just another temporary_list !
+
 """
 
 import webapp
@@ -12,7 +20,12 @@ import webapp
 url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
 service = webapp.get_service(url)
 
-temporary_lists = {68, 69, 70, 71, 72, 73, 74, 75, 76}
+# These variables, which keep track of which lists have been created
+# by tests (insert_list service), are global.  Ideally they should be
+# specific to each test class, but it doesn't matter so long as tests
+# aren't run in parallel.
+
+temporary_lists = []   #68, 69, 70, 71, 72, 73, 74, 75, 76
 sample_list = None
 
 def cleanup():

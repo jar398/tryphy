@@ -85,6 +85,58 @@ involve finding (within a factor of 2) the minimum query complexity
 (e.g., number of taxa) that results in an error or an unacceptable
 delay (> 15 sec with no feedback or warning of delays)."
 
+## How to run the tests
+
+To run all tests:
+
+    python -m unittest discover -s tests
+
+or equivalently (assuming bash)
+
+    for f in tests/test*.py; do python $f; done
+
+To run tests for just a single service (for example, the `gt/ot/tree` service):
+
+    python tests/test_gt_ot_tree.py
+
+or equivalently
+
+    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree
+
+(that's bash syntax: `VAR=value command` means run `command` with environment variable `VAR` set to `value`)
+
+To run a single test:
+
+    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree.test_some_bad
+
+Note that tests are not necessarily run in order, i.e. sometimes a
+test occurring earlier in the python file will be run after one that
+occurs later.
+
+## Running the list service tests
+
+To run the list services tests, you will need a configuration file
+(`config.json`) and a current access token.
+A google (gmail) account is required to get a token.
+If you do not get a token, the tests will be skipped.
+
+Set up the test system configuration as follows:
+
+* `cp config-template.json config.json`
+* `chmod go-rwx config.json`
+* Edit `config.json` so that your google account's email address is in the 
+  obvious place.
+
+Documentation on obtaining an access token is
+[here](https://github.com/phylotastic/phylo_services_docs/blob/master/SpeciesListServer/AccessToken.md).
+
+Once you have the token, install it in configuration file as follows:
+
+    python tokenconfig "... the token ..."
+
+This makes a note of the expiration time for the token, which is
+checked each time the token is used.
+
 ## List of all services as of 17 September 2017
 
 | URL                   |Description
@@ -120,24 +172,4 @@ delay (> 15 sec with no feedback or warning of delays)."
 | sc/metadata_scale     | Get metadata for a output chronogram
 
 The port is variously 5004, 5005, 5006, 5009
-
-## Hints
-
-To run tests for just a single service:
-
-    python test_gt_ot_tree.py
-
-or
-
-    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree
-
-(that's bash syntax)
-
-To run a single test:
-
-    PYTHONPATH=tests python -m unittest test_gt_ot_tree.TestGtOtTree.test_some_bad
-
-Note that tests are not necessarily run in order, i.e. sometimes a
-test occurring earlier in the python file will be run after one that
-occurs later.
 
