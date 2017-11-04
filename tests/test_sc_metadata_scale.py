@@ -1,4 +1,8 @@
 # 21. sc/metadata_scale
+# Parameter: newick
+# Result: metadata_tree_scaling
+#   
+# Issue: "service_documentation" points to old documentation, not new.
 
 import sys, unittest, json
 sys.path.append('./')
@@ -12,6 +16,30 @@ class TestScMetadataScale(webapp.WebappTestCase):
     @classmethod
     def get_service(self):
         return service
+
+    def test_no_parameters(self):
+        x = self.start_request_tests(service.get_request('POST', None))
+        # Yields 500.  TBD: issue
+        # Error: 'NoneType' object has no attribute '__getitem__'
+        mess = x.json().get(u'message')
+        self.assert_response_status(x, 400, mess)
+        self.assertTrue('newick' in mess, mess)
+
+    def test_no_parameters_2(self):
+        x = self.start_request_tests(service.get_request('POST', {}))
+        self.assert_response_status(x, 400)
+        mess = x.json().get(u'message')
+        self.assertTrue('newick' in mess, mess)
+
+    def test_bogus_newick(self):
+        x = self.start_request_tests(service.get_request('POST', {u'newick': '(a,b)c);'}))
+        # Issue: 500 Error: Failed to scale from datelife R package
+        self.assert_response_status(x, 400)
+        # json.dump(x.json(), sys.stdout, indent=2)
+        mess = x.json().get(u'message')
+        # Not clear what the message ought to say; be prepared to change the 
+        # following check to match the message that eventually gets chosen.
+        self.assertTrue('yntax' in mess, mess)
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay

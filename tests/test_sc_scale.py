@@ -19,13 +19,14 @@ class TestScScale(webapp.WebappTestCase):
     def test_no_parameters(self):
         x = self.start_request_tests(service.get_request('POST', None))
         # Yields 500.  TBD: issue
-        self.assert_response_status(x, 400)
-        self.assertTrue('tree' in x.json()[u'message'])
+        mess = x.json().get(u'message')
+        self.assert_response_status(x, 400, mess)
+        self.assertTrue('newick' in mess, mess)
 
     def test_no_parameters_2(self):
         x = self.start_request_tests(service.get_request('POST', {}))
         self.assert_response_status(x, 400)
-        mess = x.json()[u'message']
+        mess = x.json().get(u'message')
         self.assertTrue('newick' in mess, mess)
 
     def test_bogus_newick(self):
@@ -33,7 +34,7 @@ class TestScScale(webapp.WebappTestCase):
         # Issue: 500 Error: Failed to scale from datelife R package
         self.assert_response_status(x, 400)
         # json.dump(x.json(), sys.stdout, indent=2)
-        mess = x.json()[u'message']
+        mess = x.json().get(u'message')
         # Not clear what the message ought to say; be prepared to change the 
         # following check to match the message that eventually gets chosen.
         self.assertTrue('yntax' in mess, mess)
