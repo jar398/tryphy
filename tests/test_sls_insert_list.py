@@ -62,15 +62,16 @@ class TestSlsInsertList(webapp.WebappTestCase):
         x = self.start_request_tests(example_30)
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)
-        json.dump(x.to_dict(), sys.stderr, indent=2)
+        # json.dump(x.to_dict(), sys.stderr, indent=2)
         id = x.json()[u'list_id']
         lists.temporary_lists.append(id)
         print 'list id:', id
 
         # TBD: check to see whether the tree is in the store.
         getlist = webapp.get_service('http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list')
-        y = getlist.get_request('GET', {u'list_id', id}).exchange
+        y = getlist.get_request('GET', {u'list_id': id}).exchange()
         self.assert_success(y, y.json().get(u'message'))
+        json.dump(y.to_dict(), sys.stderr, indent=2)
         self.assertTrue(search(u'Anas strepera', y.json()))
 
     @classmethod
@@ -79,14 +80,16 @@ class TestSlsInsertList(webapp.WebappTestCase):
         lists.cleanup()
         webapp.WebappTestCase.tearDownClass()
 
+# Search for x in thing.  True iff found.
+
 def search(x, thing):
-    if isinstance(x, dict):
-        for y in x.values():
-            if search(y, thing):
+    if isinstance(thing, dict):
+        for y in thing.values():
+            if search(x, y):
                 return True
-    elif isinstance(x, list):
-        for y in x:
-            if search(y, thing):
+    elif isinstance(thing, list):
+        for y in thing:
+            if search(x, y):
                 return True
     else:
         return x == thing

@@ -132,7 +132,7 @@ Documentation on obtaining an access token is
 
 Once you have the token, install it in configuration file as follows:
 
-    python tokenconfig "... the token ..."
+    python tokenconfig.py "... the token ..."
 
 This makes a note of the expiration time for the token, which is
 checked each time the token is used.
