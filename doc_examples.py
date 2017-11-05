@@ -38,7 +38,8 @@ def parse_get_example(line, label, source):
     if len(parts) > 2:
         print >>sys.stderr, '** Doc file not understood: too many parts', line
         return None
-    service = webapp.get_service(parts[0])
+    (group, specific_path) = webapp.parse_service_url(parts[0])
+    service = webapp.get_service(group, specific_path)
     if len(parts) > 1:
         query = parts[1].replace('%20', ' ')
         params = {param[0] : param[1] for param in [x.split('=') for x in query.split('&')]}
@@ -51,7 +52,8 @@ def parse_post_example(line, label, source):
     if m == None:
         print >>sys.stderr, "** Doc file not understood: don't know how to process this line", line
         return None
-    service = webapp.get_service(m.group(1))
+    (group, specific_path) = webapp.parse_service_url(m.group(1)))
+    service = webapp.get_service(group, specific_path)
     params = json.loads(m.group(2))
     return service.get_request('POST', params, label=label, source=source)
 

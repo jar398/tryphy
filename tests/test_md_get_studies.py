@@ -9,8 +9,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies'
-service = webapp.get_service(url)
+service = webapp.get_service(5006, 'md/get_studies')
 
 class MdStudiesTester(webapp.WebappTestCase):
     def foo(self):

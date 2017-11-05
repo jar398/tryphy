@@ -19,8 +19,7 @@ sys.path.append('../')
 import webapp
 from test_tnrs_ot_resolve import TnrsTester
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/names'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'tnrs/ot/names')
 
 class TestTnrsOtNames(TnrsTester):
     @classmethod

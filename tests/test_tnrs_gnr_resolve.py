@@ -6,8 +6,7 @@ sys.path.append('../')
 import webapp
 from test_tnrs_ot_resolve import TnrsTester
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'tnrs/gnr/resolve')
 
 class TestTnrsGnrResolve(TnrsTester):
     @classmethod

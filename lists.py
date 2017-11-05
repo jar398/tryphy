@@ -32,8 +32,7 @@ def cleanup():
             losers.append(lst)
     temporary_lists = losers
 
-url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
-service = webapp.get_service(url)
+service = webapp.get_service(5005, 'sls/remove_list')
 
 def remove_list(lst):
     user_id = webapp.config('user_id')
@@ -71,8 +70,7 @@ sample_list =\
                      {u'family': u'', u'scientific_name': u'Aramus guarauna', u'scientific_name_authorship': u'', u'order': u'Gruiformes', u'vernacular_name': u'Limpkin', u'phylum': u'', u'nomenclature_code': u'ICZN', u'class': u''}]}
 
 def insert_sample_list(public=True):
-    url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/insert_list'
-    service = webapp.get_service(url)
+    service = webapp.get_service(5005, 'sls/insert_list')
     user_id = webapp.config('user_id')
     access_token = webapp.config('access_token')
 

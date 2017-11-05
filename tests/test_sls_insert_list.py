@@ -8,8 +8,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp, lists
 
-url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/insert_list'
-service = webapp.get_service(url)
+service = webapp.get_service(5005, 'sls/insert_list')
 
 class TestSlsInsertList(webapp.WebappTestCase):
     @classmethod
@@ -68,7 +67,7 @@ class TestSlsInsertList(webapp.WebappTestCase):
         print 'list id:', id
 
         # TBD: check to see whether the tree is in the store.
-        getlist = webapp.get_service('http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list')
+        getlist = webapp.get_service(5005, 'sls/get_list')
         y = getlist.get_request('GET', {u'list_id': id}).exchange()
         self.assert_success(y, y.json().get(u'message'))
         json.dump(y.to_dict(), sys.stderr, indent=2)

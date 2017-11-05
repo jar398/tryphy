@@ -8,8 +8,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp, lists
 
-url = 'http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list'
-service = webapp.get_service(url)
+service = webapp.get_service(5005, 'sls/remove_list')
 http_method = 'POST'
 
 # Old doc says method is GET; that's wrong. Issue?

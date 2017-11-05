@@ -13,8 +13,7 @@ sys.path.append('../')
 import webapp
 import si_eol_get_images.SiEolImagesTester
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/images'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'si/eol/images')
 
 class TestSiEolImages(SiEolImagesTester):
     @classmethod

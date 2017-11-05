@@ -6,8 +6,7 @@ sys.path.append('../')
 import webapp
 from test_md_get_studies import MdStudiesTester
 
-url = 'http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/studies'
-service = webapp.get_service(url)
+service = webapp.get_service(5006, 'md/studies')
 
 class TestMdStudies(MdStudiesTester):
     @classmethod

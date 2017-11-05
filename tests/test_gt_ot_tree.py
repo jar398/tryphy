@@ -10,8 +10,7 @@ sys.path.append('../')
 import webapp
 from test_gt_ot_get_tree import GtTreeTester
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/tree'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'gt/ot/tree')
 
 class TestGtOtTree(GtTreeTester):
     @classmethod

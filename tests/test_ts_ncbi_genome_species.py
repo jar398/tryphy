@@ -12,8 +12,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'ts/ncbi/genome_species')
 
 class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
     @classmethod

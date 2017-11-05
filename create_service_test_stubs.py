@@ -10,7 +10,8 @@ sys.path.append("../")
 import webapp
 
 url = '%s'
-service = webapp.get_service(url)
+(group, specific_path) = webapp.parse_service_url(url)
+service = webapp.get_service(group, specific_path)
 
 class %s(webapp.WebappTestCase):
     @classmethod

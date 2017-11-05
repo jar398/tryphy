@@ -29,8 +29,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'tnrs/ot/resolve')
 
 class TnrsTester(webapp.WebappTestCase):
     # Insert here: edge case tests

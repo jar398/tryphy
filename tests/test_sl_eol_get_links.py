@@ -15,8 +15,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/get_links'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'sl/eol/get_links')
 
 class SlEolGetLinksTester(webapp.WebappTestCase):
     def test_no_parameter(self):

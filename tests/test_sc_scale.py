@@ -8,8 +8,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/scale'
-service = webapp.get_service(url)
+service = webapp.get_service(5009, 'sc/scale')
 
 class TestScScale(webapp.WebappTestCase):
     @classmethod

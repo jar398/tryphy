@@ -14,13 +14,18 @@ anticipated_content_type = 'application/json'
 services_registry = {}    # url -> Service
 requests_registry = {}    # label -> Request
 
-def get_service(url):
-    url = str(url)
+def get_service(group, specific_path):
+    url = str('http://phylo.cs.nmsu.edu:%s/phylotastic_ws/%s' % (group, specific_path))
     if url in services_registry:
         return services_registry[url]
     service = Service(url)
     services_registry[url] = service
     return service
+
+def parse_service_url(url):
+    parts = url.split('/phylotastic_ws/')
+    return (parts[0].split(':')[1],
+            parts[1])
 
 def get_request(label):
     return requests_registry.get(str(label))

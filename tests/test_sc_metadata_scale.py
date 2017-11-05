@@ -9,8 +9,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/metadata_scale'
-service = webapp.get_service(url)
+service = webapp.get_service(5009, 'sc/metadata_scale')
 
 class TestScMetadataScale(webapp.WebappTestCase):
     @classmethod

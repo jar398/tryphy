@@ -5,8 +5,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5006/phylotastic_ws/compare_trees'
-service = webapp.get_service(url)
+service = webapp.get_service(5006, 'compare_trees')
 
 class TestCompareTrees(webapp.WebappTestCase):
     @classmethod

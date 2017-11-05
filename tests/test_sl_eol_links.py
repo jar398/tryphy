@@ -7,8 +7,7 @@ sys.path.append('../')
 import webapp
 from test_sl_eol_get_links import SlEolGetLinksTester
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/links'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'sl/eol/links')
 
 class TestSlEolLinks(SlEolGetLinksTester):
     @classmethod

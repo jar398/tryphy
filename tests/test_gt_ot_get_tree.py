@@ -18,8 +18,7 @@ sys.path.append('./')
 sys.path.append('../')
 import webapp
 
-url = 'http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/get_tree'
-service = webapp.get_service(url)
+service = webapp.get_service(5004, 'gt/ot/get_tree')
 
 the_names = None
 
