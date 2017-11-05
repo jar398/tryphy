@@ -16,11 +16,9 @@ class TestSlsUpdateList(webapp.WebappTestCase):
     list_id = None
 
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         webapp.WebappTestCase.setUpClass()
-        # TBD: Create a list to operate on.
-        list_id = u'2'
-        lists.temporary_lists.append(list_id)
+        cls.list_id = lists.insert_sample_list()
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
@@ -48,6 +46,7 @@ class TestSlsUpdateList(webapp.WebappTestCase):
                                           u'user_id': user_id,
                                           u'list': {u'is_list_public': True},
                                           u'list_id': list_id})
+        x = self.start_request_tests(example_34)
         mess = x.json().get(u'message')
         self.assert_success(x, mess)
 

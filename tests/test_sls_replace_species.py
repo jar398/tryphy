@@ -18,9 +18,7 @@ class TestSlsReplaceSpecies(webapp.WebappTestCase):
     @classmethod
     def setUpClass(cls):
         webapp.WebappTestCase.setUpClass()
-        # TBD: Create a list to operate on.
-        list_id = u'2'
-        lists.temporary_lists.append(list_id)
+        cls.list_id = lists.insert_sample_list()
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay
