@@ -26,8 +26,8 @@ class TestSlsGetList(webapp.WebappTestCase):
     def setUpClass(cls):
         # Push list into repository (and remove it afterwards)
 
-        list_id = lists.insert_sample_list()
-        private_list_id = lists.insert_sample_list(public=False)
+        cls.list_id = lists.insert_sample_list()
+        cls.private_list_id = lists.insert_sample_list(public=False)
         webapp.WebappTestCase.setUpClass()
 
     # What if we give it an unknown parameter name?  Should complain.
