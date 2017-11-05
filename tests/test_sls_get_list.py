@@ -24,10 +24,10 @@ class TestSlsGetList(webapp.WebappTestCase):
 
     @classmethod
     def setUpClass(cls):
-        list_id = u'22'
-        private_list_id = u'20'
-        lists.temporary_lists.append(list_id)
-        lists.temporary_lists.append(private_list_id)
+        # Push list into repository (and remove it afterwards)
+
+        list_id = lists.insert_sample_list()
+        private_list_id = lists.insert_sample_list(public=False)
         webapp.WebappTestCase.setUpClass()
 
     # What if we give it an unknown parameter name?  Should complain.
@@ -46,7 +46,7 @@ class TestSlsGetList(webapp.WebappTestCase):
         # To get a specific public list:
         example_26 = service.get_request('GET', {u'list_id': u'9999999'})
         x = self.start_request_tests(example_26)
-        # Fails with 409 Conflict 'No list found with ID 22'.
+        # Fails with 409 Conflict 'No list found with ID 9999999'.
         # That seems an odd status code for this situation. (tbd: issue)
         # 404 might be better (if you can consider a list a 'resource').
         if x.status_code != 404:
@@ -74,11 +74,6 @@ class TestSlsGetList(webapp.WebappTestCase):
         x = self.start_request_tests(example_26)
         self.assert_success(x)
         # Insert: whether result is what it should be according to docs
-
-        # Fails with 409 Conflict 'No list found with ID 22'.
-        # That seems an odd status code for this situation. (tbd: issue)
-        # Probably list 22 doesn't exist (it doesn't exist now, 2017-11-02).
-        self.assert_response_status(x, 400)
 
     def test_example_27(self):
         (user_id, access_token) = self.user_credentials()
