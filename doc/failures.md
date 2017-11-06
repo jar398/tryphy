@@ -1,5 +1,7 @@
 # Transcript of tests run 2017-11-05
 
+Note: commentary always follows what it comments on.
+
     for t in `ls tests/test_*.py`; do PYTHONPATH=tests python $t; done
     Read 48 requests from work/requests.json
     Read 48 exchanges from work/exchanges.json
