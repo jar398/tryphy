@@ -1,8 +1,8 @@
 
 all:
-	for t in tests/test_*.py; do PYTHONPATH=. python $$t; done
+	for t in `ls tests/test_*.py`; do PYTHONPATH=tests python $$t; done
 
-# markdown is here:
+# "Old" documentation markdown is here:
 DESCRIPTION_URL="https://raw.githubusercontent.com/phylotastic/phylo_services_docs/master/ServiceDescription/PhyloServicesDescription.md"
 
 in/PhyloServicesDescription.md:

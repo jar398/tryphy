@@ -107,7 +107,7 @@ class TestSlsGetList(webapp.WebappTestCase):
     @classmethod
     def tearDownClass(cls):
         """Method called by unittest framework.  Deletes lists 
-        created here for testing purposes."
+        created here for testing purposes."""
 
         print 'cleaning up'
         lists.cleanup()

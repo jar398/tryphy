@@ -1,5 +1,8 @@
-# This utility is specific to the phylotastic web API, not a
-# completely general tool.
+"""Classes for web services, HTTP requests, and HTTP exchanges.
+Also a testing superclass for use by all the specific service test classes.
+
+This utility is specific to the phylotastic web API, not a
+completely general tool."""
 
 import sys, os, requests, time, unittest, json, time
 
@@ -15,6 +18,12 @@ services_registry = {}    # url -> Service
 requests_registry = {}    # label -> Request
 
 def get_service(group, specific_path):
+    """Retrieve or create a Service object for a single URL.
+    'group' is actually a port number (5004 etc.).
+    'specific_path' is the part of the path in the URL
+    following the part that is shared by all the services, e.g.
+    'fn/names_url'. """
+
     url = str('http://phylo.cs.nmsu.edu:%s/phylotastic_ws/%s' % (group, specific_path))
     if url in services_registry:
         return services_registry[url]
@@ -23,11 +32,15 @@ def get_service(group, specific_path):
     return service
 
 def parse_service_url(url):
+    """Given a URL, extract the 'group' and 'specific_path'
+    (See the get_service function.)"""
+
     parts = url.split('/phylotastic_ws/')
     return (parts[0].split(':')[1],
             parts[1])
 
 def get_request(label):
+    """Retrieve an existing Request object having the given label."""
     return requests_registry.get(str(label))
 
 class Service():
@@ -70,10 +83,11 @@ class Service():
                 times.append(x.time)
         return times
 
-# Every Service has a set of requests that can be (or have been) made.
-# Typically a Request is a test or example.
-
 class Request():
+    """Every Service has a set of requests that can be (or have been) made.
+    It's useful to keep track of them, e.g. so that we can do timing profiles.
+    Typically a Request is a test or example."""
+
     def __init__(self, service, method, parameters, label, source=None, expect_status=None):
         self.service = service
         self.method = method
@@ -85,8 +99,9 @@ class Request():
         self.expect_status = expect_status
         self.exchanges = []   # ?
         
-    # Perform a single exchange for this request (method, url, query)
     def exchange(self):
+        """Perform a single exchange for this request (method, url, query)"""
+
         time1 = time.time()      # in seconds, floating point
         if self.method == 'GET':
             # should we set an accept: header here?
@@ -129,17 +144,18 @@ def to_request(blob):
             print >>sys.stderr, '** No such request:', label
         return r
     else:
-        service = get_service(blob[u'service'])
+        (group, specific_path) = parse_service_url(blob[u'service'])
+        service = get_service(group, specific_path)
         return service.get_request(method=blob[u'method'],
                                    parameters=blob[u'parameters'],
                                    label=blob[u'label'],
                                    source=blob[u'source'],
                                    expect_status=blob.get(u'expect_status'))
 
-# An Exchange is an activation of a Request yielding either an error
-# or a response (in the 'requests' library sense) and taking up time.
-
 class Exchange():
+    """An Exchange is an activation of a Request yielding either an error
+    or a response (in the 'requests' library sense) and taking up time."""
+
     def __init__(self, request, time=None, response=None,
                  content_type='application/json',     # type *requested*
                  status_code=200, text=None, json=None):
@@ -187,7 +203,8 @@ def to_exchange(blob):
     rd = blob.get(u'request')
     if rd == None:
         # backward compatibility.  delete this code in a bit.
-        service = get_service(blob[u'url'])
+        (group, specific_path) = parse_service_url(blob[u'service'])
+        service = get_service(group, specific_path)
         request = service.get_request(method=blob[u'method'],
                                       parameters=blob[u'data'],
                                       source=blob.get(u'source'))
@@ -201,12 +218,12 @@ def to_exchange(blob):
                     json=blob[u'response'])
 
 
-# Subclass of unittest.TestCase with some additional methods that are
-# useful for testing web services.
-
-# There should be one of these for each service.
-
 class WebappTestCase(unittest.TestCase):
+    """Subclass of unittest.TestCase with some additional methods that are
+    useful for testing web services.
+
+    There should be one subclass of this class for each service."""
+
     # These methods get overridden in the subclasses!
     @classmethod
     def http_method(cls):
@@ -219,9 +236,10 @@ class WebappTestCase(unittest.TestCase):
     def get_request(self, method, parameters):
         return this.__class__.get_service().get_request(method, parameters)
 
-    # Ensure that the JSON has the form of a successful response.
-    # x is an Exchange
     def assert_success(self, x, message=None):
+        """Ensure that the JSON has the form of a successful response.
+        x is an Exchange"""
+
         self.assert_response_status(x, 200, message)
         j = x.json()
         self.assertTrue(u'message' in j)
@@ -243,10 +261,10 @@ class WebappTestCase(unittest.TestCase):
             self.assertEqual(x.content_type, u'application/json', message)
         self.assertEqual(x.status_code, code, message)
 
-    # General method for doing regression tests, inherited by all
-    # the service-specific 'Test...' classes.
-
     def regression_test_service(self): # unused
+        """General method for doing regression tests, inherited by all
+        the service-specific 'Test...' classes."""
+
         service = self.__class__.get_service()
         #print '\n# Regression testing:', service.url
         for request in service.requests.values():
@@ -258,8 +276,8 @@ class WebappTestCase(unittest.TestCase):
             self.check_adequacy(present, request.exchanges[0])
         return present
 
-    # Is the 'now' exchange no worse than the 'then' exchange?
     def check_adequacy(self, now, then):
+        """Is the 'now' exchange no worse than the 'then' exchange?"""
         now_cat = now.status_code / 100
         then_cat = then.status_code / 100
         self.assertTrue(now_cat <= then_cat)
@@ -270,8 +288,8 @@ class WebappTestCase(unittest.TestCase):
             print >>sys.err, ('Better status code now (%s) than before (%s)' %
                               (now.status_code, then.status_code))
 
-    # Is the 'now' result no worse than the 'then' result?
     def check_result(self, now, then):
+        """Recursion: Is the 'now' result no worse than the 'then' result?"""
         if isinstance(then, dict):
             self.assertTrue(isinstance(now, dict))
             for key in then:
@@ -310,24 +328,24 @@ class WebappTestCase(unittest.TestCase):
             raise unittest.SkipTest("access token expired")
 
 
-# Write list of requests (read from documentation) to a file
-
 def write_requests(requests):
+    """Write list of requests (read from documentation) to a file"""
+
     json.dump({'requests': [r.to_dict() for r in requests]},
               sys.stdout, indent=2, sort_keys=True)
 
-# Read them back in
-
 def read_requests(inpath):
+    """Read list of requests back in from file"""
+
     with open(inpath, 'r') as infile:
         j = json.load(infile)
         answer = [to_request(blob) for blob in j[u'requests']]
         print >>sys.stderr, 'Read %s requests from %s' % (len(requests_registry), inpath)
         return answer
 
-# Having read (or parsed) some examples, execute them
-
 def run_examples(requests):
+    """Having read (or parsed) some examples, execute them"""
+
     exchanges = []
     i = 0
     for request in requests:
@@ -345,11 +363,11 @@ def run_examples(requests):
     print >>sys.stderr, i
     return exchanges
 
-# Load exchanges that were previously executed and dumped to a file
-# N.b. creating Exchange also stashes the request,
-# for regression testing or whatever
-
 def read_exchanges(inpath):
+    """Load exchanges that were previously executed and dumped to a file
+    N.b. creating Exchange also stashes the request,
+    for regression testing or whatever"""
+
     exchanges = []
     if not os.path.exists(inpath):
         print >>sys.stderr, 'No exhanges file:', inpath
@@ -363,15 +381,15 @@ def read_exchanges(inpath):
     print >>sys.stderr, 'Read %s exchanges from %s' % (len(exchanges), inpath)
     return exchanges
 
-# Write exchanges to file (or stdout)
-
 def write_exchanges(exchanges, outfile):
+    """Write exchanges to file (or stdout)"""
+
     json.dump({'exchanges': [x.to_dict() for x in exchanges]},
               outfile, indent=2, sort_keys=True)
 
-# Find resource file on path
-
 def find_resource(path):
+    """Find a resource file on sys.path"""
+
     for option in sys.path:
         full = os.path.join(option, path)
         if os.path.exists(full):
@@ -379,11 +397,11 @@ def find_resource(path):
     print >>sys.stderr, 'No such resource:', path
     return None
 
-# Get value from configuration file
-
 the_configuration = None
 
 def config(param):
+    """Get value from configuration file"""
+
     global the_configuration
     if the_configuration == None:
         path = find_resource('config.json')
@@ -394,16 +412,16 @@ def config(param):
         print >>sys.stderr, 'No such configuration parameter:', param
     return the_configuration.get(param)
 
-# Main function for use by test_ files
-
 def main():
+    """Main function for use by test_ files"""
+
     read_requests('work/requests.json')
     read_exchanges('work/exchanges.json')
     unittest.main()
 
 
 # Default action from command line is to generate baseline
-# for later regression checks.
+# exchanges for later regression checks.
 
 if __name__ == '__main__':
     inpath = sys.argv[1]  #'work/requests.json'

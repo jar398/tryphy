@@ -31,7 +31,7 @@ class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
                         'no "taxon" in "%s"' % mess)
 
     def test_bad_parameter_name(self):
-        """What if we give it an unknown parameters name?
+        """What if we give it an unknown parameter name?
         It should complain (400).
         2017-11-05: It doesn't complain.  TBD: issue."""
 

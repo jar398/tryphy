@@ -28,12 +28,12 @@ surprising behavior.
 
 ## Progress so far (2017-11-05)
 
-You can run the tests as directed in [the README file](..README.md).  A number of
+You can run the tests as directed in [the README file](../README.md).  A number of
 tests fail.  I believe that every failure reflects a bug in some
 service.
 
 The testing framework (`unittest`, see
-[here](test-framework-choice.md)) is not designed to produce output
+[here](test-framework-choice.md) for rationale) is not designed to produce output
 that explains failures.  You get a backtrace, giving the test function
 name, source (python) file, and line number, and some kind of message,
 which can be helpful in conjunction and the source file.  But to
@@ -130,7 +130,7 @@ I checked running time as a function of input or output size for four
 of the services:
 
 * `fn/names_url`: 10M input is processed in 4 minutes (time depends on input size, so should be about 600,000 bytes in 15 seconds)
-* `fn/names_text`: accepts inputs up to 30 kbyte (no way to get close to 15 seconds)
+* `fn/names_text`: accepts inputs up to 30 KByte (no way to get close to 15 seconds)
 * `ts/all_species`: 20,000 species returned after 4 minutes (depends not on input, but on number of species below given taxon; so should be about 1250 species in 15 seconds - that seems slow to me)
 * `si/eol/images`: 76 image metadata blobs returned after 18 seconds (number of images depends on taxon)
 
@@ -150,7 +150,7 @@ There are checks for the following error situations:
 * Input too large
 * Wrong HTTP status code (e.g. 500 or 200 instead of 400)
 
-But not all such checks are there for every service.
+But not all such checks are present for every service.
 
 ## Neighboring concerns
 
@@ -183,3 +183,15 @@ required by the project description and has some issues (e.g. does not
 understand lists where the order is immaterial, and does not deal with
 access tokens).
 
+## To be done
+
+All failing tests need to be diagnosed, and the bug in each case
+should be brought to the attention of someone who can do something
+about it.  Details of many of these diagnoses are scattered in the
+test system source code.
+
+Also in the source code are questions about service design and about
+odd behavior from some of the downstream services.
+
+Document the functions in `webapp.py`.  Maybe split that file up into
+several smaller files.
