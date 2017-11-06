@@ -34,38 +34,49 @@ service.
 
 The testing framework (`unittest`, see
 [here](test-framework-choice.md)) is not designed to produce output
-that explains failures.  You get some kind of message, and the
-source file and line number in a backtrace.  To understand what
-happened you have to read the test script code.
+that explains failures.  You get a backtrace, giving the test function
+name, source (python) file, and line number, and some kind of message,
+which can be helpful in conjunction and the source file.  But to
+really understand what happened, you usually have to read the source
+file.
 
 The following sections attempt to compare what the test system does
-against what was specified in the project description.
+now, against what was specified in the project description.
 
-### All examples in the documentation
+### All the examples in the documentation
 
 Yes - the examples were extracted from the (old) documentation and
 added to the test scripts automatically.  In some cases the result is
 partially checked for correctness, but for many services there is only
-a check for a 200 response.
+a check for a 200 response.  Some examples required modification,
+e.g. the `resolvedNames` parameter is now called `taxa`.
 
-### 3 other tests
+### Three additional tests
 
-Yes, with five exceptions (most of which are list methods).
+Yes, except for five of the services.  Most of the neglected services
+are list services, which are more difficult to test since they involve
+server state.
 
-### Tests documented inline using an existing standard?
+### Tests documented inline using an existing standard
 
-Not yet.
+When they are documented, which is often, functions including test
+functions use the Python `"""..."""` documentation convention 
+([PEP 257](https://www.python.org/dev/peps/pep-0257/)).
+
+Work in progress: some functions don't have documentation strings.
 
 ### Use an open-source license?
 
-BSD 2-clause, but there it can be relicensed if necessary.
+BSD 2-clause.  It can easily be relicensed if necessary.
 
 ### Developed in a new or existing github repository associated with the Phylotastic project
 
 No, currently at `http://github.com/jar398/tryphy/` - sorry, I forgot
-about this provision.  Easily moved.  What should the repo be called
-(`tryphy` is silly and uninformative; maybe `service_tests` or
-similar) and how do we cause it to come into being?
+about this requirement.  Easily moved.
+
+What should the repo be called (`tryphy` is silly and uninformative;
+maybe `service_tests` or similar)?  And how do we cause it to come into
+being?
 
 ### (1) Is the API correctly described in the docs?
 
@@ -74,33 +85,44 @@ whether the documentation says anything about the services that's not
 true.  The other is *completeness* - whether it adequately
 describes how the services actually work.
 
-Where the API disagrees with the documentation, this could be due
-either to the API being 'wrong' (not working as intended) or to the
-documentation being 'wrong'.  Agreement between the two is not a high
-bar given how noncommittal the documentation is, so the two rarely
-disagree.
+Agreement between the two is not a high bar given how noncommittal the
+documentation is, so the two rarely disagree, and I would say it's
+largely correct in what it says.
 
-The documentation is certainly incomplete; it says almost nothing
-about what the services do (or are intended to do).  There a brief
-descriptions, one line at best, that give the general idea, and there
-are parameter descriptions saying what the inputs should look like.
-But there is no explanation of the returned result, e.g. what the
-syntax of the response to a `sls/get_list` request is.  (The newer
-documentation provides examples, but examples are often not a good
-substitute for explanatory prose or schematic information about
-syntax.)
+The documentation doesn't answer the question "what does this service
+do" in the kind of detail one would expect from a reference document,
+and it does not explain the syntax or semantics of the result.  (The
+newer documentation provides the output generated for the examples,
+which is helpful but often mystifying.)
+
+With some work, it would be possible to list all the information that
+ought to be added to the documentation.
+
+One particular situation that I wrote tests for was the claim in the
+documentation that an error message will be informative.
+
+It's hard for a program to judge the informativeness of a message, so
+the tests use the presence of a particular keyword as a proxy for
+informativeness.  These tests often fail because the message actually
+is uninformative or wrong, not because I was unlucky and picked the
+wrong keyword.
+
+As these messages are corrected, it may turn out that the corrected
+message does not contain the keyword, and that's OK.  In this
+situation the test will have to be updated.
 
 ### (2) Edge cases
 
 For some, but not all, the tests check what happens when there is one
 unknown taxon, or if all taxa are unknown.
 
-There are no checks involving names with peculiar syntax.  I did
-notice something odd, which is that some services (`si/eol/images`
-maybe?) given a single letter as a name will yield results, even
-though a single letter cannot plausibly be a taxon name.  This may be
-oversealous fuzzy matching.  If a downstream service is doing peculiar
-things, it's not clear what phylotastic can do about it.
+There are no checks involving taxonomic names with peculiar syntax as
+suggested.  I did notice something odd, which is that some services
+(`si/eol/images` maybe?) given a single letter as a name will yield
+results, even though a single letter cannot plausibly be a taxon name.
+This may be oversealous fuzzy matching.  If a downstream service is
+doing peculiar things, it's not clear what the Phylotastic services
+can do about it anyhow.
 
 ### Input range limits
 
@@ -120,7 +142,7 @@ put off further work until later.
 This part of the project consumed most of my attention.
 There are checks for the following error situations:
 
-* HTTP method not documented to work (GET instead of POST, etc.) - should be a 405 error
+* HTTP method not documented to work (`GET` where `POST` is required, etc.) - should be a 405 error
 * No parameters
 * Parameter with invalid name (not appropriate for this service)
 * Invalid argument syntax (e.g. string instead of list, URN instead of URL)
@@ -132,18 +154,8 @@ But not all such checks are there for every service.
 
 ## Neighboring concerns
 
-### Are the error messages informative?
-
-This kind of check was not demanded but I think it is valuable.
-
-I included a number of checks for this, with the presence of a
-particular keyword as a proxy for informativeness.  These tests often
-fail because the message actually is inappropriate, not because I
-picked the wrong keyword.
-
-As these messages are corrected, it may turn out that the corrected
-message does not contain the keyword, and that's OK.  In this
-situation the test will have to be updated.
+Here are some things I worked on that were not strictly part of the
+project description.
 
 ### Is HTTP being used properly?
 
@@ -151,7 +163,7 @@ One of the services (`sls/remove_list`) was described in the
 documentation as accessed with `GET` which would be incorrect
 according to the HTTP protocol.  (`GET` is reserved for
 side-effect-free operations.)  The later documentation amended this to
-`GET` or `POST`.  I added a test that fails if `GET` works with this
+"`GET` or `POST`".  I added a test that fails if `GET` works with this
 service.  You may want to suppress this test if `GET` needs to be
 supported for backward compatiblity purposes.
 

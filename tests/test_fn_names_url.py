@@ -62,7 +62,7 @@ class TestFnNamesUrl(webapp.WebappTestCase):
         This takes 240 seconds (4 minutes) on a 10 Mb input file - but it works."""
 
         # TBD: where should this file be located?  Github?
-        request = service.get_request('GET', {u'url': u'http://mumble.net/~jar/tmp/tenth-psyche.txt'})
+        request = service.get_request('GET', {u'url': u'https://github.com/jar398/tryphy/raw/master/some-names.txt'})
         print >>sys.stderr, '\nBe patient, takes four minutes'
         x = self.start_request_tests(request)
         self.assert_success(x)
