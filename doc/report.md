@@ -20,11 +20,11 @@ involve finding (within a factor of 2) the minimum query complexity
 (e.g., number of taxa) that results in an error or an unacceptable
 delay (> 15 sec with no feedback or warning of delays)."
 
-The documentation was revised after the contract began.  For the most
-part I referred to the old documentation (the documentation that was
-available when work began), and only checked the new documentation
-when necessary for clarification or for help in understanding
-surprising behavior.
+The documentation and the services were both revised after the
+contract began.  For the most part I referred to the old documentation
+(the documentation that was available when work began), and only
+checked the new (revised) documentation when necessary for
+clarification or for help in understanding surprising behavior.
 
 ## Progress so far (2017-11-05)
 
