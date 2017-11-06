@@ -72,19 +72,6 @@ create stub test_ files for the services.
     FAILED (failures=1)
     bash-3.2$ 
 
-## Project requirements
-
-"Tests will probe (1) whether the API is correctly described in the
-docs, (2) what happens with edge cases, input range limits, and
-error-generating conditions such as syntax errors that may be expected
-to arise deliberately or accidentally in normal use. Examples of edge
-cases would be things like querying for a tree with a list of extinct
-species, or querying with a taxon name that has unusual characters or
-extra complexity. Testing for range limits is typically going to
-involve finding (within a factor of 2) the minimum query complexity
-(e.g., number of taxa) that results in an error or an unacceptable
-delay (> 15 sec with no feedback or warning of delays)."
-
 ## How to run the tests
 
 To run all tests:
