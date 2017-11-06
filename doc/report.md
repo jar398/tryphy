@@ -100,8 +100,9 @@ which is helpful but often mystifying.)
 With some work, it would be possible to list all the information that
 ought to be added to the documentation.
 
-One particular situation that I wrote tests for was the claim in the
-documentation that an error message will be informative.
+**Informative messages:** One thing I wrote tests
+for was the claim in the documentation that an error message will be
+informative.
 
 It's hard for a program to judge the informativeness of a message, so
 the tests use the presence of a particular keyword as a proxy for
@@ -112,6 +113,16 @@ wrong keyword.
 As these messages are corrected, it may turn out that the corrected
 message does not contain the keyword, and that's OK.  In this
 situation the test will have to be updated.
+
+**Expected response time:** The documentation makes claims about
+expected round trip time.  To check these claims, the test system
+records the round trip time for each HTTP exchange that includes a 200
+response.  The longest time for each service is displayed during the
+test run.  (Perhaps it should actually report on the range; that would
+not be a difficult improvement.)  It remains to compare the measured
+times to the claimed times.  For most services the measured times are
+small, which could mean either that the service is always fast, or
+that the service is not exercised on challenging inputs.
 
 ### (2) Edge cases
 
