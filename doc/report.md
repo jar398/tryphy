@@ -80,7 +80,7 @@ What should the repo be called (`tryphy` is silly and uninformative;
 maybe `service_tests` or similar)?  And how do we cause it to come into
 being?
 
-### (1) Is the API correctly described in the docs?
+### (1) Is the API correctly described in the documentation?
 
 There are two aspects of this question.  One is *correctness* -
 whether the documentation says anything about the services that's not
@@ -88,17 +88,18 @@ true.  The other is *completeness* - whether it adequately
 describes how the services actually work.
 
 Agreement between the two is not a high bar given how noncommittal the
-documentation is, so the two rarely disagree, and I would say it's
-largely correct in what it says.
+documentation is, so the two rarely disagree, and I would say the
+documentation is largely correct in what it says about the API.
 
-The documentation doesn't answer the question "what does this service
-do" in the kind of detail one would expect from a reference document,
+On the other hand the documentation is in my opinion broadly
+incomplete.  It doesn't answer the question "what does this service
+do" in the way one normally expects from a reference document,
 and it does not explain the syntax or semantics of the result.  (The
 newer documentation provides the output generated for the examples,
-which is helpful but often mystifying.)
+which is helpful but often hard to interpret.)
 
 With some work, it would be possible to list all the information that
-ought to be added to the documentation.
+might be added to the documentation.
 
 **Informative messages:** One thing I wrote tests
 for was the claim in the documentation that an error message will be
@@ -133,7 +134,7 @@ There are no checks involving taxonomic names with peculiar syntax as
 suggested.  I did notice something odd, which is that some services
 (`si/eol/images` maybe?) given a single letter as a name will yield
 results, even though a single letter cannot plausibly be a taxon name.
-This may be oversealous fuzzy matching.  If a downstream service is
+This may be overzealous fuzzy matching.  If a downstream service is
 doing peculiar things, it's not clear what the Phylotastic services
 can do about it anyhow.
 
@@ -156,18 +157,20 @@ This part of the project consumed most of my attention.
 There are checks for the following error situations:
 
 * HTTP method not documented to work (`GET` where `POST` is required, etc.) - should be a 405 error
+* Wrong HTTP status code (e.g. 500 or 200 instead of 400)
+* Wrong media type in response
 * No parameters
 * Parameter with invalid name (not appropriate for this service)
 * Invalid argument syntax (e.g. string instead of list, URN instead of URL)
 * Degenerate argument (e.g. tree too small)
 * Input too large
-* Wrong HTTP status code (e.g. 500 or 200 instead of 400)
+* Response payload should be JSON
 
 But not all such checks are present for every service.
 
 ## Neighboring concerns
 
-Here are some things I worked on that were not strictly part of the
+Here are a few things I worked on that were not strictly part of the
 project description.
 
 ### Is HTTP being used properly?
@@ -198,13 +201,13 @@ access tokens).
 
 ## To be done
 
-All failing tests need to be diagnosed, and the bug in each case
-should be brought to the attention of someone who can do something
-about it.  Details of many of these diagnoses are scattered in the
-test system source code.
+Currently detected failures are listed in [failures.md](failures.md).
+The bug in each case should be brought to the attention of someone who
+can do something about it.  Details of these diagnoses are
+scattered throughout the test system source code.
 
-Also in the source code are questions about service design and about
-odd behavior from some of the downstream services.
+Also in the source code are some questions about service design and
+about odd behavior from some of the downstream services.
 
-Document the functions in `webapp.py`.  Maybe split that file up into
-several smaller files.
+Need to document the classes and functions in `webapp.py` better.
+Maybe split that file up into several smaller files.
