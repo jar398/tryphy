@@ -19,31 +19,33 @@ service = webapp.get_service(5004, 'sl/eol/get_links')
 
 class SlEolGetLinksTester(webapp.WebappTestCase):
     def test_no_parameter(self):
+        """What if no parameters are supplied?  (Hoping for 400.)"""
+
         m = self.__class__.http_method()
         service = self.__class__.get_service()
         x = service.get_request(m, None).exchange()
         self.assert_response_status(x, 400)
-        # tbd: check for informativeness?
-
-    # What if the supplied parameter has the wrong name?
+        # tbd: check for informativeness
 
     def test_bad_parameter(self):
+        """What if the supplied parameter has the wrong name?  (Hoping for 400.)"""
+
         m = self.__class__.http_method()
         service = self.__class__.get_service()
         x = service.get_request(m, {u'bad_parameter': u'Nosuchtaxonia notatall'}).exchange()
         self.assert_response_status(x, 400)
-        # tbd: check for informativeness?
+        # Check for informativeness
         mess = x.json()[u'message']
         self.assertTrue(u'species' in mess, mess)
 
-    # What if the species name is unknown?
-
     def test_bad_species(self):
+        """What if the species name is unknown?"""
+
         m = self.__class__.http_method()
         service = self.__class__.get_service()
         x = service.get_request(m, {u'species': u'Nosuchtaxonia notatall'}).exchange()
         # json.dump(x.to_dict(), sys.stdout, indent=2)
-        # TBD: Issue: Not documented what happens in this case
+        # TBD: Issue: Not documented what happens in this case.
         self.assert_success(x)
         self.assertEqual(x.json()[u'species'][0][u'matched_name'], '')
 

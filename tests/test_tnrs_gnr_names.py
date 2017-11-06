@@ -32,6 +32,7 @@ class TestTnrsGnrNames(webapp.TnrsTester):
 
     def test_example_11(self):
         x = self.start_request_tests(example_11)
+        self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
 null=None; false=False; true=True

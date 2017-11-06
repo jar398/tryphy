@@ -1,5 +1,7 @@
 # 2. fn/names_text
 
+# Parameters: text (required), engine (optional)
+
 import sys, os, unittest, json, codecs
 sys.path.append('./')
 sys.path.append('../')
@@ -12,7 +14,7 @@ the_sample = None
 def get_sample():
     global the_sample
     if the_sample == None:
-        with codecs.open(webapp.find_resource('tenth-psyche.txt'), 'r', 'latin-1') as infile:
+        with codecs.open(webapp.find_resource('text-sample'), 'r', 'latin-1') as infile:
             the_sample = infile.read()
     return the_sample
 
@@ -21,31 +23,34 @@ class TestFnNamesText(webapp.WebappTestCase):
     def get_service(self):
         return service
 
-    # No parameters.  Should be some kind of error.
     def test_no_parameter(self):
+        """No parameters.  Should yield some kind of error."""
+
         request = service.get_request('GET', {})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
         self.assertTrue(u'text' in x.json()[u'message'],
                         'error message from service is not informative: %s' % x.json()[u'message'])
 
-    # Test large input.
-    # 40000 characters fails; 30000 succeeds.
-    # N.b. the input is copied to the output (u'input_text' result field).  
-    # That seems like a bad idea.
-    # TBD: issue.
     def test_large_input(self):
+        """Test large input.
+        40000 characters fails; 30000 succeeds.
+        N.b. the input is copied to the output (u'input_text' result field).  
+        That seems like a bad idea.
+        TBD: design issue."""
+
         request = service.get_request('GET', {u'text': get_sample()[0:30000]})
         x = self.start_request_tests(request)
         self.assert_success(x)
         self.assertTrue(len(x.json()[u'scientificNames']) > 10)
         self.assertTrue(u'Papilio' in x.json()[u'scientificNames'])
 
-    # It looks like engines 6, 7, and 8 are all the same.
-    # 3 and 4 are the same as well.
-    # Maybe inadequate error checking?  In any case, there is *no* documentation
-    # of the engine parameter (in the old documentation).  TBD: issue.
     def test_engines(self):
+        """It looks like engines 6, 7, and 8 are all the same.
+        3 and 4 are the same as well.
+        Maybe inadequate error checking?  In any case, there is *no* documentation
+        of the engine parameter (in the old documentation).  TBD: issue."""
+
         for engine in range(0, 8):
             request = service.get_request('GET', {u'engine': engine, u'text': get_sample()[0:30000]})
             x = self.start_request_tests(request)
@@ -53,8 +58,6 @@ class TestFnNamesText(webapp.WebappTestCase):
             self.assert_success(x)
             self.assertTrue(len(x.json()[u'scientificNames']) > 10)
             self.assertTrue(u'Scolopendrella' in x.json()[u'scientificNames'])
-
-    # parameters: text (required), engine (optional)
 
     # Insert here: edge case tests
     # Insert here: inputs out of range, leading to error or long delay

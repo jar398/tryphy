@@ -1,6 +1,9 @@
 # 5 (continued). gt/ot/tree
 # Like gt/ot/get_tree, but using POST instead of GET
 
+# Old documentation says parameter name is 'resolvedNames' but new
+# documentation says parameter name is 'taxa'.
+
 # The (old) example doesn't match the description.  At all.
 # Look at new documentation.
 
@@ -33,6 +36,14 @@ class TestGtOtTree(GtTreeTester):
         self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
+    def test_example_14(self):
+        x = self.start_request_tests(example_14)
+        if x.status_code != 200:
+            json.dump(x.to_dict(), sys.stdout, indent=2)
+        self.assert_success(x)
+        # Insert: whether result is what it should be according to docs
+
+
 null=None; false=False; true=True
 
 # This example is from mid-October, and is better
@@ -41,7 +52,7 @@ example_14a = service.get_request('POST', {"taxa": ["Setophaga striata","Setopha
 
 # This example is from September, and is wrong
 
-example_14 = service.get_request('POST', {u'resolvedNames': [{u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga striata', u'search_string': u'setophaga strieta', u'synonyms': [u'Dendroica striata', u'Setophaga striata'], u'taxon_id': 60236}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga magnolia', u'search_string': u'setophaga magnolia', u'synonyms': [u'Dendroica magnolia', u'Setophaga magnolia'], u'taxon_id': 3597209}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga angelae', u'search_string': u'setophaga angilae', u'synonyms': [u'Dendroica angelae', u'Setophaga angelae'], u'taxon_id': 3597191}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga plumbea', u'search_string': u'setophaga plambea', u'synonyms': [u'Dendroica plumbea', u'Setophaga plumbea'], u'taxon_id': 3597205}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga virens', u'search_string': u'setophaga virens', u'synonyms': [u'Dendroica virens', u'Setophaga virens'], u'taxon_id': 3597195}]})
+example_14 = service.get_request('POST', {u'taxa': [{u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga striata', u'search_string': u'setophaga strieta', u'synonyms': [u'Dendroica striata', u'Setophaga striata'], u'taxon_id': 60236}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga magnolia', u'search_string': u'setophaga magnolia', u'synonyms': [u'Dendroica magnolia', u'Setophaga magnolia'], u'taxon_id': 3597209}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga angelae', u'search_string': u'setophaga angilae', u'synonyms': [u'Dendroica angelae', u'Setophaga angelae'], u'taxon_id': 3597191}, {u'match_type': u'Exact', u'resolver_name': u'OT', u'matched_name': u'Setophaga plumbea', u'search_string': u'setophaga plambea', u'synonyms': [u'Dendroica plumbea', u'Setophaga plumbea'], u'taxon_id': 3597205}, {u'match_type': u'Fuzzy', u'resolver_name': u'OT', u'matched_name': u'Setophaga virens', u'search_string': u'setophaga virens', u'synonyms': [u'Dendroica virens', u'Setophaga virens'], u'taxon_id': 3597195}]})
 
 if __name__ == '__main__':
     webapp.main()

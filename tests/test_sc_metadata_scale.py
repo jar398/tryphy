@@ -17,6 +17,8 @@ class TestScMetadataScale(webapp.WebappTestCase):
         return service
 
     def test_no_parameters(self):
+        """What if there are no parameters?  Hope for 400."""
+
         x = self.start_request_tests(service.get_request('POST', None))
         # Yields 500.  TBD: issue
         # Error: 'NoneType' object has no attribute '__getitem__'

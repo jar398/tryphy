@@ -1,5 +1,8 @@
 # 18 continued. gt/pm/tree
 
+# New documentation says parameter name is 'taxa'.
+# Examples in old documentation are wrong, fixed below.
+
 import sys, unittest, json
 sys.path.append('./')
 sys.path.append('../')
@@ -34,8 +37,8 @@ class TestGtPmTree(GtTreeTester):
 
 null=None; false=False; true=True
 
-example_42 = service.get_request('POST', {u'resolvedNames': [u'Setophaga striata', u'Setophaga magnolia', u'Setophaga angelae', u'Setophaga plumbea', u'Setophaga virens']})
-example_43 = service.get_request('POST', {u'resolvedNames': [u'Helianthus annuus', u'Passiflora edulis', u'Rosa arkansana', u'Saccharomyces cerevisiae']})
+example_42 = service.get_request('POST', {u'taxa': [u'Setophaga striata', u'Setophaga magnolia', u'Setophaga angelae', u'Setophaga plumbea', u'Setophaga virens']})
+example_43 = service.get_request('POST', {u'taxa': [u'Helianthus annuus', u'Passiflora edulis', u'Rosa arkansana', u'Saccharomyces cerevisiae']})
 
 if __name__ == '__main__':
     webapp.main()

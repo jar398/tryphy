@@ -37,10 +37,11 @@ class TnrsTester(webapp.WebappTestCase):
     # Insert here: error-generating conditions
     # (See ../README.md)
 
-    # Edge case:
-    # Ensure that we get failure if names parameter is unsupplied.
-    # The documentation says that the names parameter is 'mandatory'.
     def test_no_parameter(self):
+        """Edge case:
+        Ensure that we get failure if names parameter is unsupplied.
+        The documentation says that the names parameter is 'mandatory'."""
+
         m = self.__class__.http_method()
         service = self.__class__.get_service()
         x = service.get_request(m, None).exchange()
@@ -54,12 +55,13 @@ class TnrsTester(webapp.WebappTestCase):
         # message.
         self.assertTrue('ame' in x.json()[u'message'])
 
-    # Ensure that the result we get is 'correct' per documentation.
-    # The Phylotastic documentation doesn't say anything about what is
-    # returned; it simply links to the Open Tree documentation.
-    # Maybe you're supposed to reverse engineer based on what the service
-    # does?
     def test_3(self):
+        """Ensure that the result we get is 'correct' per documentation.
+        The Phylotastic documentation doesn't say anything about what is
+        returned; it simply links to the Open Tree documentation.
+        Maybe you're supposed to reverse engineer based on what the service
+        does?"""
+
         name = u'Pseudacris crucifer'
         m = self.http_method()
         request = self.__class__.tnrs_request(['Pseudacris crucifer'])
@@ -69,9 +71,10 @@ class TnrsTester(webapp.WebappTestCase):
         matched_names = self.all_matched_names(x)
         self.assertTrue(name in matched_names)
 
-    # There's no such thing as 'Setophaga megnolia'
-
     def test_4(self):
+        """What if one of the names is misspelled?
+        There's no such thing as 'Setophaga megnolia'."""
+
         namesx = [(u'Setophaga striata', True),
                   (u'Setophaga megnolia', False),
                   (u'Setophaga angilae', False),
@@ -93,9 +96,9 @@ class TnrsTester(webapp.WebappTestCase):
                 json.dump(x.json(), sys.stdout, indent=2)
             self.assertTrue(outcome)
 
-    # Utility for some of the tests; weak test of correct returned value
-
     def all_matched_names(self, x):
+        """Utility for some of the tests; weak test of correct returned value"""
+
         j = x.json()
         self.assertTrue(u'resolvedNames' in j)
         matches = j[u'resolvedNames']
@@ -120,9 +123,11 @@ class TnrsTester(webapp.WebappTestCase):
                   (u'Formica pecefica', False)]
         self.try_names(namesx)
 
-    # 128 succeeds, 256 fails (for GET)
     @unittest.skip("temporarily to save time")
     def test_big_request(self):
+        """Try a request with many copies of the same name.
+        128 copies succeeds, 256 fails (assuming GET - POST might be 
+        more capacious)."""
         n = 1
         names = [u'Formica polyctena']
         m = self.http_method()
@@ -172,11 +177,12 @@ class TestTnrsOtResolve(TnrsTester):
     def tnrs_request(cls, names):
         return service.get_request('GET', {'names': u'|'.join(names)})
 
-    # Edge case: names= is supplied, but there are no names.
-    # In this case, the deployed web service says that there is no names
-    # parameter.  (The difference between missing and supplied 
-    # but null is academic?  Depends on taste.)
     def test_2(self):
+        """Edge case: names= is supplied, but there are no names.
+        In this case, the deployed web service says that there is no names
+        parameter.  (The difference between missing and supplied 
+        but null is academic?  Depends on taste.)"""
+
         m = self.http_method()
         request = self.__class__.tnrs_request([])
         x = request.exchange()

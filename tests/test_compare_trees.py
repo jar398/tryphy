@@ -12,10 +12,10 @@ class TestCompareTrees(webapp.WebappTestCase):
     def get_service(self):
         return service
 
-    # What if no parameters are supplied?
-    # Issue: Fails, because 500 response 'no parameters' instead of 400.
-
     def test_no_parameters(self):
+        """What if no parameters are supplied?
+        Fails, because 500 response 'no parameters' instead of 400.  Issue."""
+
         x = self.start_request_tests(service.get_request('POST', None))
         self.assert_response_status(x, 400)
         self.assertTrue('tree' in x.json()[u'message'])
@@ -25,16 +25,16 @@ class TestCompareTrees(webapp.WebappTestCase):
         self.assert_response_status(x, 400)
         self.assertTrue('tree' in x.json()[u'message'])
 
-    # What if only one parameter is supplied?
     def test_missing_parameter(self):
+        # What if only one parameter is supplied?
         x = self.start_request_tests(service.get_request('POST', {u'tree2_nwk': '((a,b)c)'}))
         self.assert_response_status(x, 400)
         self.assertTrue('tree1' in x.json()[u'message'])
 
-    # What if the Newick is bad?
-    # Issue: uninformative 500 error message "global name 'Error' is not defined"
-
     def test_bogus_newick(self):
+        """What if the Newick is bad?
+        Issue: uninformative 500 error message "global name 'Error' is not defined" """
+
         x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '(a,b)c);',
                                                                   u'tree2_nwk': '((a,b)c'}))
         self.assert_response_status(x, 400)
@@ -44,9 +44,9 @@ class TestCompareTrees(webapp.WebappTestCase):
         # following check to match the message that eventually gets chosen.
         self.assertTrue('yntax' in mess, mess)
 
-    # Does it always say the trees are the same?
-
     def test_different(self):
+        """Does it always say the trees are the same? (It shouldn't.) """
+
         x = self.start_request_tests(service.get_request('POST', {u'tree1_nwk': '((a,b)c);',
                                                                   u'tree2_nwk': '(a,(b,c));'}))
         # Insert: whether result is what it should be according to docs
@@ -61,6 +61,8 @@ class TestCompareTrees(webapp.WebappTestCase):
     # (See ../README.md)
 
     def test_example_35(self):
+        """Example service call from the documentation."""
+
         x = self.start_request_tests(example_35)
         # Insert: whether result is what it should be according to docs
         self.assert_success(x)

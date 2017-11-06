@@ -31,9 +31,12 @@ class TestTsCountrySpecies(webapp.WebappTestCase):
         self.assertTrue(u'axon' in m,    #informative?
                         'no "taxon" in "%s"' % m)
 
-    # This one just hangs.  TBD: issue
     @unittest.skip("hangs")
     def test_bad_country(self):
+        """See what happens if the country is likely to be unknown.
+        2017-11-05 This test just hangs, so skipping for now.
+        TBD: issue"""
+
         request = service.get_request('GET', {u'taxon': u'Hylidae', u'country': u'Sovietunion'})
         x = self.start_request_tests(request)
         m = x.json().get(u'message')
@@ -57,9 +60,11 @@ class TestTsCountrySpecies(webapp.WebappTestCase):
         self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
-    # This complains about the 'taxon' parameter being missing.  But it's not missing.
-    # Error: Missing parameter 'taxon'.  TBD: issue
     def test_example_17p(self):
+        """2017-11-05 This test complains about the 'taxon' parameter being 
+        missing.  But it's not missing.
+        Error: Missing parameter 'taxon'.  TBD: issue"""
+
         x = self.start_request_tests(example_17p)
         m = x.json()[u'message']
         self.assert_success(x, m)

@@ -27,10 +27,11 @@ class TestSlsRemoveList(webapp.WebappTestCase):
         webapp.WebappTestCase.setUpClass()
         cls.list_id = lists.insert_sample_list()
 
-    # It says 400 "Error: Missing parameter 'user_id'" which is 2x incorrect
-    #  or Error: Missing parameter 'access_token' (if access token works)
-
     def test_get_should_fail(self):
+        """As of 2017-11-05, we get either 400
+        "Error: Missing parameter 'user_id'" which is incorrect in two ways,
+        or Error: Missing parameter 'access_token' (if access token works)"""
+
         user_id = webapp.config('user_id')
         list_id = self.__class__.list_id
         params = {u'user_id': user_id, u'list_id': list_id}
@@ -40,20 +41,20 @@ class TestSlsRemoveList(webapp.WebappTestCase):
         # (according to HTTP spec).
         self.assert_response_status(x, 405, mess)
 
-    # What if we fail to give it any parameters?
-
     def test_no_parameter(self):
+        """ What if we fail to give it any parameters?"""
+
         x = service.get_request(http_method, None).exchange()
         self.assert_response_status(x, 400)
         mess = x.json().get(u'message')
         self.assertTrue(u'list_id' in mess or u'user_id' in mess, mess)
 
-    # What is we give it a bad access token?
-    # It says "400 Error: Missing parameter 'list_id'" - which is
-    # wrong in two ways.
-    # tbd: issue
-
     def test_bad_token(self):
+        """What is we give it a bad access token?
+        It says "400 Error: Missing parameter 'list_id'" - which is
+        WRONG In two ways.
+        tbd: issue"""
+
         user_id = webapp.config('user_id')
         list_id = self.__class__.list_id
         example_32 = service.get_request(http_method,
@@ -75,10 +76,11 @@ class TestSlsRemoveList(webapp.WebappTestCase):
     # Insert here: error-generating conditions
     # (See ../README.md)
 
-    # I'm getting "Error: Missing parameter 'user_id'"
-    # which isn't right since I'm supplying it... issue
-
     def test_example_32(self):
+        """I'm getting "Error: Missing parameter 'user_id'"
+        which isn't right since I'm supplying it...
+        Issue"""
+
         (user_id, access_token) = self.user_credentials()
         list_id = self.__class__.list_id
         example_32 = service.get_request(http_method,

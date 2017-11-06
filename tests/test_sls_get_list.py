@@ -28,19 +28,19 @@ class TestSlsGetList(webapp.WebappTestCase):
         cls.list_id = lists.insert_sample_list()
         cls.private_list_id = lists.insert_sample_list(public=False)
 
-    # What if we give it an unknown parameter name?  Should complain.
-    # TBD: Issue: we get a 200.
-
     def test_invalid_parameter(self):
+        """What if we give it an unknown parameter name?  Should complain.
+        TBD: Issue: we get a 200."""
+
         # To get all the public lists available:
         req = service.get_request('GET', {u'last_id': u'2'})
         x = self.start_request_tests(req)
         self.assert_response_status(x, 400)
         # TBD: check for informativeness.
 
-    # What if we ask for a list that doesn't exist?
-
     def test_no_such_list(self):
+        """What if we ask for a list that doesn't exist?"""
+
         # To get a specific public list:
         example_26 = service.get_request('GET', {u'list_id': u'9999999'})
         x = self.start_request_tests(example_26)
@@ -62,10 +62,10 @@ class TestSlsGetList(webapp.WebappTestCase):
         self.assert_success(x)
         # Insert: whether result is what it should be according to docs
 
-    # What if we ask for a list that DOES exist?  Should work.
-    # (List should be created in the unittest setup method.)
-
     def test_example_26(self):
+        """What if we ask for a list that DOES exist?  Should work.
+        (List should be created in the unittest setup method.)"""
+
         # To get a specific public list:
         list_id = self.__class__.list_id
         example_26 = service.get_request('GET', {u'list_id': list_id})
@@ -74,22 +74,28 @@ class TestSlsGetList(webapp.WebappTestCase):
         # Insert: whether result is what it should be according to docs
 
     def test_example_27(self):
+        """Attempt to get list of all public lists."""
+
         (user_id, access_token) = self.user_credentials()
         example_27 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id})
         x = self.start_request_tests(example_27)
-        # Insert: whether result is what it should be according to docs
         self.assert_success(x)
+        # Insert: whether result is what it should be according to docs
 
     def test_example_28(self):
+        """Attempt to retrieve a private list."""
+
         (user_id, access_token) = self.user_credentials()
         private_list_id = self.__class__.private_list_id
         example_28 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id,
                                                  u'list_id': private_list_id})
         x = self.start_request_tests(example_28)
-        # Insert: whether result is what it should be according to docs
         self.assert_success(x)
+        # Insert: whether result is what it should be according to docs
 
     def test_example_29(self):
+        """Attempt to retrieve a private list, with verbose output."""
+
         (user_id, access_token) = self.user_credentials()
         private_list_id = self.__class__.private_list_id
         example_29 = service.get_request('GET', {u'access_token': access_token, u'user_id': user_id,
@@ -100,6 +106,9 @@ class TestSlsGetList(webapp.WebappTestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """Method called by unittest framework.  Deletes lists 
+        created here for testing purposes."
+
         print 'cleaning up'
         lists.cleanup()
         webapp.WebappTestCase.tearDownClass()

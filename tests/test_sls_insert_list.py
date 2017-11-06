@@ -20,15 +20,15 @@ class TestSlsInsertList(webapp.WebappTestCase):
         webapp.WebappTestCase.setUpClass()
         print 'setting up insert_list'
 
-    # Very strange - this test appears to succeed, even if the access
-    # token is expired.  I don't know what behavior is intended.  The
-    # new documentation says nothing about what happens in this situation.
-
-    # Hypothesis: you get a fresh list id, but the list is not
-    # actually stored on the server.  (Evidence: I don't see the list
-    # in the web UI.)
-
     def test_example_no_access(self):
+        """Very strange - this test appears to succeed, even if the access
+        token is expired.  I don't know what behavior is intended.  The
+        new documentation says nothing about what happens in this situation.
+
+        Hypothesis: you get a fresh list id, but the list is not
+        actually stored on the server.  (Evidence: I don't see the list
+        in the web UI.)"""
+
         user_id = webapp.config('user_id')
         access_token = None
         example_30 = make_example_30(user_id, None)
@@ -49,13 +49,14 @@ class TestSlsInsertList(webapp.WebappTestCase):
     # Insert here: error-generating conditions
     # (See ../README.md)
 
-    # What if we try to store a public list?  Should work, if our
-    # credentials are OK.
-
-    # Credentials are ignored, id is issued, successful return, but no
-    # list appears in repository.  TBD: issue
-
     def test_example_30(self):
+        """What if we try to store a public list?  Should work, if our
+        credentials are OK.
+
+        2017-11-05 behavior: Credentials are ignored, id is issued,
+        successful return, but no list appears in repository.
+        TBD: issue"""
+
         (user_id, access_token) = self.user_credentials()    # Expires in 1 hour.
         example_30 = make_example_30(user_id, access_token)
         x = self.start_request_tests(example_30)
@@ -79,9 +80,10 @@ class TestSlsInsertList(webapp.WebappTestCase):
         lists.cleanup()
         webapp.WebappTestCase.tearDownClass()
 
-# Search for x in thing.  True iff found.
-
 def search(x, thing):
+    """Search for x in thing.  True iff found.  Utility used only
+    for tests in this file."""
+
     if isinstance(thing, dict):
         for y in thing.values():
             if search(x, y):

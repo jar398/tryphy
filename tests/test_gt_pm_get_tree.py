@@ -11,10 +11,14 @@ service = webapp.get_service(5004, 'gt/pm/get_tree')
 class TestGtPmGetTree(GtTreeTester):
     @classmethod
     def get_service(self):
+        """Class method so that the superclass can tell which service we're testing."""
+
         return service
 
     @classmethod
     def http_method(cls):
+        """Class method so that the superclass can tell which HTTP method should be used."""
+
         return 'GET'
 
     # Insert here: edge case tests

@@ -20,6 +20,8 @@ class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
         return service
 
     def test_no_parameter(self):
+        """What is we give the service no parameters?  Hoping for 400."""
+
         request = service.get_request('GET', {})
         x = self.start_request_tests(request)
         mess = x.json().get(u'message')
@@ -28,10 +30,11 @@ class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
         self.assertTrue(u'taxon' in mess,
                         'no "taxon" in "%s"' % mess)
 
-    # What if we give it an unknown parameters name?
-    # - should complain but doesn't.  TBD: issue.
-
     def test_bad_parameter_name(self):
+        """What if we give it an unknown parameters name?
+        It should complain (400).
+        2017-11-05: It doesn't complain.  TBD: issue."""
+
         request = service.get_request('GET', {u'taxon': u'Panthera', u'rubbish': 25})
         x = self.start_request_tests(request)
         mess = x.json().get(u'message')
@@ -40,11 +43,12 @@ class TestTsNcbiGenomeSpecies(webapp.WebappTestCase):
         self.assertTrue(u'parameter' in mess,
                         'no "parameter" in "%s"' % mess)
 
-    # What if the taxon is unknown?
-    # Should be a 400 I think.  200 is certainly incorrect.
-    # TBD: issue
-
     def test_bad_taxon(self):
+        """What if the taxon is unknown?
+        Should be a 400 in my opinion.
+        2017-11-05 behavior: 200, which is certainly incorrect.
+        TBD: issue"""
+
         request = service.get_request('GET', {u'taxon': u'Unknownia'})
         x = self.start_request_tests(request)
         mess = x.json().get(u'message')

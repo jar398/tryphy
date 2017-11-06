@@ -25,6 +25,10 @@ the_names = None
 discard_unicode = True
 
 def get_names():
+    """Get a long list of names, for testing purposes.
+    The list is stored in a file.  All the names in this file happen to 
+    come from the GBIF backbone taxonomy dump."""
+
     global the_names
     if the_names == None:
         names_path = webapp.find_resource('some-names.txt')
@@ -41,10 +45,12 @@ def get_names():
     return the_names
 
 class GtTreeTester(webapp.WebappTestCase):
-    # No parameters.
-    # This returns a 500 (as of 2017-10-30).  More http-like would be for it to give a 400.
-    # But the error message is not informative.  TBD: issue.
+
     def test_no_parameter(self):
+        """See what happens when there are no parameters.
+        This returns a 500 (as of 2017-10-30).  More HTTP-like would be for it to give a 400.
+        But the error message is not informative.  TBD: issue."""
+
         request = service.get_request(self.__class__.http_method(), {})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
@@ -52,6 +58,8 @@ class GtTreeTester(webapp.WebappTestCase):
                         'no "taxa" in "%s"' % x.json()[u'message'])
 
     def test_no_names(self):
+        """See what happens if there are no names.  Expect a 400."""
+
         request = service.get_request(self.__class__.http_method(), {'taxa': ' '})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
@@ -60,7 +68,11 @@ class GtTreeTester(webapp.WebappTestCase):
                         'no "taxa" in "%s"' % x.json()[u'message'])
 
     def test_bad_names(self):
-        request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Unicornx', 'Dragonx', 'Pegasusx'])})
+        """Try a set of names none of which will be seen as a taxon name.  
+        Expect error since we need at least three good names to make a tree."""
+
+        params = {'taxa': '|'.join(['Unicornx', 'Dragonx', 'Pegasusx'])}
+        request = service.get_request(self.__class__.http_method(), params)
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code >= 400)
         # Expecting "Not enough valid nodes provided to construct a subtree 
@@ -72,9 +84,12 @@ class GtTreeTester(webapp.WebappTestCase):
         self.assertTrue(u'least' in mess,    #informative?
                         'no "least" in message: "%s"' % mess)
 
-    # Call should succeed even if some names are unrecognized
     def test_some_bad(self):
-        request = service.get_request(self.__class__.http_method(), {'taxa': '|'.join(['Pseudacris crucifer', 'Plethodon cinereus', 'Nosuch taxon'])})
+        """Two good names, one bad.
+        Call should succeed even if some names are unrecognized, yes?"""
+
+        params = {'taxa': '|'.join(['Pseudacris crucifer', 'Plethodon cinereus', 'Nosuch taxon'])}
+        request = service.get_request(self.__class__.http_method(), params)
         x = self.start_request_tests(request)
         mess = x.json().get(u'message')
         # json.dump(x.to_dict(), sys.stdout, indent=2)
@@ -83,7 +98,7 @@ class GtTreeTester(webapp.WebappTestCase):
         # TBD: issue.
         self.assert_success(x, mess)
 
-    # These all file with:
+    # Names containing non-ASCII Unicode all fail with:
     # "message": "Error: 'ascii' codec can't encode character u'\\xe1' in position 5529: ordinal not in range(128)"
     # TBD: issue - all methods should deal in Unicode, not ASCII.
 
@@ -92,15 +107,17 @@ class GtTreeTester(webapp.WebappTestCase):
     # No 'informative message' in the response.  TBD: Issue.
     # (It's probably because an Open Tree name lookup failed.)
 
-    # 256 names works.
+    # 256 names works (for gt/ot/get_tree).  512 doesn't.
 
     @unittest.skip("temporarily")
     def test_bigger_and_bigger(self):
+        """Try the service with increasingly long name lists."""
+
         names = get_names()
         for i in range(6, 19):
             if i > len(names): break
             n = 2**i
-            param = '|'.join(names[0:n])
+            param = '|'.join(names[0:n]) # Asssume GET
             print 'Trying %s names' % n
             request = service.get_request(self.__class__.http_method(), {'taxa': param})
             x = self.start_request_tests(request)
@@ -121,6 +138,11 @@ class GtTreeTester(webapp.WebappTestCase):
     # (See ../README.md)
 
     def test_example_12(self):
+        """Note: The example_12 tree includes both Formicinae and Aculeata, but the response
+        does not list any supporting studies.  According to the OT tree browser,
+        there are supporting trees that include both.  Need to investigate.
+        Issue?"""
+
         x = self.start_request_tests(example_12)
         self.assert_success(x)
         # Insert: whether result is what it should be according to docs
@@ -150,9 +172,6 @@ class TestGtOtGetTree(GtTreeTester):
 null=None; false=False; true=True
 
 example_12 = service.get_request('GET', {u'taxa': u'Crabronidae|Ophiocordyceps|Megalyridae|Formica polyctena|Tetramorium caespitum|Pseudomyrmex|Carebara diversa|Formicinae'})
-# example_12 tree includes both Formicinae and Aculeata, but the response
-# does not list any supporting studies.  According to OT tree browser
-# there is are supporting trees... need to investigate.
 
 
 example_13 = service.get_request('GET', {u'taxa': u'Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens'})

@@ -1,4 +1,5 @@
-# STUB
+# 15. sls/update_list
+# I don't know what this is supposed to do.
 
 import sys, unittest, json
 sys.path.append('./')
@@ -38,6 +39,8 @@ class TestSlsUpdateList(webapp.WebappTestCase):
         # Insert: whether result is what it should be according to docs
 
     def test_example_34(self):
+        """Example from documentation: Change type of a list from "public" to "private" """
+
         (user_id, access_token) = self.user_credentials()
         list_id = self.__class__.list_id
         example_34 = service.get_request('POST',
@@ -48,6 +51,7 @@ class TestSlsUpdateList(webapp.WebappTestCase):
         x = self.start_request_tests(example_34)
         mess = x.json().get(u'message')
         self.assert_success(x, mess)
+        # TBD: Check to see if the list actually got changed as requested
 
     @classmethod
     def tearDownClass(cls):

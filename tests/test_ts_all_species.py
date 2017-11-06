@@ -36,9 +36,12 @@ class TestTsAllSpecies(webapp.WebappTestCase):
         self.assert_success(x, name)
         print '%s: %s %s' % (name, len(x.json()[u'species']), x.time)
 
-    # Found this sequence using the 'lineage' script in opentreeoflife/reference-taxonomy/bin
+    # Found this taxon lineage sequence using the 'lineage' script in 
+    # opentreeoflife/reference-taxonomy/bin
 
     def test_nested_sequence(self):
+        """Try progressively larger taxa to see when the service breaks."""
+
         self.taxon_tester('Apis mellifera')
         self.taxon_tester('Apis')
         self.taxon_tester('Apini')
@@ -74,9 +77,13 @@ class TestTsAllSpecies(webapp.WebappTestCase):
             self.taxon_tester('Opisthokonta')
             self.taxon_tester('Eukaryota')
 
-    # Fails after 22 minutes - non-200 status code.
     @unittest.skip("takes too long")
     def test_big_family(self):
+        """The documentation suggests that you can use the service on families.
+        So try it on a big family (>60,000 species) to what happens.
+        As of 2017-11-05, this fails after crunching for 22 minutes - 
+        returns with a non-200 status code."""
+
         self.taxon_tester('Staphylinidae')
 
     # Insert here: edge case tests

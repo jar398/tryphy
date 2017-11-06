@@ -26,9 +26,9 @@ class SiEolImagesTester(webapp.WebappTestCase):
         self.assertTrue(u'species' in m,    #informative?
                         'no "species" in "%s"' % m)
 
-    # What if the supplied parameter name is wrong?  Similar to previous
-
     def test_bad_parameter(self):
+        """What if the supplied parameter name is wrong?  Similar to previous"""
+
         request = service.get_request('POST', {u'bad_parameter': []})
         x = self.start_request_tests(request)
         self.assertTrue(x.status_code == 400)
@@ -36,11 +36,11 @@ class SiEolImagesTester(webapp.WebappTestCase):
         self.assertTrue(u'species' in m,    #informative?
                         'no "species" in "%s"' % m)
 
-    # What if the value is a single species name instead of a list?
-    # 18 seconds (!) - doc says expected response time 2s - 6s.
-    # 76 metadata blobs are returned.  TBD: issue.
-
     def test_bad_value_type(self):
+        """What if the value is a single species name instead of a list?
+        18 seconds (!) - doc says expected response time 2s - 6s.
+        76 metadata blobs are returned.  TBD: issue."""
+
         print 'Patience, this may take 20 seconds'
         request = service.get_request('POST', {u'species': u'Nosuchtaxonia mistakea'})
         x = self.start_request_tests(request)
@@ -77,8 +77,10 @@ class TestSiEolGetImages(SiEolImagesTester):
     def http_method(self):
         return 'GET'
 
-    # What if you do a GET when the service is expecting a POST?
     def test_bad_method(self):
+        """What if you do a GET when the service is expecting a POST?
+        (Hoping for 405.)"""
+
         request = service.get_request('GET', {})
         x = self.start_request_tests(request)
         # GET method not allowed

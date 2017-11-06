@@ -38,11 +38,12 @@ class TestTnrsOtNames(TnrsTester):
     def tnrs_request(cls, names):
         return service.get_request('POST', {'scientificNames': names})
 
-    # Edge case: names= is supplied, but there are no names.
-    # In this case, the deployed web service says that there is no names
-    # parameter.  (The difference between missing and supplied 
-    # but null is academic?  Depends on taste.)
     def test_2(self):
+        """Edge case: names= is supplied, but there are no names.
+        In this case, the deployed web service says that there is no names
+        parameter.  (The difference between missing and supplied 
+        but null is academic?  Depends on taste.)"""
+
         request = self.__class__.tnrs_request([])
         x = request.exchange()
         # 204 = no content (from open tree)
