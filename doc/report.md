@@ -40,6 +40,8 @@ which can be helpful in conjunction and the source file.  But to
 really understand what happened, you usually have to read the source
 file.
 
+See [failures.md](failures.md) to see current output of test run.
+
 The following sections attempt to compare what the test system does
 now, against what was specified in the project description.
 
