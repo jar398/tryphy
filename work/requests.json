@@ -1,0 +1,721 @@
+{
+  "requests": [
+    {
+      "expect_status": 200, 
+      "label": "example_1", 
+      "method": "GET", 
+      "parameters": {
+        "url": "http://en.wikipedia.org/wiki/Ant"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_2", 
+      "method": "GET", 
+      "parameters": {
+        "engine": "1", 
+        "url": "https://en.wikipedia.org/wiki/Plain_pigeon"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_3", 
+      "method": "GET", 
+      "parameters": {
+        "url": "http://www.fws.gov/westvirginiafieldoffice/PDF/beechridgehcp/Appendix_D_Table_D-1.pdf"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_url", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_4", 
+      "method": "GET", 
+      "parameters": {
+        "engine": "2", 
+        "text": "The lemon dove (Columba larvata) is a species of bird in the pigeon family Columbidae found in montane forests of sub-Saharan Africa."
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_5", 
+      "method": "GET", 
+      "parameters": {
+        "text": "Formica polyctena is a species of European red wood ant in the genus Formica. The pavement ant, Tetramorium caespitum is an ant native to Europe. Pseudomyrmex is a genus of stinging, wasp-like ants. Adetomyrma venatrix is an endangered species of ants endemic to Madagascar. Carebara diversa is a species of ants in the subfamily Formicinae. It is found in many Asian countries."
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/fn/names_text", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_6", 
+      "method": "GET", 
+      "parameters": {
+        "names": "Setophaga striata|Setophaga megnolia|Setophaga angilae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_7", 
+      "method": "GET", 
+      "parameters": {
+        "names": "Formica polyctena|Formica exsectoides|Formica pecefica"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/resolve", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_8", 
+      "method": "POST", 
+      "parameters": {
+        "scientificNames": [
+          "Formica exsectoides", 
+          "Formica pecefica", 
+          "Formica polyctena"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/ot/names", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_9", 
+      "method": "GET", 
+      "parameters": {
+        "names": "Setophaga striata|Setophaga megnolia|Setophaga angilae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_10", 
+      "method": "GET", 
+      "parameters": {
+        "names": "Formica polyctena|Formica exsectoides|Formica pecefica"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/resolve", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_11", 
+      "method": "POST", 
+      "parameters": {
+        "scientificNames": [
+          "Formica exsectoides", 
+          "Formica pecefica", 
+          "Formica polyctena"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/tnrs/gnr/names", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_12", 
+      "method": "GET", 
+      "parameters": {
+        "taxa": "Crabronidae|Ophiocordyceps|Megalyridae|Formica polyctena|Tetramorium caespitum|Pseudomyrmex|Carebara diversa|Formicinae"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/get_tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_13", 
+      "method": "GET", 
+      "parameters": {
+        "taxa": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/get_tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_14", 
+      "method": "POST", 
+      "parameters": {
+        "resolvedNames": [
+          {
+            "match_type": "Exact", 
+            "matched_name": "Setophaga striata", 
+            "resolver_name": "OT", 
+            "search_string": "setophaga strieta", 
+            "synonyms": [
+              "Dendroica striata", 
+              "Setophaga striata"
+            ], 
+            "taxon_id": 60236
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "matched_name": "Setophaga magnolia", 
+            "resolver_name": "OT", 
+            "search_string": "setophaga magnolia", 
+            "synonyms": [
+              "Dendroica magnolia", 
+              "Setophaga magnolia"
+            ], 
+            "taxon_id": 3597209
+          }, 
+          {
+            "match_type": "Exact", 
+            "matched_name": "Setophaga angelae", 
+            "resolver_name": "OT", 
+            "search_string": "setophaga angilae", 
+            "synonyms": [
+              "Dendroica angelae", 
+              "Setophaga angelae"
+            ], 
+            "taxon_id": 3597191
+          }, 
+          {
+            "match_type": "Exact", 
+            "matched_name": "Setophaga plumbea", 
+            "resolver_name": "OT", 
+            "search_string": "setophaga plambea", 
+            "synonyms": [
+              "Dendroica plumbea", 
+              "Setophaga plumbea"
+            ], 
+            "taxon_id": 3597205
+          }, 
+          {
+            "match_type": "Fuzzy", 
+            "matched_name": "Setophaga virens", 
+            "resolver_name": "OT", 
+            "search_string": "setophaga virens", 
+            "synonyms": [
+              "Dendroica virens", 
+              "Setophaga virens"
+            ], 
+            "taxon_id": 3597195
+          }
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/ot/tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_15", 
+      "method": "GET", 
+      "parameters": {
+        "taxon": "Vulpes"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_16", 
+      "method": "GET", 
+      "parameters": {
+        "taxon": "Canidae"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/all_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_17", 
+      "method": "GET", 
+      "parameters": {
+        "country": "Bangladesh", 
+        "taxon": "Panthera"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_18", 
+      "method": "GET", 
+      "parameters": {
+        "country": "Nepal", 
+        "taxon": "Felidae"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/country_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_19", 
+      "method": "GET", 
+      "parameters": {
+        "species": "Panthera leo|Panthera onca|Panthera pardus"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/get_images", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_20", 
+      "method": "POST", 
+      "parameters": {
+        "species": [
+          "Catopuma badia", 
+          "Catopuma temminckii"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/si/eol/images", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_21", 
+      "method": "GET", 
+      "parameters": {
+        "taxon": "Panthera"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_22", 
+      "method": "GET", 
+      "parameters": {
+        "taxon": "Rodentia"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/ts/ncbi/genome_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_23", 
+      "method": "GET", 
+      "parameters": {
+        "species": "Panthera leo|Panthera onca|Panthera pardus"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/get_links", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_24", 
+      "method": "POST", 
+      "parameters": {
+        "species": [
+          "Catopuma badia", 
+          "Catopuma temminckii"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/sl/eol/links", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_25", 
+      "method": "GET", 
+      "parameters": null, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_26", 
+      "method": "GET", 
+      "parameters": {
+        "list_id": "22"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_27", 
+      "method": "GET", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_28", 
+      "method": "GET", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list_id": "20", 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_29", 
+      "method": "GET", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list_id": "20", 
+        "user_id": "hdail.laughinghouse@gmail.com", 
+        "verbose": "true"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/get_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_30", 
+      "method": "POST", 
+      "parameters": {
+        "list": {
+          "is_list_public": true, 
+          "list_author": [
+            "Bass", 
+            "O. & Cunningham", 
+            "R."
+          ], 
+          "list_curation_date": "02-24-2016", 
+          "list_curator": "HD Laughinghouse", 
+          "list_date_published": "01-01-2006", 
+          "list_description": "A list on the bird species add their endangered, threatened or invasive status", 
+          "list_extra_info": "", 
+          "list_focal_clade": "Aves", 
+          "list_keywords": [
+            "bird", 
+            "endangered species", 
+            "Everglades"
+          ], 
+          "list_origin": "webapp", 
+          "list_source": "Des", 
+          "list_species": [
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Anseriformes", 
+              "phylum": "", 
+              "scientific_name": "Aix sponsa", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Wood Duck"
+            }, 
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Anseriformes", 
+              "phylum": "", 
+              "scientific_name": "Anas strepera", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Gadwall"
+            }, 
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Caprimulgiformes", 
+              "phylum": "", 
+              "scientific_name": "Caprimulgus vociferus", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Whip-poor-will"
+            }, 
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Columbiformes", 
+              "phylum": "", 
+              "scientific_name": "Columba livia", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Rock Dove"
+            }, 
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Coraciiformes", 
+              "phylum": "", 
+              "scientific_name": "Ceryle alcyon", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Belted Kingfisher"
+            }, 
+            {
+              "class": "", 
+              "family": "", 
+              "nomenclature_code": "ICZN", 
+              "order": "Gruiformes", 
+              "phylum": "", 
+              "scientific_name": "Aramus guarauna", 
+              "scientific_name_authorship": "", 
+              "vernacular_name": "Limpkin"
+            }
+          ], 
+          "list_title": "Bird Species List for Everglades National Park"
+        }, 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/insert_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_31", 
+      "method": "POST", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list_id": 2, 
+        "species": [
+          {
+            "family": "", 
+            "nomenclature_code": "ICZN", 
+            "order": "Anseriformes", 
+            "phylum": "", 
+            "scientific_name": "Aix sponsa", 
+            "scientific_name_authorship": "", 
+            "vernacular_name": "Wood Duck"
+          }, 
+          {
+            "family": "", 
+            "nomenclature_code": "ICZN", 
+            "order": "Anseriformes", 
+            "phylum": "", 
+            "scientific_name": "Anas strepera", 
+            "scientific_name_authorship": "", 
+            "vernacular_name": "Gadwall"
+          }
+        ], 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/replace_species", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_32", 
+      "method": "GET", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list_id": "2", 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/remove_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_33", 
+      "method": "POST", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list": {
+          "list_description": "The list contains information on the invasive plants of Virginia, with data on the Invasiveness Rank and region in which they occur", 
+          "list_title": "Virginia Invasive Plant Species List"
+        }, 
+        "list_id": 5, 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/update_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_34", 
+      "method": "POST", 
+      "parameters": {
+        "access_token": "ya29..zQLmLjbyujJjwV6RVSM2sy-mkeaKu-9_n7y7iB6uKuL-rHDGp3W2_hPWUSO5uX_OcA", 
+        "list": {
+          "is_list_public": true
+        }, 
+        "list_id": 5, 
+        "user_id": "hdail.laughinghouse@gmail.com"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5005/phylotastic_ws/sls/update_list", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_35", 
+      "method": "POST", 
+      "parameters": {
+        "tree1_nwk": "(((((((EU368025_Uncult_marine_euk_FS14JA72_30Mar05_5m:0.00329,EU368020_Uncult_marine_euk_FS04GA95_01Aug05_5m:-0.00002):0.00002,EU368013_Uncult_marine_euk_FS01D014_01Aug05_65m:-0.00002):0.00010,(EU368034_Uncult_marine_euk_OC413NSS_Q007_15m:-0.00000,(EU368007_Uncult_marine_euk_FS01B026_30Mar05_5m:-0.00001,EU368004_Uncult_marine_euk_FS01AA94_01Aug05_5m:0.00328):0.00000):0.00317):0.00725,(EU368005_Uncult_marine_euk_FS01B033_30Mar05_5m:-0.00002,(EF172850_Uncult_euk_SSRPB47:-0.00003,EU368022_Uncult_marine_euk_FS04H169_01Aug05_89m:0.00166):0.00002):0.00597):0.00202,((DQ060523_Uncult_marine_euk_NOR46.29:0.01559,(HQ868826_Uncult_euk_SHAX1073:0.00155,EU368038_Uncult_marine_euk_EN351CTD040_4mN11:0.00172):0.00429):0.00017,(EU368023_Uncult_marine_euk_FS04H153_01Aug05_89m:0.00504,(DQ222879_Uncult_photo_euk_RA000907.18:0.00166,HM858468_Uncult_marine_euk_MO.011.5m.00036:-0.00003):0.00152):0.00566):0.00662):0.00941,(HQ868882_Uncult_euk_SHAX1135:0.00170,HQ868810_Uncult_euk_SHAX1056:-0.00007):0.02449):0.00648,(EU368021_Uncult_marine_euk_FS04GA46_01Aug05_5m:0.02285,(HQ869075_Uncult_euk_SHAX587:0.00000,HQ869035_Uncult_euk_SHAX540:0.00000):0.04720):0.01029,HQ156863_Uncult_marine_ciliate_170609_08:0.17059);", 
+        "tree2_nwk": "((HQ869075_Uncult_euk_SHAX587:0.00000,HQ869035_Uncult_euk_SHAX540:0.00000):0.04484,(EU368021_Uncult_marine_euk_FS04GA46_01Aug05_5m:0.02285,(((((EU368005_Uncult_marine_euk_FS01B033_30Mar05_5m:-0.00002,(EF172850_Uncult_euk_SSRPB47:-0.00003,EU368022_Uncult_marine_euk_FS04H169_01Aug05_89m:0.00166):0.00002):0.00597,(((EU368025_Uncult_marine_euk_FS14JA72_30Mar05_5m:0.00329,EU368020_Uncult_marine_euk_FS04GA95_01Aug05_5m:-0.00002):0.00002,EU368013_Uncult_marine_euk_FS01D014_01Aug05_65m:-0.00002):0.00010,(EU368034_Uncult_marine_euk_OC413NSS_Q007_15m:-0.00000,(EU368007_Uncult_marine_euk_FS01B026_30Mar05_5m:-0.00001,EU368004_Uncult_marine_euk_FS01AA94_01Aug05_5m:0.00328):0.00000):0.00317):0.00725):0.00202,((DQ060523_Uncult_marine_euk_NOR46.29:0.01559,(HQ868826_Uncult_euk_SHAX1073:0.00155,EU368038_Uncult_marine_euk_EN351CTD040_4mN11:0.00172):0.00429):0.00017,(EU368023_Uncult_marine_euk_FS04H153_01Aug05_89m:0.00504,(DQ222879_Uncult_photo_euk_RA000907.18:0.00166,HM858468_Uncult_marine_euk_MO.011.5m.00036:-0.00003):0.00152):0.00566):0.00662):0.00941,(HQ868882_Uncult_euk_SHAX1135:0.00170,HQ868810_Uncult_euk_SHAX1056:-0.00007):0.02449):0.00648,HQ156863_Uncult_marine_ciliate_170609_08:0.17059):0.01029):0.00236);"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/compare_trees", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_36", 
+      "method": "GET", 
+      "parameters": {
+        "list": "3597191|3597209|3597205|60236|3597195", 
+        "list_type": "ottids"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_37", 
+      "method": "GET", 
+      "parameters": {
+        "list": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens", 
+        "list_type": "taxa"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/get_studies", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_38", 
+      "method": "POST", 
+      "parameters": {
+        "list": [
+          1094064, 
+          860906, 
+          257323, 
+          698438, 
+          698406, 
+          187220, 
+          336231, 
+          124230
+        ], 
+        "list_type": "ottids"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/studies", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_39", 
+      "method": "POST", 
+      "parameters": {
+        "list": [
+          "Delphinidae", 
+          "Delphinus capensis", 
+          "Delphinus delphis", 
+          "Tursiops truncatus", 
+          "Tursiops aduncus", 
+          "Sotalia fluviatilis", 
+          "Sousa chinensis"
+        ], 
+        "list_type": "taxa"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5006/phylotastic_ws/md/studies", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_40", 
+      "method": "GET", 
+      "parameters": {
+        "taxa": "Panthera leo|Panthera onca|Panthera tigris|Panthera uncia"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/get_tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_41", 
+      "method": "GET", 
+      "parameters": {
+        "taxa": "Helianthus annuus|Passiflora edulis|Rosa arkansana|Saccharomyces cerevisiae"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/get_tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_42", 
+      "method": "POST", 
+      "parameters": {
+        "resolvedNames": [
+          "Setophaga striata", 
+          "Setophaga magnolia", 
+          "Setophaga angelae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_43", 
+      "method": "POST", 
+      "parameters": {
+        "resolvedNames": [
+          "Helianthus annuus", 
+          "Passiflora edulis", 
+          "Rosa arkansana", 
+          "Saccharomyces cerevisiae"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pm/tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_44", 
+      "method": "GET", 
+      "parameters": {
+        "taxa": "Setophaga striata|Setophaga magnolia|Setophaga angelae|Setophaga plumbea|Setophaga virens"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pt/get_tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_45", 
+      "method": "POST", 
+      "parameters": {
+        "resolvedNames": [
+          "Setophaga striata", 
+          "Setophaga magnolia", 
+          "Setophaga angelae", 
+          "Setophaga plumbea", 
+          "Setophaga virens"
+        ]
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5004/phylotastic_ws/gt/pt/tree", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_46", 
+      "method": "POST", 
+      "parameters": {
+        "method": "sdm", 
+        "newick": "((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/scale", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_47", 
+      "method": "POST", 
+      "parameters": {
+        "newick": "(((((Canis lupus pallipes,Melursus ursinus)Caniformia,((Panthera tigris,Panthera pardus)Panthera,Herpestes fuscus))Carnivora,(Macaca mulatta,Homo sapiens)Catarrhini)Boreoeutheria,Elephas maximus)Eutheria,Haliastur indus)Amniota;"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/scale", 
+      "source": "PhyloServicesDescription.md"
+    }, 
+    {
+      "expect_status": 200, 
+      "label": "example_48", 
+      "method": "POST", 
+      "parameters": {
+        "newick": "((Zea mays,Oryza sativa),((Arabidopsis thaliana,(Glycine max,Medicago sativa)),Solanum lycopersicum)Pentapetalae);"
+      }, 
+      "service": "http://phylo.cs.nmsu.edu:5009/phylotastic_ws/sc/metadata_scale", 
+      "source": "PhyloServicesDescription.md"
+    }
+  ]
+}
